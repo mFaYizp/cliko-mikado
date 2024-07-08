@@ -88,9 +88,13 @@ const ProjectExplore = (props: Props) => {
       const newPositions: Position[] = [];
 
       const isOverlapping = (newPos: Position) => {
-        return newPositions.some(pos => {
-          const topDiff = Math.abs(parseFloat(newPos.top) - parseFloat(pos.top));
-          const leftDiff = Math.abs(parseFloat(newPos.left) - parseFloat(pos.left));
+        return newPositions.some((pos) => {
+          const topDiff = Math.abs(
+            parseFloat(newPos.top) - parseFloat(pos.top)
+          );
+          const leftDiff = Math.abs(
+            parseFloat(newPos.left) - parseFloat(pos.left)
+          );
           return topDiff < 20 && leftDiff < 20; // Adjust the value as needed
         });
       };
@@ -114,19 +118,24 @@ const ProjectExplore = (props: Props) => {
   return (
     <section className="w-screen h-screen relative flex items-center justify-center overflow-hidden">
       <div className="absolute top-5 left-20 w-20 h-full">
-        <Image src={'/logo.png'} alt="text" width={750} height={0}/>
+        <Image src={"/logo.png"} alt="text" width={750} height={0} />
       </div>
-        <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-[600px] h-auto z-10">
-          <Image src={'/text.png'} alt="text" width={750} height={0} className="bg-contain"/>
-          {/* <h1 className="text-6xl font-bold">Moments in the Making.</h1>
+      <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-[600px] h-auto z-10">
+        <Image
+          src={"/text.png"}
+          alt="text"
+          width={750}
+          height={0}
+          className="bg-contain"
+        />
+        {/* <h1 className="text-6xl font-bold">Moments in the Making.</h1>
           <hr className="w-[700px]" />
           <p className="text-3xl text-center">Launching Soon!</p> */}
-        </div>
+      </div>
       <div
         ref={containerRef}
         className="w-full h-full flex items-center justify-center flex-wrap absolute top-20 left-0  overflow-hidden box-border"
       >
-
         {ProjectData.map((item, index) => {
           return (
             <div
