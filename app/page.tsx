@@ -1,113 +1,158 @@
+"use client";
+import gsap from "gsap";
 import Image from "next/image";
+import Link from "next/link";
+import React, { useEffect, useRef, useState } from "react";
 
-export default function Home() {
+type Props = {};
+
+const ProjectData = [
+  {
+    name: "Space Milk",
+    image:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/charcol.png",
+    href: "",
+  },
+  {
+    name: "Designstripe",
+    image:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/chicken-3.jpg",
+    href: "",
+  },
+  {
+    name: "Fintek",
+    image:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/food%20photography.png",
+    href: "",
+  },
+  {
+    name: "Mikado",
+    image:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/perfume.png",
+    href: "",
+  },
+  {
+    name: "Space Milk",
+    image:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/short%20story.png",
+    href: "",
+  },
+  {
+    name: "Fintek",
+    image:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/zetwork.png",
+    href: "",
+  },
+  {
+    name: "Mikado",
+    image:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/zetwork2.png",
+    href: "",
+  },
+];
+
+type Position = {
+  top: string;
+  left: string;
+};
+
+const ProjectExplore = (props: Props) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [positions, setPositions] = useState<Position[]>([]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+
+    const handleMouseMove = (event: any) => {
+      const { clientX, clientY } = event;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      gsap.to(container, {
+        x: -(clientX - width / 2),
+        y: -(clientY - height / 2),
+        ease: "power2.out",
+        duration: 1,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const generateRandomPositions = () => {
+      const newPositions: Position[] = [];
+
+      const isOverlapping = (newPos: Position) => {
+        return newPositions.some(pos => {
+          const topDiff = Math.abs(parseFloat(newPos.top) - parseFloat(pos.top));
+          const leftDiff = Math.abs(parseFloat(newPos.left) - parseFloat(pos.left));
+          return topDiff < 20 && leftDiff < 20; // Adjust the value as needed
+        });
+      };
+
+      ProjectData.forEach(() => {
+        let newPos;
+        do {
+          const top = Math.random() * (75 - 0) + "%";
+          const left = Math.random() * (75 - 0) + "%";
+          newPos = { top, left };
+        } while (isOverlapping(newPos));
+
+        newPositions.push(newPos);
+      });
+
+      setPositions(newPositions);
+    };
+
+    generateRandomPositions();
+  }, []);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <section className="w-screen h-screen relative flex items-center justify-center overflow-hidden">
+      <div className="absolute top-5 left-20 w-20 h-full">
+        <Image src={'/logo.png'} alt="text" width={750} height={0}/>
+      </div>
+        <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-[600px] h-auto z-10">
+          <Image src={'/text.png'} alt="text" width={750} height={0} className="bg-contain"/>
+          {/* <h1 className="text-6xl font-bold">Moments in the Making.</h1>
+          <hr className="w-[700px]" />
+          <p className="text-3xl text-center">Launching Soon!</p> */}
         </div>
+      <div
+        ref={containerRef}
+        className="w-full h-full flex items-center justify-center flex-wrap absolute top-20 left-0  overflow-hidden box-border"
+      >
+
+        {ProjectData.map((item, index) => {
+          return (
+            <div
+              key={index}
+              style={{
+                position: "absolute",
+                top: positions[index]?.top,
+                left: positions[index]?.left,
+              }}
+              className="transition-all hover:scale-110 hover:z-10"
+            >
+              <Link href={item.href}>
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={300}
+                  height={0}
+                  className="object-cover"
+                />
+              </Link>
+            </div>
+          );
+        })}
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </section>
   );
-}
+};
+
+export default ProjectExplore;
