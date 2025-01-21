@@ -1,8 +1,10 @@
 "use client";
+import ContactForm from "@/components/contactForm";
 import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+
 
 type Props = {};
 
@@ -116,10 +118,11 @@ const ProjectExplore = (props: Props) => {
     generateRandomPositions();
   }, []);
   return (
+    <main>
     <section className="w-screen h-screen relative flex items-center justify-center overflow-hidden">
-      <div className="absolute top-5 left-20 w-20 h-full">
+      {/* <div className="absolute top-5 left-20 w-20 h-full">
         <Image src={"/logo.png"} alt="text" width={750} height={0} />
-      </div>
+      </div> */}
       <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-[600px] h-auto z-10">
         <Image
           src={"/text.png"}
@@ -160,8 +163,14 @@ const ProjectExplore = (props: Props) => {
           );
         })}
       </div>
+   
     </section>
+    <section>
+      <ContactForm />
+    </section>
+    </main> 
   );
+ 
 };
 
 export default ProjectExplore;
