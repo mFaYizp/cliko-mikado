@@ -25,7 +25,7 @@ const HomeAbout = () => {
             life with creativity and precision, helping to elevate your brand
             and create lasting impressions
           </p>
-          <Button className="text-2lg font-medium">
+          <Button className="font-medium">
             Studio <ChevronRight className="w-4 h-4" />
           </Button>
         </div>
