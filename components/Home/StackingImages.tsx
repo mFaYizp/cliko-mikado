@@ -93,24 +93,29 @@ const Card: React.FC<CardComponentProps> = ({
   range,
   targetScale,
 }) => {
-//   const scale = useTransform(progress, range, [1, targetScale]);
+  const translateX = index % 2 === 0 ? '0' : '5%';
+  const scale = 1.2 - (index * 0.05);
+  
   return (
     <section
       className="w-full h-full sticky top-[20%] flex items-center justify-center"
       key={index}
     >
       <motion.div
-        className="w-full h-full flex items-center justify-center origin-top relative"
+        className="w-full h-full flex items-center justify-center origin-bottom relative"
         style={{
-          top: `calc(-5vh + ${index * 5}px)`,
+          bottom: `calc(-5vh + ${index * 5}px)`,
+          left: `calc(-5vh + ${index * 5}px)`,
+          transform: `translateX(${translateX})`,
         }}
       >
-        <div className={`relative flex items-center justify-center w-[600px] h-[600px]`}>
+        <div className={`relative flex items-center justify-center w-full h-fit`}>
           <Image
             src={card.src}
             alt={card.alt}
-            fill
-            className="object-contain"
+            width={600}
+            height={600}
+            className={`aspect-square object-contain nth`}
           />
         </div>
       </motion.div>
