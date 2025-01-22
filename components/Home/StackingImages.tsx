@@ -58,7 +58,7 @@ interface ParallaxCardsProps {
 
 const ParallaxCards: React.FC<ParallaxCardsProps> = ({ cards, progress }) => {
   return (
-    <div className="flex w-full container h-full mb-[25vh] flex-col mt-20 gap-[50vh]">
+    <div className="flex w-full mx-auto h-full mb-[25vh] flex-col mt-20 gap-[50vh]">
       {cards.map((card, index) => {
         const targetScale = 1 - (cards.length - index) * 0.05;
         const range = [index * 0.35, 1];
@@ -100,14 +100,14 @@ const Card: React.FC<CardComponentProps> = ({
       key={index}
     >
       <motion.div
-        className="w-full h-full flex items-center justify-center origin-bottom relative"
+        className="h-full flex items-center justify-center origin-bottom relative"
         style={{
           bottom: `calc(-5vh + ${index * 5}px)`,
           left: `calc(-5vh + ${index * 5}px)`,
           transform: `translateX(${translateX})`,
         }}
       >
-        <div className={`relative flex items-center justify-center w-full h-fit`}>
+        <div className={`relative flex items-center justify-center w-full h-full`}>
           <Image
             src={card.src}
             alt={card.alt}
