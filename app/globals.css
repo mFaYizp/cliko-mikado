@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-body {
-  background: black
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -71,9 +66,9 @@ body {
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border ;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground bg-black text-white;
   }
 }

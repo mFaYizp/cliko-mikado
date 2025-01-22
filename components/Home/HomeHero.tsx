@@ -10,43 +10,55 @@ const ProjectData = [
   {
     name: "Space Milk",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/charcol.png",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/1_Hero_section/1.webp",
     href: "",
   },
   {
     name: "Designstripe",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/chicken-3.jpg",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/1_Hero_section/2.webp",
     href: "",
   },
   {
     name: "Fintek",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/food%20photography.png",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/1_Hero_section/3.webp",
     href: "",
   },
   {
     name: "Mikado",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/perfume.png",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/1_Hero_section/4.webp",
     href: "",
   },
   {
     name: "Space Milk",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/short%20story.png",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/1_Hero_section/5.webp",
     href: "",
   },
   {
     name: "Fintek",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/zetwork.png",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/1_Hero_section/6.webp",
     href: "",
   },
   {
     name: "Mikado",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/zetwork2.png",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/1_Hero_section/7.webp",
+    href: "",
+  },
+  {
+    name: "Mikado",
+    image:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/1_Hero_section/8.webp",
+    href: "",
+  },
+  {
+    name: "Mikado",
+    image:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/1_Hero_section/9.webp",
     href: "",
   },
 ];
@@ -56,7 +68,7 @@ type Position = {
   left: string;
 };
 
-const ProjectExplore = (props: Props) => {
+const HomeHero = (props: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [positions, setPositions] = useState<Position[]>([]);
 
@@ -116,21 +128,19 @@ const ProjectExplore = (props: Props) => {
     generateRandomPositions();
   }, []);
   return (
-    <section className="w-screen h-screen relative flex items-center justify-center overflow-hidden">
+    <section className="w-full h-lvh relative flex items-center justify-center overflow-hidden">
       <div className="absolute top-5 left-20 w-20 h-full">
         <Image src={"/logo.png"} alt="text" width={750} height={0} />
       </div>
-      <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-[600px] h-auto z-10">
-        <Image
-          src={"/text.png"}
-          alt="text"
-          width={750}
-          height={0}
-          className="bg-contain"
-        />
-        {/* <h1 className="text-6xl font-bold">Moments in the Making.</h1>
-          <hr className="w-[700px]" />
-          <p className="text-3xl text-center">Launching Soon!</p> */}
+      <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-auto h-auto z-10">
+        <h1 className="text-[11.25rem] leading-tight font-extrabold text-white text-center">
+          {" "}
+          Bring your <br /> Brand to Life 
+        </h1>
+        <p className="text-[1.75rem] text-center text-white font-light flex flex-row gap-x-5 items-center justify-center">
+          A Studio for 
+          <span className="border rounded-lg p-2 ">Architectural</span>
+        </p>
       </div>
       <div
         ref={containerRef}
@@ -164,4 +174,4 @@ const ProjectExplore = (props: Props) => {
   );
 };
 
-export default ProjectExplore;
+export default HomeHero;

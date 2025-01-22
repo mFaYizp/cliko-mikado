@@ -12,6 +12,9 @@ const config: Config = {
 		fontFamily: {
             gilroy: ["var(--font-gilroy)"],
         },
+		fontSize: {
+			'2lg': '1.75rem',
+		},
   		backgroundImage: {
   			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
   			'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
