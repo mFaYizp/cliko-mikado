@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BsTwitterX } from "react-icons/bs";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { Button } from "./ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,50 +16,133 @@ const Navbar = () => {
   };
 
   return (
-    <>
-      <nav className="flex justify-between items-center px-7 py-5 bg-black text-[#f2f2f2]">
+    <nav className="flex justify-between items-center px-7 py-5 text-[#f2f2f2] fixed top-0 left-0 w-full z-50">
+      <Link href={"/"}>
+        <Image
+          src="/logo.png"
+          alt="logo"
+          width={80}
+          height={80}
+          className="object-contain"
+        />
+      </Link>
 
-        <Link href={"/"}>
-          <Image
-            src="/logo.png"
-            alt="logo"
-            width={80}
-            height={80}
-            className="object-contain"
-          />
+      <div className="hidden md:flex space-x-8">
+        <Link href="/" onClick={handleMenuToggle}>
+          Menu
         </Link>
+      </div>
 
-        <div className="hidden md:flex space-x-8">
-          <Link href="/" onClick={handleMenuToggle}>
-            Menu
-          </Link>
-        </div>
-
-        <div className="hidden md:flex items-center">
-          <Link href="/contact">
-            <button className="px-6 py-2 text-white rounded-full">
-              Get in Touch
-            </button>
-          </Link>
-        </div>
-
-        <div className="md:hidden flex items-center">
-          <button className="text-2xl" onClick={handleMenuToggle}>
-            ☰
+      <div className="hidden md:flex items-center">
+        <Link href="/contact">
+          <button className="px-6 py-2 text-white rounded-full">
+            Get in Touch
           </button>
-        </div>
-      </nav>
+        </Link>
+      </div>
 
- 
-      {menuOpen && (
-        <div
-          className={`fixed top-0 left-0 h-3/4 w-full bg-[#1d1d1d] text-white z-50 flex flex-col transition-transform duration-500 ease-in-out transform ${
-            menuOpen ? "translate-y-0" : "-translate-y-full"
-          }`}
+      <div className="md:hidden flex items-center">
+        <Button
+          variant={"link"}
+          className="text-2xl"
+          onClick={handleMenuToggle}
         >
-       
-          <nav className="flex justify-between items-center px-7 py-5 bg-[#1d1d1d] text-[#f2f2f2]">
- 
+          ☰
+        </Button>
+      </div>
+      {menuOpen && (
+        <MenuBar menuOpen={menuOpen} handleMenuToggle={handleMenuToggle} />
+      )}
+    </nav>
+  );
+};
+
+const MenuBar = ({
+  menuOpen,
+  handleMenuToggle,
+}: {
+  menuOpen: boolean;
+  handleMenuToggle: () => void;
+}) => {
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        handleMenuToggle();
+      }
+    };
+
+    if (menuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen, handleMenuToggle]);
+
+  const menuVariants = {
+    initial: { y: "-100%" },
+    animate: { 
+      y: 0,
+      transition: {
+        type: "spring",
+        duration: 0.8,
+        bounce: 0.2,
+        delayChildren: 0.2,
+        staggerChildren: 0.1
+      }
+    },
+    exit: { 
+      y: "-100%",
+      transition: {
+        type: "tween",
+        duration: 0.5,
+        ease: "easeInOut",
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+        when: "afterChildren"
+      }
+    }
+  };
+
+  const childVariants = {
+    initial: { y: 50, opacity: 0 },
+    animate: { 
+      y: 0, 
+      opacity: 1,
+      transition: {
+        type: "spring",
+        duration: 0.5
+      }
+    },
+    exit: { 
+      y: -20, 
+      opacity: 0,
+      transition: {
+        type: "tween",
+        duration: 0.3
+      }
+    }
+  };
+
+  return (
+    <AnimatePresence mode="wait">
+      {menuOpen && (
+        <motion.div
+          ref={menuRef}
+          className="fixed top-0 left-0 h-3/4 w-full bg-[#1d1d1d] text-white z-50"
+          variants={menuVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+        >
+          <motion.nav
+            variants={childVariants}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="flex justify-between items-center px-7 py-5 bg-[#1d1d1d] text-[#f2f2f2]"
+          >
             <Link href={"/"}>
               <Image
                 src="/logo.png"
@@ -83,14 +168,20 @@ const Navbar = () => {
             </div>
 
             <div className="md:hidden flex items-center">
-              <button className="text-2xl" onClick={handleMenuToggle}>
-                ☰
+              <button 
+                onClick={handleMenuToggle}
+                className="text-2xl hover:opacity-70 transition-opacity"
+              >
+                ✕
               </button>
             </div>
-          </nav>
+          </motion.nav>
 
-  
-          <div className="flex flex-col md:flex-row items-start justify-between mt-10">
+          <motion.div
+            variants={childVariants}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="flex flex-col md:flex-row items-start justify-between mt-10"
+          >
             {/* Video Placeholder */}
             <div className="flex justify-start items-center w-[430px] h-[241px] bg-slate-400 ml-6 rounded-lg">
               <video
@@ -136,8 +227,13 @@ const Navbar = () => {
                 CONTACT
               </Link>
             </div>
-          </div>
-          <div className="flex gap-6 justify-left mt-6 ml-6">
+          </motion.div>
+
+          <motion.div
+            variants={childVariants}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="flex gap-6 justify-left mt-6 ml-6"
+          >
             <Link
               href="https://facebook.com"
               target="_blank"
@@ -170,10 +266,10 @@ const Navbar = () => {
             >
               <FaLinkedinIn className="text-xl text-gray-400 hover:text-blue-700" />
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       )}
-    </>
+    </AnimatePresence>
   );
 };
 

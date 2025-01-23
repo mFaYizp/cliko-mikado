@@ -6,7 +6,7 @@ import { ChevronRight } from "lucide-react";
 const HomeAbout = () => {
   return (
     <section className="w-full h-full">
-      <div className="container mx-auto w-full h-full flex flex-row items-center justify-center py-36">
+      <div className="container mx-auto w-full h-full flex flex-row items-start justify-center py-36">
         <div className="w-1/2 h-full">
           <Image
             src={

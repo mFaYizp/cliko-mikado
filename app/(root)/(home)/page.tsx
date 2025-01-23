@@ -11,7 +11,7 @@ const Home = () => {
     <main className="w-full">
       <HomeHero />
       <HomeAbout />
-      {/* <Services /> */}
+      <Services />
       {/* <ClikoTextmotion /> */}
       <StackingImages />
       <ContactForm />
