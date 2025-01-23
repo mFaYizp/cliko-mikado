@@ -16,43 +16,47 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center px-7 py-5 text-[#f2f2f2] fixed top-0 left-0 w-full z-50">
-      <Link href={"/"}>
-        <Image
-          src="/logo.png"
-          alt="logo"
-          width={80}
-          height={80}
-          className="object-contain"
-        />
-      </Link>
-
-      <div className="hidden md:flex space-x-8">
-        <Link href="/" onClick={handleMenuToggle}>
-          Menu
+    <nav className="w-full h-20  px-7 text-[#f2f2f2] fixed top-0 left-0  z-50">
+      <div className="w-full h-full flex justify-between items-center">
+        <Link href={"/"}>
+          <Image
+            src="/logo.png"
+            alt="logo"
+            width={80}
+            height={80}
+            className="object-contain"
+          />
         </Link>
-      </div>
 
-      <div className="hidden md:flex items-center">
-        <Link href="/contact">
-          <button className="px-6 py-2 text-white rounded-full">
-            Get in Touch
-          </button>
-        </Link>
-      </div>
+        <div className="hidden md:flex space-x-8">
+          <Link href="/" onClick={handleMenuToggle}>
+            Menu
+          </Link>
+        </div>
 
-      <div className="md:hidden flex items-center">
-        <Button
-          variant={"link"}
-          className="text-2xl"
-          onClick={handleMenuToggle}
-        >
-          ☰
-        </Button>
+        <div className="hidden md:flex items-center">
+          <Link href="/contact">
+            <button className="px-6 py-2 text-white rounded-full">
+              Get in Touch
+            </button>
+          </Link>
+        </div>
+
+        <div className="md:hidden flex items-center">
+          <Button
+            variant={"link"}
+            className="text-2xl"
+            onClick={handleMenuToggle}
+          >
+            ☰
+          </Button>
+        </div>
       </div>
-      {menuOpen && (
-        <MenuBar menuOpen={menuOpen} handleMenuToggle={handleMenuToggle} />
-      )}
+      <AnimatePresence>
+        {menuOpen && (
+          <MenuBar menuOpen={menuOpen} handleMenuToggle={handleMenuToggle} />
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
@@ -74,27 +78,27 @@ const MenuBar = ({
     };
 
     if (menuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [menuOpen, handleMenuToggle]);
 
   const menuVariants = {
     initial: { y: "-100%" },
-    animate: { 
+    animate: {
       y: 0,
       transition: {
         type: "spring",
         duration: 0.8,
         bounce: 0.2,
         delayChildren: 0.2,
-        staggerChildren: 0.1
-      }
+        staggerChildren: 0.1,
+      },
     },
-    exit: { 
+    exit: {
       y: "-100%",
       transition: {
         type: "tween",
@@ -102,33 +106,33 @@ const MenuBar = ({
         ease: "easeInOut",
         staggerChildren: 0.05,
         staggerDirection: -1,
-        when: "afterChildren"
-      }
-    }
+        when: "afterChildren",
+      },
+    },
   };
 
   const childVariants = {
     initial: { y: 50, opacity: 0 },
-    animate: { 
-      y: 0, 
+    animate: {
+      y: 0,
       opacity: 1,
       transition: {
         type: "spring",
-        duration: 0.5
-      }
+        duration: 0.5,
+      },
     },
-    exit: { 
-      y: -20, 
+    exit: {
+      y: -20,
       opacity: 0,
       transition: {
         type: "tween",
-        duration: 0.3
-      }
-    }
+        duration: 0.3,
+      },
+    },
   };
 
   return (
-    <AnimatePresence mode="wait">
+    <motion.div className="w-full h-full">
       {menuOpen && (
         <motion.div
           ref={menuRef}
@@ -168,7 +172,7 @@ const MenuBar = ({
             </div>
 
             <div className="md:hidden flex items-center">
-              <button 
+              <button
                 onClick={handleMenuToggle}
                 className="text-2xl hover:opacity-70 transition-opacity"
               >
@@ -269,7 +273,7 @@ const MenuBar = ({
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </motion.div>
   );
 };
 
