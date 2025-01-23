@@ -8,6 +8,31 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { Button } from "./ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
+const socialLinks = [
+  {
+    href: "https://facebook.com",
+    icon: <FaFacebookF className="text-xl text-gray-400 hover:text-blue-500" />,
+    hoverColor: "hover:text-blue-500",
+  },
+  {
+    href: "https://instagram.com",
+    icon: <FaInstagram className="text-xl text-gray-400 hover:text-pink-500" />,
+    hoverColor: "hover:text-pink-500",
+  },
+  {
+    href: "https://twitter.com",
+    icon: <BsTwitterX className="text-xl text-gray-400 hover:text-blue-400" />,
+    hoverColor: "hover:text-blue-400",
+  },
+  {
+    href: "https://linkedin.com",
+    icon: (
+      <FaLinkedinIn className="text-xl text-gray-400 hover:text-blue-700" />
+    ),
+    hoverColor: "hover:text-blue-700",
+  },
+];
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -131,8 +156,36 @@ const MenuBar = ({
     },
   };
 
+  const menuItems = [
+    { href: "/", label: "HOME" },
+    { href: "/work", label: "ABOUT" },
+    { href: "/about", label: "PORTFOLIO" },
+    { href: "/gallery", label: "CONTACT" },
+  ];
+
+  const linkVariants = {
+    initial: { x: -50, opacity: 0 },
+    animate: (i: number) => ({
+      x: 0,
+      opacity: 1,
+      transition: {
+        delay: 0.3 + i * 0.1,
+        type: "spring",
+        stiffness: 100,
+      },
+    }),
+    exit: (i: number) => ({
+      x: -50,
+      opacity: 0,
+      transition: {
+        duration: 0.2,
+        delay: i * 0.05,
+      },
+    }),
+  };
+
   return (
-    <motion.div className="w-full h-full">
+    <div className="w-full h-full">
       {menuOpen && (
         <motion.div
           ref={menuRef}
@@ -201,35 +254,25 @@ const MenuBar = ({
               ></video>
             </div>
 
-            <div className="flex flex-col items-start justify-center space-y-0 pr-48 font-extrabold ">
-              <Link
-                href="/"
-                className="text-[4rem] leading-tight"
-                onClick={handleMenuToggle}
-              >
-                HOME
-              </Link>
-              <Link
-                href="/work"
-                className="text-[4rem] leading-tight"
-                onClick={handleMenuToggle}
-              >
-                ABOUT
-              </Link>
-              <Link
-                href="/about"
-                className="text-[4rem] leading-tight"
-                onClick={handleMenuToggle}
-              >
-                PORTFOLIO
-              </Link>
-              <Link
-                href="/gallery"
-                className="text-[4rem] leading-tight"
-                onClick={handleMenuToggle}
-              >
-                CONTACT
-              </Link>
+            <div className="flex flex-col items-start justify-center space-y-2 pr-48 font-extrabold">
+              {menuItems.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  custom={i}
+                  variants={linkVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
+                  <Link
+                    href={item.href}
+                    className="text-[4rem] leading-tight hover:text-gray-300 transition-colors"
+                    onClick={handleMenuToggle}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
@@ -238,42 +281,21 @@ const MenuBar = ({
             transition={{ delay: 0.4, duration: 0.5 }}
             className="flex gap-6 justify-left mt-6 ml-6"
           >
-            <Link
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]"
-            >
-              <FaFacebookF className="text-xl text-gray-400 hover:text-blue-500" />
-            </Link>
-            <Link
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]"
-            >
-              <FaInstagram className="text-xl text-gray-400 hover:text-pink-500" />
-            </Link>
-            <Link
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]"
-            >
-              <BsTwitterX className="text-xl text-gray-400 hover:text-blue-400" />
-            </Link>
-            <Link
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]"
-            >
-              <FaLinkedinIn className="text-xl text-gray-400 hover:text-blue-700" />
-            </Link>
+            {socialLinks.map((social, i) => (
+              <Link
+                key={i}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]"
+              >
+                {social.icon}
+              </Link>
+            ))}
           </motion.div>
         </motion.div>
       )}
-    </motion.div>
+    </div>
   );
 };
 
