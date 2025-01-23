@@ -1,8 +1,10 @@
 "use client";
+import ContactForm from "@/components/contactForm";
 import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+
 
 type Props = {};
 
@@ -128,49 +130,54 @@ const HomeHero = (props: Props) => {
     generateRandomPositions();
   }, []);
   return (
-    <section className="w-full h-lvh relative flex items-center justify-center overflow-hidden">
-      <div className="absolute top-5 left-20 w-20 h-full">
-        <Image src={"/logo.png"} alt="text" width={750} height={0} />
-      </div>
-      <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-auto h-auto z-10">
-        <h1 className="text-[11.25rem] leading-tight font-extrabold text-white text-center">
-          {" "}
-          Bring your <br /> Brand to Life 
-        </h1>
-        <p className="text-[1.75rem] text-center text-white font-light flex flex-row gap-x-5 items-center justify-center">
-          A Studio for 
-          <span className="border rounded-lg p-2 ">Architectural</span>
-        </p>
-      </div>
-      <div
-        ref={containerRef}
-        className="w-full h-full flex items-center justify-center flex-wrap absolute top-20 left-0  overflow-hidden box-border"
-      >
-        {ProjectData.map((item, index) => {
-          return (
-            <div
-              key={index}
-              style={{
-                position: "absolute",
-                top: positions[index]?.top,
-                left: positions[index]?.left,
-              }}
-              className="transition-all hover:scale-110 hover:z-10"
-            >
-              <Link href={item.href}>
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  width={300}
-                  height={0}
-                  className="object-cover"
-                />
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-    </section>
+    <main>
+      <section className="w-full h-lvh relative flex items-center justify-center overflow-hidden">
+        <div className="absolute top-5 left-20 w-20 h-full">
+          <Image src={"/logo.png"} alt="text" width={750} height={0} />
+        </div>
+        <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-auto h-auto z-10">
+          <h1 className="text-[11.25rem] leading-tight font-extrabold text-white text-center">
+            {" "}
+            Bring your <br /> Brand to Life 
+          </h1>
+          <p className="text-[1.75rem] text-center text-white font-light flex flex-row gap-x-5 items-center justify-center">
+            A Studio for 
+            <span className="border rounded-lg p-2 ">Architectural</span>
+          </p>
+        </div>
+        <div
+          ref={containerRef}
+          className="w-full h-full flex items-center justify-center flex-wrap absolute top-20 left-0  overflow-hidden box-border"
+        >
+          {ProjectData.map((item, index) => {
+            return (
+              <div
+                key={index}
+                style={{
+                  position: "absolute",
+                  top: positions[index]?.top,
+                  left: positions[index]?.left,
+                }}
+                className="transition-all hover:scale-110 hover:z-10"
+              >
+                <Link href={item.href}>
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={300}
+                    height={0}
+                    className="object-cover"
+                  />
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+      <section>
+        <ContactForm />
+      </section>
+    </main>
   );
 };
 

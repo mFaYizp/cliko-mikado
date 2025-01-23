@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Footer from "../components/Footer";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const myFont = localFont({
   src: [
@@ -43,7 +45,6 @@ const myFont = localFont({
   variable: "--font-gilroy",
 });
 
-
 export const metadata: Metadata = {
   title: "Cliko",
   description: "",
@@ -56,7 +57,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${myFont.variable}`}>{children}</body>
+      <body className={`${myFont.variable}`}>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
