@@ -15,13 +15,13 @@ const ContactForm = () => {
                 Drop us a line or come grab a coffee, it's on us,and let's design the extraordinary together
             </p>
             <p className="text-5xl font-thin text-gray-400 mb-4">
-               <span> Hey, I’m{' '}</span>
+                <span> Hey, I’m{' '}</span>
                 <input
                     type="text"
                     placeholder="Your name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="bg-transparent border-b-2 border-gray-500 text-white outline-none placeholder-opacity-50"
+                    className="bg-transparent border-b-2 border-gray-500 text-white outline-none placeholder-opacity-50 placeholder-gray-600"
                 />{' '}
                 Let's grab a virtual coffee
             </p>
@@ -32,7 +32,7 @@ const ContactForm = () => {
                     placeholder="Your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="bg-transparent border-b-2 border-gray-500 text-white outline-none placeholder-opacity-25"
+                    className="bg-transparent border-b-2 border-gray-500 text-white outline-none placeholder-opacity-50 placeholder-gray-600"
                 />
             </p>
             <p className="text-5xl font-thin mb-4 text-gray-400">
@@ -42,10 +42,9 @@ const ContactForm = () => {
                 placeholder="Spill the ink of your mind right here..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="bg-transparent border-b-2 border-gray-500 text-white font-thin outline-none w-full h-25 mb-4 placeholder-opacity-50"
+                className="bg-transparent border-b-2 border-gray-500 text-white font-thin outline-none w-full h-25 mb-4  placeholder-gray-600"
             />
-           
-            {/* Flex container to align the button to the right */}
+
             <div className="flex justify-end pb-[200px]">
                 <button className="bg-black text-white py-2 px-4 border-[1px] border-white rounded">Submit</button>
             </div>
