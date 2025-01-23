@@ -114,7 +114,7 @@ const Footer = () => {
       >
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left py-10 tracking-wide">
           {/* Left Section */}
-          <div className="flex flex-col gap-6 flex-1">
+          <div className="flex flex-col justify-between gap-6 flex-1">
             <ul className="flex flex-col gap-4 text-md">
               {LINKS.map(({ name, link }, index) => (
                 <li key={index}>
@@ -122,7 +122,7 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-            <p className="text-xs mt-4 text-[#777373]">
+            <p className="text-xs mt-6 text-[#777373]">
               © 2024 Cliko Studio.
               <br />
               All rights reserved
@@ -150,6 +150,7 @@ const Footer = () => {
                 </Link>
               ))}
             </div>
+            <p className="text-xs mt-4 text-[#777373]">Privacy Policy</p>
           </div>
 
           {/* Right Section */}

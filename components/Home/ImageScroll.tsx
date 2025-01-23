@@ -1,101 +1,114 @@
+"use client";
 import React, { useRef, useEffect, useState } from "react";
+import { useScroll } from "framer-motion";
 
 const ImageScroll = () => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [currentImage, setCurrentImage] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const imagesRef = useRef<HTMLImageElement[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const images = [
-    "/images/01.webp", 
-    "/images/02.webp",
-    "/images/03.webp",
-    "/images/04.webp",
-    "/images/05.webp",
-    "/images/06.webp",
-    "/images/07.webp",
-    "/images/08.webp",
-    "/images/09.webp",
-    "/images/010.webp",
-    "/images/011.webp",
-    "/images/012.webp",
-    "/images/013.webp",
-    "/images/014.webp",
-    "/images/015.webp",
-    "/images/016.webp",
-    "/images/017.webp",
-    "/images/018.webp",
-    "/images/019.webp",
-    "/images/020.webp",
-    "/images/021.webp",
-    "/images/022.webp",
-    "/images/023.webp",
-    "/images/024.webp",
-    "/images/025.webp",
-    "/images/026.webp",
-    "/images/027.webp",
-    "/images/028.webp",
-    "/images/029.webp",
-    "/images/030.webp",
-    "/images/031.webp",
-    "/images/032.webp",
-    "/images/033.webp",
-    "/images/034.webp",
-    "/images/035.webp",
-    "/images/036.webp",
-    "/images/037.webp",
-    "/images/038.webp",
-    "/images/039.webp",
-    "/images/040.webp",
-    "/images/041.webp",
-    "/images/042.webp",
-    "/images/043.webp",
-    "/images/044.webp",
-    "/images/045.webp",
-    "/images/046.webp",
-  ];
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
+    let loadedImages = 0;
+    const totalImages = 46;
 
-      const { scrollTop } = containerRef.current;
+    const loadImage = (index: number): Promise<HTMLImageElement> => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        const imagePath = `https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/8_image_Timelaps/0${index + 1}.webp`;
+        
+        img.onload = () => {
+          loadedImages++;
+          if (loadedImages === totalImages) {
+            setIsLoading(false);
+          }
+          resolve(img);
+        };
+        
+        img.onerror = () => {
+          reject(new Error(`Failed to load image: ${imagePath}`));
+        };
 
-      const sectionHeight = window.innerHeight; 
-      const imageIndex = Math.floor(scrollTop / sectionHeight);
-
-      if (imageIndex >= 0 && imageIndex < images.length) {
-        setCurrentImage(imageIndex);
-      }
+        img.src = imagePath;
+      });
     };
 
-    const container = containerRef.current;
-    container?.addEventListener("scroll", handleScroll);
+    Promise.all(
+      Array.from({ length: totalImages }, (_, i) => 
+        loadImage(i).catch(err => {
+          console.error(`Error loading image ${i + 1}:`, err);
+          return null;
+        })
+      )
+    )
+    .then(loadedImgs => {
+      const validImages = loadedImgs.filter((img): img is HTMLImageElement => img !== null);
+      if (validImages.length === 0) {
+        setError('No images could be loaded');
+        return;
+      }
+      imagesRef.current = validImages;
+      drawImage(0);
+    })
+    .catch(error => {
+      console.error('Error in image loading process:', error);
+      setError('Failed to load images');
+    });
 
-    return () => container?.removeEventListener("scroll", handleScroll);
-  }, [images.length]);
+    return () => {
+      imagesRef.current = [];
+    };
+  }, []);
+
+  const drawImage = (index: number) => {
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext('2d');
+    const img = imagesRef.current[index];
+    
+    if (!canvas || !ctx || !img) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+    const x = (canvas.width - img.width * scale) / 2;
+    const y = (canvas.height - img.height * scale) / 2;
+    
+    ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+  };
+
+  useEffect(() => {
+    if (!isLoading) {
+      const unsubscribe = scrollYProgress.on("change", (latest) => {
+        const frameIndex = Math.min(
+          Math.floor(latest * (imagesRef.current.length - 1)),
+          imagesRef.current.length - 1
+        );
+        drawImage(frameIndex);
+      });
+      return () => unsubscribe();
+    }
+  }, [scrollYProgress, isLoading]);
 
   return (
-    <div className="w-full h-screen bg-black">
-      <div
-        ref={containerRef}
-        className="w-full h-screen overflow-y-scroll"
-      >
-   
-        <div className="relative w-full" style={{ height: `${images.length * 100}vh` }}>
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className={`sticky top-0 w-full h-screen transition-opacity duration-6000 ${
-                index === currentImage ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              <img
-                src={image}
-                alt={`Image ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
+    <div className="w-full h-[300vh] bg-black" ref={containerRef}>
+      <div className="sticky top-0 w-full h-screen">
+        {error ? (
+          <div className="w-full h-full flex items-center justify-center text-white">
+            {error}
+          </div>
+        ) : (
+          <canvas
+            ref={canvasRef}
+            className="w-full h-full object-cover"
+          />
+        )}
       </div>
     </div>
   );
