@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { Marquee } from "./marquee";
 import { motion, useMotionValue } from "framer-motion";
 import { useScroll } from "framer-motion";
 
