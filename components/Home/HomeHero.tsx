@@ -1,5 +1,4 @@
 "use client";
-import ContactForm from "@/components/Home/contactForm";
 import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 
 type Props = {};
+
 
 const ProjectData = [
   {
@@ -64,7 +64,10 @@ const ProjectData = [
     href: "",
   },
 ];
-
+const teamData = [
+  { name: "John Doe", position: "Designer", img: "/path/to/image1.jpg" },
+  { name: "Jane Smith", position: "Developer", img: "/path/to/image2.jpg" },
+];
 type Position = {
   top: string;
   left: string;
