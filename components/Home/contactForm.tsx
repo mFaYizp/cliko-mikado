@@ -9,14 +9,14 @@ const ContactForm = () => {
     return (
         <div className="w-full mx-auto px-24 pt-20px tracking-widest">
             <h3 className="text-6xl py-6">
-                <span className="text-gray-400 font-thin">Let's</span>{' '}
+                <span className="text-gray-400 font-thin">Let&apos;s</span>{' '}
                 <span className=" text-white font-extralight">Talk</span>
             </h3>
             <p className="text-left text-gray-600 mb-4">
-                Drop us a line or come grab a coffee, it's on us,and let's design the extraordinary together
+                Drop us a line or come grab a coffee, it&apos;s on us, and let&apos;s design the extraordinary together
             </p>
             <p className="text-5xl font-thin text-gray-400 mb-4">
-                <span> Hey, I’m{' '}</span>
+                <span> Hey, I&apos;m{' '}</span>
                 <input
                     type="text"
                     placeholder="Your name"
@@ -24,7 +24,7 @@ const ContactForm = () => {
                     onChange={(e) => setName(e.target.value)}
                     className="bg-transparent border-b-2 border-gray-500 text-white outline-none placeholder-opacity-50 placeholder-gray-600"
                 />{' '}
-                Let's grab a virtual coffee
+                Let&apos;s grab a virtual coffee
             </p>
             <p className="text-5xl font-thin text-gray-400 mb-4">
                 and chat things out. Reach me back at{' '}
