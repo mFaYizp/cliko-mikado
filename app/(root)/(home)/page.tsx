@@ -1,3 +1,4 @@
+import ContactForm from '@/components/Home/contactForm'
 import HomeAbout from '@/components/Home/HomeAbout'
 import HomeHero from '@/components/Home/HomeHero'
 import StackingImages from '@/components/Home/StackingImages'
@@ -11,6 +12,8 @@ const Home = () => {
       <HomeAbout />
       {/* <ClikoTextmotion /> */}
       <StackingImages />
+      <ContactForm />
+
     </main>
   )
 }

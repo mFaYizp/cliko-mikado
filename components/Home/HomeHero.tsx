@@ -1,5 +1,5 @@
 "use client";
-import ContactForm from "@/components/contactForm";
+import ContactForm from "@/components/Home/contactForm";
 import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
@@ -130,11 +130,7 @@ const HomeHero = (props: Props) => {
     generateRandomPositions();
   }, []);
   return (
-    <main>
       <section className="w-full h-lvh relative flex items-center justify-center overflow-hidden">
-        <div className="absolute top-5 left-20 w-20 h-full">
-          <Image src={"/logo.png"} alt="text" width={750} height={0} />
-        </div>
         <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-auto h-auto z-10">
           <h1 className="text-[11.25rem] leading-tight font-extrabold text-white text-center">
             {" "}
@@ -174,10 +170,6 @@ const HomeHero = (props: Props) => {
           })}
         </div>
       </section>
-      <section>
-        <ContactForm />
-      </section>
-    </main>
   );
 };
 

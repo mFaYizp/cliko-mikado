@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
-import { ArrowRightIcon, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const HomeAbout = () => {
   return (

@@ -1,6 +1,4 @@
-
 "use client";
-
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
