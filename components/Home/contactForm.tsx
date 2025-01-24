@@ -43,7 +43,7 @@ const ContactForm = () => {
                 placeholder="Spill the ink of your mind right here..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="bg-transparent border-b-2 border-gray-500 text-white font-thin outline-none w-full h-25 mb-4  placeholder-gray-600"
+                className="bg-transparent border-b-2 border-gray-500 text-white font-thin outline-none w-full h-25 mb-4  placeholder-gray-600 resize-none"
             />
 
             <div className="flex justify-end pb-[200px]">

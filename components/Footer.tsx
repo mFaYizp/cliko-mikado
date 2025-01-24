@@ -108,11 +108,11 @@ const Footer = () => {
           aspectRatio > 1 ? "h-lvh" : "h-full"
         } ${
           aspectRatio > 1
-            ? "fixed bottom-0 md:top-[10%] lg:top-[7%] xl:top-[25%]"
+            ? "fixed bottom-0 md:top-[10%] lg:top-[7%] xl:top-[2%] xxl:top-[25%]"
             : ""
         } overflow-hidden`}
       >
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left py-10 tracking-wide">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left pt-24 tracking-wide">
           {/* Left Section */}
           <div className="flex flex-col justify-between gap-6 flex-1">
             <ul className="flex flex-col gap-4 text-md">

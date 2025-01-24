@@ -11,25 +11,25 @@ import { motion, AnimatePresence } from "framer-motion";
 const socialLinks = [
   {
     href: "https://facebook.com",
-    icon: <FaFacebookF className="text-xl text-gray-400 hover:text-blue-500" />,
-    hoverColor: "hover:text-blue-500",
+    icon: <FaFacebookF className="text-xl text-gray-400" />,
+   
   },
   {
     href: "https://instagram.com",
-    icon: <FaInstagram className="text-xl text-gray-400 hover:text-pink-500" />,
-    hoverColor: "hover:text-pink-500",
+    icon: <FaInstagram className="text-xl text-gray-400 " />,
+    
   },
   {
     href: "https://twitter.com",
-    icon: <BsTwitterX className="text-xl text-gray-400 hover:text-blue-400" />,
-    hoverColor: "hover:text-blue-400",
+    icon: <BsTwitterX className="text-xl text-gray-400 " />,
+    
   },
   {
     href: "https://linkedin.com",
     icon: (
-      <FaLinkedinIn className="text-xl text-gray-400 hover:text-blue-700" />
+      <FaLinkedinIn className="text-xl text-gray-400 " />
     ),
-    hoverColor: "hover:text-blue-700",
+    
   },
 ];
 

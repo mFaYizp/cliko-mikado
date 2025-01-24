@@ -64,10 +64,7 @@ const ProjectData = [
     href: "",
   },
 ];
-const teamData = [
-  { name: "John Doe", position: "Designer", img: "/path/to/image1.jpg" },
-  { name: "Jane Smith", position: "Developer", img: "/path/to/image2.jpg" },
-];
+
 type Position = {
   top: string;
   left: string;
