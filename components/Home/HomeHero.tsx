@@ -70,58 +70,139 @@ type Position = {
   left: string;
 };
 
+const categories = [
+  "Industrial ",
+  "Food",
+  "Product",
+  "Fashion",
+  "360 degree Videography",
+  "Catalogue",
+  "Unboxing Video",
+];
+
 const HomeHero = (props: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
   const [positions, setPositions] = useState<Position[]>([]);
+  const [currentCategory, setCurrentCategory] = useState(0);
+
+  const animateText = (nextIndex: number) => {
+    const tl = gsap.timeline();
+    
+    tl.to(textRef.current, {
+      opacity: 0,
+      y: -10,
+      scale: 0.95,
+      duration: 0.4,
+      ease: "power3.inOut",
+      onComplete: () => {
+        setCurrentCategory(nextIndex);
+      }
+    }).to(textRef.current, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.4,
+      ease: "elastic.out(1, 0.8)"
+    });
+  };
 
   useEffect(() => {
     const container = containerRef.current;
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
 
-    const handleMouseMove = (event: any) => {
+    const handleMouseMove = (event: MouseEvent) => {
       const { clientX, clientY } = event;
       const width = window.innerWidth;
       const height = window.innerHeight;
+      
+      mouseX = ((clientX - width / 2) * 0.1);  
+      mouseY = ((clientY - height / 2) * 0.1);
+    };
 
-      gsap.to(container, {
-        x: -(clientX - width / 2),
-        y: -(clientY - height / 2),
-        ease: "power2.out",
-        duration: 1,
-      });
+    const updatePosition = () => {
+      const ease = 0.05;  
+      
+
+      const dx = mouseX - currentX;
+      const dy = mouseY - currentY;
+      
+      currentX += dx * ease;
+      currentY += dy * ease;
+
+      if (container) {
+        gsap.set(container, {
+          x: -currentX,
+          y: -currentY,
+        });
+      }
+
+      requestAnimationFrame(updatePosition);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
+    const animationFrame = requestAnimationFrame(updatePosition);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrame);
     };
   }, []);
 
   useEffect(() => {
     const generateRandomPositions = () => {
       const newPositions: Position[] = [];
+      const minDistance = 350; 
+      const viewportPadding = 15; 
 
-      const isOverlapping = (newPos: Position) => {
-        return newPositions.some((pos) => {
+      const isOverlapping = (newPos: Position, index: number) => {
+        for (let i = 0; i < index; i++) {
+          const existingPos = newPositions[i];
           const topDiff = Math.abs(
-            parseFloat(newPos.top) - parseFloat(pos.top)
+            parseFloat(newPos.top) - parseFloat(existingPos.top)
           );
           const leftDiff = Math.abs(
-            parseFloat(newPos.left) - parseFloat(pos.left)
+            parseFloat(newPos.left) - parseFloat(existingPos.left)
           );
-          return topDiff < 20 && leftDiff < 20; // Adjust the value as needed
-        });
+          
+          if (topDiff < minDistance && leftDiff < minDistance) {
+            return true;
+          }
+        }
+        return false;
       };
 
-      ProjectData.forEach(() => {
-        let newPos;
-        do {
-          const top = Math.random() * (75 - 0) + "%";
-          const left = Math.random() * (75 - 0) + "%";
-          newPos = { top, left };
-        } while (isOverlapping(newPos));
+      const getValidPosition = (index: number): Position => {
+        let attempts = 0;
+        let newPos: Position;
 
-        newPositions.push(newPos);
+        do {
+          const region = {
+            x: Math.floor(index / 3),
+            y: index % 3
+          };
+
+          const top = `${viewportPadding + 
+            (region.y * (100 - viewportPadding * 2) / 2) + 
+            (Math.random() * 20 - 10)}%`;
+          
+          const left = `${viewportPadding + 
+            (region.x * (100 - viewportPadding * 2) / 2) + 
+            (Math.random() * 20 - 10)}%`;
+
+          newPos = { top, left };
+          attempts++;
+        } while (isOverlapping(newPos, index) && attempts < 100);
+
+        return newPos;
+      };
+
+      ProjectData.forEach((_, index) => {
+        const position = getValidPosition(index);
+        newPositions.push(position);
       });
 
       setPositions(newPositions);
@@ -138,36 +219,43 @@ const HomeHero = (props: Props) => {
           </h1>
           <p className="text-[1.75rem] text-center text-white font-light flex flex-row gap-x-5 items-center justify-center">
             A Studio for 
-            <span className="border rounded-lg p-2 ">Architectural</span>
+            <span 
+              ref={textRef}
+              className="border rounded-lg p-2 transition-all duration-300 text-white cursor-pointer hover:border-opacity-50"
+              onMouseEnter={() => {
+                const nextIndex = (currentCategory + 1) % categories.length;
+                animateText(nextIndex);
+              }}
+            >
+              {categories[currentCategory]}
+            </span>
           </p>
         </div>
         <div
           ref={containerRef}
-          className="w-full h-full flex items-center justify-center flex-wrap absolute top-20 left-0  overflow-hidden box-border"
+          className="w-full h-full flex items-center justify-center flex-wrap absolute top-0 left-0"
         >
-          {ProjectData.map((item, index) => {
-            return (
-              <div
-                key={index}
-                style={{
-                  position: "absolute",
-                  top: positions[index]?.top,
-                  left: positions[index]?.left,
-                }}
-                className="transition-all hover:scale-110 hover:z-10"
-              >
-                <Link href={item.href}>
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    width={300}
-                    height={0}
-                    className="object-cover"
-                  />
-                </Link>
-              </div>
-            );
-          })}
+          {ProjectData.map((item, index) => (
+            <div
+              key={index}
+              style={{
+                position: "absolute",
+                top: positions[index]?.top,
+                left: positions[index]?.left,
+              }}
+              className="transition-all duration-500 hover:scale-110 hover:z-10"
+            >
+              <Link href={item.href}>
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={280}
+                  height={280}
+                  className="object-cover rounded-lg"
+                />
+              </Link>
+            </div>
+          ))}
         </div>
       </section>
   );

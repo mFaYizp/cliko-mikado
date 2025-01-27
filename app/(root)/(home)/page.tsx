@@ -14,7 +14,7 @@ const Home = () => {
       <HomeAbout />
       <ImageScroll />
       <Services />
-      {/* <ClikoTextmotion /> */}
+      <ClikoTextmotion />
       <StackingImages />
       <ContactForm />
 

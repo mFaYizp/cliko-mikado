@@ -31,7 +31,7 @@ const ClikoTextMotion = () => {
   );
   const textLines = Array.from({ length: 4 }, (_, index) => ({
     id: index,
-    yOffset: -10 + index * 18,
+    yOffset: index * 200,
   }));
 
   return (
@@ -45,18 +45,19 @@ const ClikoTextMotion = () => {
             width="120%"
             height="120%"
             preserveAspectRatio="none"
-            className="w-screen h-full absolute flex flex-col "
+            className="w-screen h-full absolute flex flex-col"
             style={{
               x,
               transition: "transform 1s linear",
+              top: `${yOffset}px`,
             }}
           >
             <text
-              x="50%"
-              y="50%"
-              textAnchor="middle"
-              dominantBaseline="middle"
-              className="w-full font-extrabold text-center"
+              x="0"
+              y="25%"
+              textAnchor="start"
+              dominantBaseline="start"
+              className="w-full font-extrabold"
               stroke="white"
               strokeWidth={1.5}
               vectorEffect="non-scaling-stroke"

@@ -38,7 +38,6 @@ const StackingImages = () => {
     offset: ["start start", "end end"],
   });
 
-
   return (
     <section className="w-full h-full relative">
       <ParallaxCards cards={IMAGES} progress={scrollYProgress} />
