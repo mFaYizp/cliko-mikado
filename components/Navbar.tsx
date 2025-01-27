@@ -41,8 +41,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full h-20  px-7 text-[#f2f2f2] fixed top-0 left-0  z-50">
+    <nav className="w-full h-20  px-7 text-[#f2f2f2] fixed top-0 left-0 z-50 bg-[#101010]">
       <div className="w-full h-full flex justify-between items-center">
+        <div className="pl-3">
         <Link href={"/"}>
           <Image
             src="/logo.png"
@@ -52,7 +53,7 @@ const Navbar = () => {
             className="object-contain"
           />
         </Link>
-
+        </div>
         <div className="hidden md:flex space-x-8">
           <Link href="/" onClick={handleMenuToggle}>
             Menu
@@ -61,7 +62,7 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center">
           <Link href="/contact">
-            <button className="px-6 py-2 text-white rounded-full">
+            <button className="px-3 text-white rounded-full">
               Get in Touch
             </button>
           </Link>
@@ -189,7 +190,7 @@ const MenuBar = ({
       {menuOpen && (
         <motion.div
           ref={menuRef}
-          className="fixed top-0 left-0 h-3/4 w-full bg-[#1d1d1d] text-white z-50"
+          className="fixed top-0 left-0 h-3/4 w-full bg-[#101010] text-white z-50"
           variants={menuVariants}
           initial="initial"
           animate="animate"
@@ -198,7 +199,7 @@ const MenuBar = ({
           <motion.nav
             variants={childVariants}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="flex justify-between items-center px-7 py-5 bg-[#1d1d1d] text-[#f2f2f2]"
+            className="flex justify-between items-center px-7 py-5 bg-[#101010] text-[#f2f2f2]"
           >
             <Link href={"/"}>
               <Image

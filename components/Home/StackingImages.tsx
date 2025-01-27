@@ -40,7 +40,7 @@ const StackingImages = () => {
 
 
   return (
-    <section className="w-full h-full relative">
+    <section className="w-full h-full relative bg-[#101010]">
       <ParallaxCards cards={IMAGES} progress={scrollYProgress} />
     </section>
   );
