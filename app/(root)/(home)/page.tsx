@@ -9,11 +9,11 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <main className="w-full">
+    <main className="w-full bg-[#101010]">
       <HomeHero />
       <HomeAbout />
-      <ImageScroll />
       <Services />
+      <ImageScroll />
       <ClikoTextmotion />
       <StackingImages />
       <ContactForm />

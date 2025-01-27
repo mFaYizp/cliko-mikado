@@ -1,12 +1,11 @@
 "use client";
+import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
-
 type Props = {};
-
 
 const ProjectData = [
   {
@@ -70,15 +69,27 @@ type Position = {
   left: string;
 };
 
-const categories = [
-  "Industrial ",
+const dynamicTexts = [
+  "Architectural",
+  "Industrial",
   "Food",
   "Product",
   "Fashion",
-  "360 degree Videography",
+  "360 Video",
   "Catalogue",
   "Unboxing Video",
 ];
+
+const textWidths: { [key: string]: number } = {
+  "Architectural": 200,
+  "Industrial": 170,
+  "Food": 120,
+  "Product": 160,
+  "Fashion": 150,
+  "360 Video": 180,
+  "Catalogue": 170,
+  "Unboxing Video": 250
+};
 
 const HomeHero = (props: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -86,26 +97,13 @@ const HomeHero = (props: Props) => {
   const [positions, setPositions] = useState<Position[]>([]);
   const [currentCategory, setCurrentCategory] = useState(0);
 
-  const animateText = (nextIndex: number) => {
-    const tl = gsap.timeline();
-    
-    tl.to(textRef.current, {
-      opacity: 0,
-      y: -10,
-      scale: 0.95,
-      duration: 0.4,
-      ease: "power3.inOut",
-      onComplete: () => {
-        setCurrentCategory(nextIndex);
-      }
-    }).to(textRef.current, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.4,
-      ease: "elastic.out(1, 0.8)"
-    });
-  };
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentCategory((prev) => (prev + 1) % dynamicTexts.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -210,6 +208,7 @@ const HomeHero = (props: Props) => {
 
     generateRandomPositions();
   }, []);
+
   return (
       <section className="w-full h-lvh relative flex items-center justify-center overflow-hidden">
         <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-auto h-auto z-10">
@@ -217,18 +216,56 @@ const HomeHero = (props: Props) => {
             {" "}
             Bring your <br /> Brand to Life 
           </h1>
-          <p className="text-[1.75rem] text-center text-white font-light flex flex-row gap-x-5 items-center justify-center">
+          <p className="text-[1.75rem] text-center text-white font-light flex flex-row gap-x-5 items-center justify-center whitespace-nowrap">
             A Studio for 
-            <span 
-              ref={textRef}
-              className="border rounded-lg p-2 transition-all duration-300 text-white cursor-pointer hover:border-opacity-50"
-              onMouseEnter={() => {
-                const nextIndex = (currentCategory + 1) % categories.length;
-                animateText(nextIndex);
+            <motion.span
+              className="relative min-h-[50px] border border-white/30 rounded-lg  inline-block"
+              style={{ 
+                width: textWidths[dynamicTexts[currentCategory]],
+                minWidth: textWidths[dynamicTexts[currentCategory]],
+                maxWidth: textWidths[dynamicTexts[currentCategory]]
               }}
             >
-              {categories[currentCategory]}
-            </span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentCategory}
+                  initial={{ 
+                    opacity: 0,
+                    clipPath: "inset(0 100% 0 0)",
+                    filter: "brightness(2)"
+                  }}
+                  animate={{ 
+                    opacity: 1,
+                    clipPath: "inset(0 0% 0 0)",
+                    filter: "brightness(1)",
+                    transition: {
+                      duration: 0.7,
+                      ease: [0.22, 1, 0.36, 1],
+                      clipPath: {
+                        duration: 0.7,
+                        ease: [0.22, 1, 0.36, 1]
+                      }
+                    }
+                  }}
+                  exit={{ 
+                    opacity: 0,
+                    clipPath: "inset(0 0 0 100%)",
+                    filter: "brightness(2)",
+                    transition: {
+                      duration: 0.5,
+                      ease: [0.22, 1, 0.36, 1],
+                      clipPath: {
+                        duration: 0.5,
+                        ease: [0.22, 1, 0.36, 1]
+                      }
+                    }
+                  }}
+                  className="absolute inset-0 flex items-center justify-center p-2 text-white whitespace-nowrap overflow-hidden text-ellipsis"
+                >
+                  {dynamicTexts[currentCategory]}
+                </motion.span>
+              </AnimatePresence>
+            </motion.span>
           </p>
         </div>
         <div

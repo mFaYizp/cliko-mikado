@@ -58,13 +58,14 @@ const Services = () => {
   return (
     <section className="w-full h-full">
       <div className="container mx-auto flex flex-col items-start justify-center w-full gap-y-10 py-36">
-        <HeaderText
+       {/* <HeaderText
           text="Services We Do"
           strokeWidth={1}
           svgWidth={100}
           fontSize={70}
           className="w-full h-auto text-start"
-        />
+        />*/}
+        <h1 className="text-[9rem] leading-tight font-extrabold text-[#383737] text-centers">Services</h1>
         <div className="w-full flex flex-col items-start justify-start xxs:gap-y-8 lg:gap-y-10">
           {SERVICES.map((item, index: number) => {
             return (
