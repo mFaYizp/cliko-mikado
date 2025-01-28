@@ -128,11 +128,7 @@ const Card: React.FC<CardComponentProps> = ({
   range,
   targetScale,
 }) => {
-  const translateX = index % 2 === 0 ? "0" : "12%";
- 
-  console.log(range);
-  
-
+  const translateX = index % 2 === 0 ? "0" : "12%";  
   return (
     <section
       className="w-full h-full sticky top-[20%] flex items-center justify-center"
