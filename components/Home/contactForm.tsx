@@ -7,9 +7,10 @@ const ContactForm = () => {
     const [message, setMessage] = useState('');
 
     return (
-        <div className="w-full mx-auto px-24 pt-20px tracking-widest">
-            <h3 className="text-6xl py-6">
-                <span className="text-gray-400 font-thin">Let&apos;s</span>{' '}
+        <section className="w-full h-full">
+            <div className="w-full mx-auto px-24 pt-36 tracking-widest">
+                <h3 className="text-6xl py-6">
+                    <span className="text-gray-400 font-thin">Let&apos;s</span>{' '}
                 <span className=" text-white font-extralight">Talk</span>
             </h3>
             <p className="text-left text-gray-600 mb-4">
@@ -50,6 +51,7 @@ const ContactForm = () => {
                 <button className="bg-black text-white py-2 px-4 border-[1px] border-white rounded">Submit</button>
             </div>
         </div>
+        </section>
     );
 };
 
