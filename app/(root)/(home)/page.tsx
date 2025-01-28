@@ -2,6 +2,7 @@ import ContactForm from '@/components/Home/contactForm'
 import HomeAbout from '@/components/Home/HomeAbout'
 import HomeHero from '@/components/Home/HomeHero'
 import ImageScroll from '@/components/Home/ImageScroll'
+import PortfolioSection from '@/components/Home/Portfolio'
 import Services from '@/components/Home/Services'
 import StackingImages from '@/components/Home/StackingImages'
 import ClikoTextmotion from '@/components/ui/clikoTextmotion'
@@ -12,9 +13,9 @@ const Home = () => {
     <main className="w-full bg-[#101010]">
       <HomeHero />
       <HomeAbout />
-      <Services />
       <ImageScroll />
-      {/* <ClikoTextmotion /> */}
+      <Services />
+      <PortfolioSection/>
       <StackingImages />
       <ContactForm />
     </main>

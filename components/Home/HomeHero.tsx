@@ -81,14 +81,14 @@ const dynamicTexts = [
 ];
 
 const textWidths: { [key: string]: number } = {
-  "Architectural": 200,
-  "Industrial": 170,
-  "Food": 120,
-  "Product": 160,
-  "Fashion": 150,
+  Architectural: 200,
+  Industrial: 170,
+  Food: 120,
+  Product: 160,
+  Fashion: 150,
   "360 Video": 180,
-  "Catalogue": 170,
-  "Unboxing Video": 250
+  Catalogue: 170,
+  "Unboxing Video": 250,
 };
 
 const HomeHero = (props: Props) => {
@@ -116,18 +116,17 @@ const HomeHero = (props: Props) => {
       const { clientX, clientY } = event;
       const width = window.innerWidth;
       const height = window.innerHeight;
-      
-      mouseX = ((clientX - width / 2) * 0.1);  
-      mouseY = ((clientY - height / 2) * 0.1);
+
+      mouseX = (clientX - width / 2) * 0.1;
+      mouseY = (clientY - height / 2) * 0.1;
     };
 
     const updatePosition = () => {
-      const ease = 0.05;  
-      
+      const ease = 0.05;
 
       const dx = mouseX - currentX;
       const dy = mouseY - currentY;
-      
+
       currentX += dx * ease;
       currentY += dy * ease;
 
@@ -153,8 +152,8 @@ const HomeHero = (props: Props) => {
   useEffect(() => {
     const generateRandomPositions = () => {
       const newPositions: Position[] = [];
-      const minDistance = 350; 
-      const viewportPadding = 15; 
+      const minDistance = 80;
+      const viewportPadding = 15;
 
       const isOverlapping = (newPos: Position, index: number) => {
         for (let i = 0; i < index; i++) {
@@ -165,7 +164,7 @@ const HomeHero = (props: Props) => {
           const leftDiff = Math.abs(
             parseFloat(newPos.left) - parseFloat(existingPos.left)
           );
-          
+
           if (topDiff < minDistance && leftDiff < minDistance) {
             return true;
           }
@@ -180,16 +179,20 @@ const HomeHero = (props: Props) => {
         do {
           const region = {
             x: Math.floor(index / 3),
-            y: index % 3
+            y: index % 3,
           };
 
-          const top = `${viewportPadding + 
-            (region.y * (100 - viewportPadding * 2) / 2) + 
-            (Math.random() * 20 - 10)}%`;
-          
-          const left = `${viewportPadding + 
-            (region.x * (100 - viewportPadding * 2) / 2) + 
-            (Math.random() * 20 - 10)}%`;
+          const top = `${
+            viewportPadding +
+            (region.y * (100 - viewportPadding * 2)) / 2 +
+            (Math.random() * 20 - 10)
+          }%`;
+
+          const left = `${
+            viewportPadding +
+            (region.x * (100 - viewportPadding * 2)) / 2 +
+            (Math.random() * 20 - 10)
+          }%`;
 
           newPos = { top, left };
           attempts++;
@@ -210,91 +213,92 @@ const HomeHero = (props: Props) => {
   }, []);
 
   return (
-      <section className="w-full h-lvh relative flex items-center justify-center overflow-hidden">
-        <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-auto h-auto z-10">
-          <h1 className="text-[11.25rem] leading-tight font-extrabold text-white text-center">
-            {" "}
-            Bring your <br /> Brand to Life 
-          </h1>
-          <p className="text-[1.75rem] text-center text-white font-light flex flex-row gap-x-5 items-center justify-center whitespace-nowrap">
-            A Studio for 
-            <motion.span
-              className="relative min-h-[50px] border border-white/30 rounded-lg  inline-block"
-              style={{ 
-                width: textWidths[dynamicTexts[currentCategory]],
-                minWidth: textWidths[dynamicTexts[currentCategory]],
-                maxWidth: textWidths[dynamicTexts[currentCategory]]
-              }}
-            >
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={currentCategory}
-                  initial={{ 
-                    opacity: 0,
-                    clipPath: "inset(0 100% 0 0)",
-                    filter: "brightness(2)"
-                  }}
-                  animate={{ 
-                    opacity: 1,
-                    clipPath: "inset(0 0% 0 0)",
-                    filter: "brightness(1)",
-                    transition: {
+    <section className="w-full h-lvh relative flex items-center justify-center overflow-hidden">
+      <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-auto h-auto z-10">
+        <h1 className="text-[9rem] leading-tight font-extrabold text-white text-center">
+          {" "}
+          Bring your <br /> Brand to Life
+        </h1>
+        <p className="text-[1rem] text-center text-white font-light flex flex-row gap-x-5 items-center justify-center whitespace-nowrap">
+          A Studio for
+          <motion.span
+            className="relative min-h-[40px] border border-white/30 rounded-lg  inline-block"
+            style={{
+              width: textWidths[dynamicTexts[currentCategory]],
+              minWidth: textWidths[dynamicTexts[currentCategory]],
+              maxWidth: textWidths[dynamicTexts[currentCategory]],
+              padding: "0",
+            }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={currentCategory}
+                initial={{
+                  opacity: 0,
+                  clipPath: "inset(100% 0 0 0)", // Start from top to bottom
+                  filter: "brightness(2)",
+                }}
+                animate={{
+                  opacity: 1,
+                  clipPath: "inset(0 0 0 0)", // Fully reveal the text from top to bottom
+                  filter: "brightness(1)",
+                  transition: {
+                    duration: 0.7,
+                    ease: [0.22, 1, 0.36, 1],
+                    clipPath: {
                       duration: 0.7,
                       ease: [0.22, 1, 0.36, 1],
-                      clipPath: {
-                        duration: 0.7,
-                        ease: [0.22, 1, 0.36, 1]
-                      }
-                    }
-                  }}
-                  exit={{ 
-                    opacity: 0,
-                    clipPath: "inset(0 0 0 100%)",
-                    filter: "brightness(2)",
-                    transition: {
+                    },
+                  },
+                }}
+                exit={{
+                  opacity: 0,
+                  clipPath: "inset(0 0 100% 0)", // Hide from top to bottom
+                  filter: "brightness(2)",
+                  transition: {
+                    duration: 0.5,
+                    ease: [0.22, 1, 0.36, 1],
+                    clipPath: {
                       duration: 0.5,
                       ease: [0.22, 1, 0.36, 1],
-                      clipPath: {
-                        duration: 0.5,
-                        ease: [0.22, 1, 0.36, 1]
-                      }
-                    }
-                  }}
-                  className="absolute inset-0 flex items-center justify-center p-2 text-white whitespace-nowrap overflow-hidden text-ellipsis"
-                >
-                  {dynamicTexts[currentCategory]}
-                </motion.span>
-              </AnimatePresence>
-            </motion.span>
-          </p>
-        </div>
-        <div
-          ref={containerRef}
-          className="w-full h-full flex items-center justify-center flex-wrap absolute top-0 left-0"
-        >
-          {ProjectData.map((item, index) => (
-            <div
-              key={index}
-              style={{
-                position: "absolute",
-                top: positions[index]?.top,
-                left: positions[index]?.left,
-              }}
-              className="transition-all duration-500 hover:scale-110 hover:z-10"
-            >
-              <Link href={item.href}>
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  width={280}
-                  height={280}
-                  className="object-cover rounded-lg"
-                />
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
+                    },
+                  },
+                }}
+                className="absolute inset-0 flex items-center justify-center  text-white whitespace-nowrap overflow-hidden text-ellipsis"
+              >
+                {dynamicTexts[currentCategory]}
+              </motion.span>
+            </AnimatePresence>
+          </motion.span>
+        </p>    
+      </div>
+      <div
+        ref={containerRef}
+        className="w-full h-full flex items-center justify-center flex-wrap absolute top-0 left-0"
+      >
+        {ProjectData.map((item, index) => (
+          <div
+            key={index}
+            style={{
+              position: "absolute",
+              top: positions[index]?.top,
+              left: positions[index]?.left,
+            }}
+            className="transition-all duration-500 hover:scale-110 hover:z-10"
+          >
+            <Link href={item.href}>
+              <Image
+                src={item.image}
+                alt={item.name}
+                width={180}
+                height={180}
+                className="object-cover rounded-lg"
+              />
+            </Link>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 

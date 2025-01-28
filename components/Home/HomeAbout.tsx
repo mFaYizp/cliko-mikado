@@ -25,28 +25,13 @@ const HomeAbout = () => {
             life with creativity and precision, helping to elevate your brand
             and create lasting impressions
           </p>
-          <Button className="font-medium">
-            Studio <ChevronRight className="w-4 h-4" />
-          </Button>
+          <Button className="font-normal text-[1.75rem] px-10 py-6 flex items-center space-x-2">
+  Studio <ChevronRight className="w-8 h-8" />
+</Button>
+
         </div>
       </div>
-      <div className="w-full h-full aspect-video">
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          // poster="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.webp"
-        >
-          <source
-            src="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+     
     </section>
   );
 };
