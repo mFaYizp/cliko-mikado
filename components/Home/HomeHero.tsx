@@ -2,8 +2,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { useMenu } from '@/contexts/MenuContext';
 
 type Props = {};
 
@@ -96,6 +96,7 @@ const HomeHero = (props: Props) => {
   const textRef = useRef<HTMLSpanElement>(null);
   const [positions, setPositions] = useState<Position[]>([]);
   const [currentCategory, setCurrentCategory] = useState(0);
+  const { isMenuOpen } = useMenu();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -106,6 +107,8 @@ const HomeHero = (props: Props) => {
   }, []);
 
   useEffect(() => {
+    if (isMenuOpen) return;
+
     const container = containerRef.current;
     let mouseX = 0;
     let mouseY = 0;
@@ -122,8 +125,9 @@ const HomeHero = (props: Props) => {
     };
 
     const updatePosition = () => {
-      const ease = 0.05;
+      if (isMenuOpen) return;
 
+      const ease = 0.05;
       const dx = mouseX - currentX;
       const dy = mouseY - currentY;
 
@@ -147,7 +151,18 @@ const HomeHero = (props: Props) => {
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrame);
     };
-  }, []);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (isMenuOpen && containerRef.current) {
+      gsap.to(containerRef.current, {
+        x: 0,
+        y: 0,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    }
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const generateRandomPositions = () => {
@@ -286,7 +301,6 @@ const HomeHero = (props: Props) => {
             }}
             className="transition-all duration-500 hover:scale-110 hover:z-10"
           >
-            <Link href={item.href}>
               <Image
                 src={item.image}
                 alt={item.name}
@@ -294,7 +308,6 @@ const HomeHero = (props: Props) => {
                 height={180}
                 className="object-cover rounded-lg"
               />
-            </Link>
           </div>
         ))}
       </div>

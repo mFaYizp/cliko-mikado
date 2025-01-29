@@ -11,6 +11,7 @@ import { PiInstagramLogoBold } from "react-icons/pi";
 import { TfiLinkedin } from "react-icons/tfi";
 import { SOCIAL_LINKS } from "./Footer";
 import { FloatingDock } from "./ui/floating-dock";
+import { useMenu } from '@/contexts/MenuContext';
 
 const socialLinks = [
   {
@@ -32,10 +33,10 @@ const socialLinks = [
 ];
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { isMenuOpen, setIsMenuOpen } = useMenu();
 
-  const handleMenuToggle = () => {
-    setMenuOpen(!menuOpen);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -53,7 +54,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="hidden md:flex space-x-8">
-          <Link href="/" onClick={handleMenuToggle}>
+          <Link href="/" onClick={toggleMenu}>
             Menu
           </Link>
         </div>
@@ -70,15 +71,15 @@ const Navbar = () => {
           <Button
             variant={"link"}
             className="text-2xl"
-            onClick={handleMenuToggle}
+            onClick={toggleMenu}
           >
             ☰
           </Button>
         </div>
       </div>
       <AnimatePresence>
-        {menuOpen && (
-          <MenuBar menuOpen={menuOpen} handleMenuToggle={handleMenuToggle} />
+        {isMenuOpen && (
+          <MenuBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
         )}
       </AnimatePresence>
     </nav>
@@ -86,29 +87,29 @@ const Navbar = () => {
 };
 
 const MenuBar = ({
-  menuOpen,
-  handleMenuToggle,
+  isMenuOpen,
+  toggleMenu,
 }: {
-  menuOpen: boolean;
-  handleMenuToggle: () => void;
+  isMenuOpen: boolean;
+  toggleMenu: () => void;
 }) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        handleMenuToggle();
+        toggleMenu();
       }
     };
 
-    if (menuOpen) {
+    if (isMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [menuOpen, handleMenuToggle]);
+  }, [isMenuOpen, toggleMenu]);
 
   const menuVariants = {
     initial: { y: "-100%" },
@@ -185,7 +186,7 @@ const MenuBar = ({
 
   return (
     <div className="w-full h-full">
-      {menuOpen && (
+      {isMenuOpen && (
         <motion.div
           ref={menuRef}
           className="fixed top-0 left-0 h-3/4 w-full bg-[#101010] text-white z-50"
@@ -210,7 +211,7 @@ const MenuBar = ({
             </Link>
 
             <div className="hidden md:flex space-x-8">
-              <Link href="/" onClick={handleMenuToggle}>
+              <Link href="/" onClick={toggleMenu}>
                 Close
               </Link>
             </div>
@@ -225,7 +226,7 @@ const MenuBar = ({
 
             <div className="md:hidden flex items-center">
               <button
-                onClick={handleMenuToggle}
+                onClick={toggleMenu}
                 className="text-2xl hover:opacity-70 transition-opacity"
               >
                 ✕
@@ -266,7 +267,7 @@ const MenuBar = ({
                   <Link
                     href={item.href}
                     className="text-[4rem] leading-tight hover:text-gray-300 transition-colors"
-                    onClick={handleMenuToggle}
+                    onClick={toggleMenu}
                   >
                     {item.label}
                   </Link>
