@@ -81,14 +81,14 @@ const dynamicTexts = [
 ];
 
 const textWidths: { [key: string]: number } = {
-  Architectural: 200,
-  Industrial: 170,
-  Food: 120,
-  Product: 160,
-  Fashion: 150,
-  "360 Video": 180,
-  Catalogue: 170,
-  "Unboxing Video": 250,
+  Architectural: 110,
+  Industrial: 80,
+  Food: 50,
+  Product: 70,
+  Fashion: 70,
+  "360 Video": 90,
+  Catalogue: 100,
+  "Unboxing Video": 130,
 };
 
 const HomeHero = (props: Props) => {
