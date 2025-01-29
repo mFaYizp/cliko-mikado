@@ -38,6 +38,7 @@ const ClikoTextMotion = () => {
                     width="100vw"
                     height="160"
                     className="shrink-0"
+                    style={{ opacity: 0.5 }}
                   >
                     <text
                       x="0"
@@ -49,11 +50,11 @@ const ClikoTextMotion = () => {
                       strokeWidth={1.5}
                       vectorEffect="non-scaling-stroke"
                       shapeRendering="geometricPrecision"
-                      paintOrder="stroke fill"
+                      paintOrder="stroke fill"        
                       strokeLinejoin="bevel"
                       strokeLinecap="butt"
-                      fill="black"
-                      fontSize="170px"
+                      fill="#101010"
+                      fontSize="150px"
                     >
                       CLIKO PHOTOGRAPHY  CLIKO PHOTOGRAPHY  CLIKO PHOTOGRAPHY
                     </text>
@@ -64,6 +65,7 @@ const ClikoTextMotion = () => {
                     width="100vw"
                     height="160"
                     className="shrink-0"
+                    style={{ opacity: 0.5 }}  
                   >
                     <text
                       x="0"
@@ -78,8 +80,8 @@ const ClikoTextMotion = () => {
                       paintOrder="stroke fill"
                       strokeLinejoin="bevel"
                       strokeLinecap="butt"
-                      fill="black"
-                      fontSize="170px"
+                      fill="#101010"
+                      fontSize="150px"
                     >
                       CLIKO PHOTOGRAPHY  CLIKO PHOTOGRAPHY  CLIKO PHOTOGRAPHY
                     </text>

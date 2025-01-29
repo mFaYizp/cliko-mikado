@@ -156,7 +156,7 @@ const PortfolioSection = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative h-screen bg-black overflow-hidden"
+      className="relative h-screen overflow-hidden"
     >
       {/* Custom Cursor */}
       <div 
