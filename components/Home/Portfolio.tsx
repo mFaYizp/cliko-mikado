@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
 const images = [
@@ -15,7 +15,10 @@ const PortfolioSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const trailsRef = useRef<HTMLDivElement[]>([]);
   const cursorRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const lastPos = useRef({ x: 0, y: 0 });
+  const visibleImages = useRef<Array<{ index: number; timestamp: number }>>([]);
+  const hideTimeoutsRef = useRef<{ [key: number]: NodeJS.Timeout }>({});
 
   useEffect(() => {
     const trails = trailsRef.current;
@@ -28,7 +31,7 @@ const PortfolioSection = () => {
       scale: 1,
       xPercent: -50,
       yPercent: -50,
-      clipPath: 'circle(0% at center)'
+      opacity: 0
     });
 
     gsap.set(cursor, {
@@ -37,55 +40,92 @@ const PortfolioSection = () => {
       opacity: 0
     });
 
+    const hideImage = (index: number) => {
+      const trail = trails[index];
+      if (trail) {
+        gsap.to(trail, {
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.4,
+          ease: "power2.inOut",
+          onComplete: () => {
+            visibleImages.current = visibleImages.current.filter(img => img.index !== index);
+            delete hideTimeoutsRef.current[index];
+          }
+        });
+      }
+    };
+
+    const scheduleHideForImage = (index: number) => {
+      if (hideTimeoutsRef.current[index]) {
+        clearTimeout(hideTimeoutsRef.current[index]);
+      }
+
+      hideTimeoutsRef.current[index] = setTimeout(() => {
+        hideImage(index);
+      }, 1000);
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      // Animate cursor
-      gsap.to(cursor, {
-        x: x,
-        y: y,
-        opacity: 1,
-        duration: 0.2,
-        ease: "power2.out"
-      });
+      const distance = Math.hypot(x - lastPos.current.x, y - lastPos.current.y);
+      if (distance > 150) {
+        lastPos.current = { x, y };
+        
+        const currentTrail = trails[currentIndex];
+        if (currentTrail) {
+          visibleImages.current = [
+            ...visibleImages.current,
+            { index: currentIndex, timestamp: Date.now() }
+          ];
+          
+          gsap.fromTo(currentTrail,
+            {
+              x,
+              y,
+              opacity: 0,
+              scale: 0.8
+            },
+            {
+              x,
+              y,
+              opacity: 1,
+              scale: 1,
+              duration: 0.3,
+              ease: "power2.out",
+              overwrite: true
+            }
+          );
 
-      // Clear previous timeout
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
+          scheduleHideForImage(currentIndex);
+          setCurrentIndex((prev) => (prev + 1) % images.length);
+        }
       }
 
-      // Show and position all trails
-      trails.forEach((trail, index) => {
-        gsap.to(trail, {
-          x: x,
-          y: y,
-          clipPath: 'circle(100% at center)',
-          duration: 0.4,
-          ease: "power2.out",
-          delay: index * 0.08
-        });
+      // Animate cursor
+      gsap.to(cursor, {
+        x,
+        y,
+        opacity: 1,
+        duration: 0.15,
+        ease: "none"
       });
-
-      // Set timeout to hide trails
-      timeoutRef.current = setTimeout(() => {
-        gsap.to(trails, {
-          clipPath: 'circle(0% at center)',
-          duration: 0.9,
-          stagger: 0.08,
-          ease: "power2.inOut"
-        });
-      }, 200);
     };
 
     const handleMouseLeave = () => {
-      gsap.to([cursor, ...trails], {
-        clipPath: 'circle(0% at center)',
-        duration: 0.4,
-        stagger: 0.05,
-        ease: "power2.inOut"
+      Object.values(hideTimeoutsRef.current).forEach(timeout => {
+        clearTimeout(timeout);
       });
+
+      visibleImages.current
+        .sort((a, b) => a.timestamp - b.timestamp)
+        .forEach((img, i) => {
+          setTimeout(() => hideImage(img.index), i * 200);
+        });
+
       gsap.to(cursor, {
         opacity: 0,
         duration: 0.2
@@ -95,8 +135,7 @@ const PortfolioSection = () => {
     const handleMouseEnter = () => {
       gsap.to(cursor, {
         opacity: 1,
-        duration: 0.3,
-        ease: "power2.out"
+        duration: 0.2
       });
     };
 
@@ -108,11 +147,11 @@ const PortfolioSection = () => {
       container.removeEventListener('mousemove', handleMouseMove);
       container.removeEventListener('mouseleave', handleMouseLeave);
       container.removeEventListener('mouseenter', handleMouseEnter);
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+      Object.values(hideTimeoutsRef.current).forEach(timeout => {
+        clearTimeout(timeout);
+      });
     };
-  }, []);
+  }, [currentIndex]);
 
   return (
     <section 
@@ -122,10 +161,10 @@ const PortfolioSection = () => {
       {/* Custom Cursor */}
       <div 
         ref={cursorRef}
-        className="absolute w-4 h-4 bg-white rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="absolute w-4 h-4  rounded-full pointer-events-none z-50 mix-blend-difference"
       />
 
-      {/* Trail Container */}
+      {/* Images Container */}
       <div className="absolute inset-0">
         {images.map((image, index) => (
           <div
@@ -133,10 +172,10 @@ const PortfolioSection = () => {
             ref={el => {
               if (el) trailsRef.current[index] = el;
             }}
-            className="absolute left-0 top-0 pointer-events-none overflow-hidden"
+            className="absolute left-0 top-0 pointer-events-none"
             style={{ 
               zIndex: images.length - index,
-              clipPath: 'circle(0% at center)'
+              opacity: 0
             }}
           >
             <Image

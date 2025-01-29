@@ -1,9 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import Image from "next/image";
+import { PiInstagramLogoBold } from "react-icons/pi";
+import { TfiLinkedin } from "react-icons/tfi";
 import { BsTwitterX } from "react-icons/bs";
+import { FaFacebookF } from "react-icons/fa";
+import Image from "next/image";
+import { FloatingDock } from "./ui/floating-dock";
 
 const LINKS = [
   {
@@ -28,32 +31,36 @@ const LINKS = [
   },
 ];
 
-const SOCIAL_LINKS = [
+export const SOCIAL_LINKS = [
   {
+    title: "Facebook",
     icon: <FaFacebookF className="text-xl text-gray-400 hover:text-blue-500" />,
     href: "https://www.instagram.com/mikado.biz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-    className:
-      "rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]",
+    // className:
+    //   "rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]",
   },
   {
-    icon: <FaInstagram className="text-xl text-gray-400 hover:text-pink-500" />,
+    title: "Instagram",
+    icon: (
+      <PiInstagramLogoBold className="text-xl text-gray-400 hover:text-pink-500" />
+    ),
     href: "https://www.linkedin.com/company/mikado-design-studio/",
-    className:
-      "rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]",
+    // className:
+    // "rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]",
   },
   {
+    title: "Twitter",
     icon: <BsTwitterX className="text-xl text-gray-400 hover:text-blue-400" />,
     href: "https://twitter.com/design_mikado",
-    className:
-      "rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]",
+    // className:
+    //   "rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]",
   },
   {
-    icon: (
-      <FaLinkedinIn className="text-xl text-gray-400 hover:text-blue-700" />
-    ),
+    title: "LinkedIn",
+    icon: <TfiLinkedin className="text-xl text-gray-400 hover:text-blue-700" />,
     href: "https://www.facebook.com/mikado.biz",
-    className:
-      "rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]",
+    // className:
+    //   "rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]",
   },
 ];
 
@@ -108,7 +115,7 @@ const Footer = () => {
           aspectRatio > 1 ? "h-lvh" : "h-full"
         } ${
           aspectRatio > 1
-            ? "fixed bottom-0 md:top-[10%] lg:top-[7%] xl:top-[2%] xxl:top-[25%]"
+            ? "fixed bottom-0 md:top-[10%] lg:top-[7%] xl:top-[15%] 2xl:top-[21%]"
             : ""
         } overflow-hidden`}
       >
@@ -137,8 +144,8 @@ const Footer = () => {
               Marenahalli, Jayanagara 9th Block, <br />
               Bengaluru, India
             </p>
-            <div className="flex gap-6 justify-center mt-6">
-              {SOCIAL_LINKS.map(({ icon, href, className }, index) => (
+            <div className="flex gap-6 items-center justify-center mt-6">
+              {/* {SOCIAL_LINKS.map(({ icon, href, className }, index) => (
                 <Link
                   key={index}
                   href={href}
@@ -148,7 +155,11 @@ const Footer = () => {
                 >
                   {icon}
                 </Link>
-              ))}
+              ))} */}
+              <FloatingDock
+                items={SOCIAL_LINKS}
+                desktopClassName="flex items-center justify-center"
+              />
             </div>
             <p className="text-xs mt-4 text-[#777373]">Privacy Policy</p>
           </div>

@@ -4,32 +4,30 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BsTwitterX } from "react-icons/bs";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
 import { Button } from "./ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { PiInstagramLogoBold } from "react-icons/pi";
+import { TfiLinkedin } from "react-icons/tfi";
+import { SOCIAL_LINKS } from "./Footer";
+import { FloatingDock } from "./ui/floating-dock";
 
 const socialLinks = [
   {
     href: "https://facebook.com",
     icon: <FaFacebookF className="text-xl text-gray-400" />,
-   
   },
   {
     href: "https://instagram.com",
-    icon: <FaInstagram className="text-xl text-gray-400 " />,
-    
+    icon: <PiInstagramLogoBold className="text-xl text-gray-400 " />,
   },
   {
     href: "https://twitter.com",
     icon: <BsTwitterX className="text-xl text-gray-400 " />,
-    
   },
   {
     href: "https://linkedin.com",
-    icon: (
-      <FaLinkedinIn className="text-xl text-gray-400 " />
-    ),
-    
+    icon: <TfiLinkedin className="text-xl text-gray-400 " />,
   },
 ];
 
@@ -44,15 +42,15 @@ const Navbar = () => {
     <nav className="w-full h-20  px-7 text-[#f2f2f2] fixed top-0 left-0 z-50 bg-[#101010]">
       <div className="w-full h-full flex justify-between items-center">
         <div className="pl-3">
-        <Link href={"/"}>
-          <Image
-            src="/logo.png"
-            alt="logo"
-            width={80}
-            height={80}
-            className="object-contain"
-          />
-        </Link>
+          <Link href={"/"}>
+            <Image
+              src="/logo.png"
+              alt="logo"
+              width={80}
+              height={80}
+              className="object-contain"
+            />
+          </Link>
         </div>
         <div className="hidden md:flex space-x-8">
           <Link href="/" onClick={handleMenuToggle}>
@@ -280,9 +278,9 @@ const MenuBar = ({
           <motion.div
             variants={childVariants}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="flex gap-6 justify-left mt-6 ml-6"
+            className="w-fit flex items-start justify-start gap-6 justify-left mt-6 ml-6"
           >
-            {socialLinks.map((social, i) => (
+            {/* {socialLinks.map((social, i) => (
               <Link
                 key={i}
                 href={social.href}
@@ -292,7 +290,11 @@ const MenuBar = ({
               >
                 {social.icon}
               </Link>
-            ))}
+            ))} */}
+             <FloatingDock
+                items={SOCIAL_LINKS}
+                desktopClassName="flex items-center  justify-center"
+              />
           </motion.div>
         </motion.div>
       )}
