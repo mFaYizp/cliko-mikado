@@ -34,7 +34,7 @@ const LINKS = [
 export const SOCIAL_LINKS = [
   {
     title: "Facebook",
-    icon: <FaFacebookF className="text-xl text-gray-400 hover:text-blue-500" />,
+    icon: <FaFacebookF className="text-xl text-gray-400 " />,
     href: "https://www.instagram.com/mikado.biz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
     // className:
     //   "rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]",
@@ -42,7 +42,7 @@ export const SOCIAL_LINKS = [
   {
     title: "Instagram",
     icon: (
-      <PiInstagramLogoBold className="text-xl text-gray-400 hover:text-pink-500" />
+      <PiInstagramLogoBold className="text-xl text-gray-400" />
     ),
     href: "https://www.linkedin.com/company/mikado-design-studio/",
     // className:
@@ -50,14 +50,14 @@ export const SOCIAL_LINKS = [
   },
   {
     title: "Twitter",
-    icon: <BsTwitterX className="text-xl text-gray-400 hover:text-blue-400" />,
+    icon: <BsTwitterX className="text-xl text-gray-400 " />,
     href: "https://twitter.com/design_mikado",
     // className:
     //   "rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]",
   },
   {
     title: "LinkedIn",
-    icon: <TfiLinkedin className="text-xl text-gray-400 hover:text-blue-700" />,
+    icon: <TfiLinkedin className="text-xl text-gray-400" />,
     href: "https://www.facebook.com/mikado.biz",
     // className:
     //   "rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]",

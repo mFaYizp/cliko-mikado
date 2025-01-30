@@ -21,7 +21,7 @@ import { useMenu } from "@/contexts/MenuContext";
 const socialLinks = [
   {
     href: "https://facebook.com",
-    icon: <FaFacebookF className="text-xl text-gray-400" />,
+    icon: <FaFacebookF className="text-xl text-gray-400 " />,
   },
   {
     href: "https://instagram.com",
@@ -271,8 +271,8 @@ const MenuBar = ({
               <div className="flex justify-start items-center w-[430px] h-[241px] bg-slate-400 ml-6 rounded-lg">
                 <video
                   className="object-contain rounded-lg"
-                  width={430}
-                  height={241}
+                  width={530}
+                  height={303}
                   src="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.mp4"
                   loop
                   muted

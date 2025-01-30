@@ -16,7 +16,7 @@ const ContactForm = () => {
             <p className="text-left text-gray-600 mb-4">
                 Drop us a line or come grab a coffee, it&apos;s on us, and let&apos;s design the extraordinary together
             </p>
-            <p className="text-5xl font-thin text-gray-400 mb-4">
+            <p className="text-4xl font-thin text-gray-400 mb-4">
                 <span> Hey, I&apos;m{' '}</span>
                 <input
                     type="text"
@@ -24,11 +24,14 @@ const ContactForm = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="bg-transparent border-b-2 border-gray-500 text-white outline-none placeholder-opacity-50 placeholder-gray-600"
-                />{' '}
-                Let&apos;s grab a virtual coffee
+                />{' '}<span>   
+                Let&apos;s grab a  virtual coffee
+                </span>
             </p>
-            <p className="text-5xl font-thin text-gray-400 mb-4">
-                and chat things out. Reach me back at{' '}
+            <p className="text-4xl font-thin text-gray-400 mb-4">
+                and chat things out. Reach me back at
+            </p>
+            <p className="text-4xl font-thin text-gray-400 mb-4">
                 <input
                     type="email"
                     placeholder="Your email address"
@@ -37,7 +40,7 @@ const ContactForm = () => {
                     className="bg-transparent border-b-2 border-gray-500 text-white outline-none placeholder-opacity-50 placeholder-gray-600"
                 />
             </p>
-            <p className="text-5xl font-thin mb-4 text-gray-400">
+            <p className="text-4xl font-thin mb-4 text-gray-400">
                 Here’s what I’m thinking:
             </p><br/>
             <textarea
