@@ -6,12 +6,17 @@ import Image from "next/image";
 import { BsTwitterX } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { Button } from "./ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
 import { PiInstagramLogoBold } from "react-icons/pi";
 import { TfiLinkedin } from "react-icons/tfi";
 import { SOCIAL_LINKS } from "./Footer";
 import { FloatingDock } from "./ui/floating-dock";
-import { useMenu } from '@/contexts/MenuContext';
+import { useMenu } from "@/contexts/MenuContext";
 
 const socialLinks = [
   {
@@ -33,14 +38,40 @@ const socialLinks = [
 ];
 
 const Navbar = () => {
+  const { scrollY } = useScroll();
   const { isMenuOpen, setIsMenuOpen } = useMenu();
+  const [hidden, setHidden] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+
+    if (previous) {
+      if (latest > previous && latest > 100) {
+        setHidden(true);
+        setIsMenuOpen(false);
+      } else {
+        setHidden(false);
+      }
+    }
+  });
   return (
-    <nav className="w-full h-20  px-7 text-[#f2f2f2] fixed top-0 left-0 z-50 bg-[#101010]">
+    <motion.nav
+      variants={{
+        visible: {
+          y: 0,
+        },
+        hidden: {
+          y: -100,
+        },
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 1, ease: "easeInOut" }}
+      className="w-full h-20  px-7 text-[#f2f2f2] fixed top-0 left-0 z-50 bg-[#101010]"
+    >
       <div className="w-full h-full flex justify-between items-center">
         <div className="pl-3">
           <Link href={"/"}>
@@ -68,11 +99,7 @@ const Navbar = () => {
         </div>
 
         <div className="md:hidden flex items-center">
-          <Button
-            variant={"link"}
-            className="text-2xl"
-            onClick={toggleMenu}
-          >
+          <Button variant={"link"} className="text-2xl" onClick={toggleMenu}>
             ☰
           </Button>
         </div>
@@ -82,7 +109,7 @@ const Navbar = () => {
           <MenuBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 };
 
@@ -239,22 +266,35 @@ const MenuBar = ({
             transition={{ delay: 0.3, duration: 0.5 }}
             className="flex flex-col md:flex-row items-start justify-between mt-10"
           >
-            {/* Video Placeholder */}
-            <div className="flex justify-start items-center w-[430px] h-[241px] bg-slate-400 ml-6 rounded-lg">
-              <video
-                className="object-contain rounded-lg"
-                width={430}
-                height={241}
-                src="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.mp4"
-                loop
-                muted
-                autoPlay
-                playsInline
-                draggable="false"
-              ></video>
-            </div>
+            {/* Video Placeholder */}.
+            <div className="w-full h-full flex flex-col flex-1 justify-between items-start gap-y-4">
+              <div className="flex justify-start items-center w-[430px] h-[241px] bg-slate-400 ml-6 rounded-lg">
+                <video
+                  className="object-contain rounded-lg"
+                  width={430}
+                  height={241}
+                  src="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.mp4"
+                  loop
+                  muted
+                  autoPlay
+                  playsInline
+                  draggable="false"
+                ></video>
+              </div>
 
-            <div className="flex flex-col items-start justify-center space-y-2 pr-48 font-extrabold">
+              <motion.div
+                variants={childVariants}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="w-fit flex items-start  gap-6 justify-left mt-6 ml-6"
+              >
+                <FloatingDock
+                  items={SOCIAL_LINKS}
+                  desktopClassName="flex items-center  justify-center"
+                />
+              </motion.div>
+            </div>
+            <div className="flex flex-1 flex-col items-end justify-center  pr-48 font-extrabold">
+              <div className="w-fit flex flex-col space-y-2">
               {menuItems.map((item, i) => (
                 <motion.div
                   key={item.label}
@@ -274,28 +314,7 @@ const MenuBar = ({
                 </motion.div>
               ))}
             </div>
-          </motion.div>
-
-          <motion.div
-            variants={childVariants}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="w-fit flex items-start justify-start gap-6 justify-left mt-6 ml-6"
-          >
-            {/* {socialLinks.map((social, i) => (
-              <Link
-                key={i}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-xl p-3 shadow-[0_0_8px_rgba(255,255,255,0.1)] hover:shadow-[0_0_0_0.5px_rgba(59,130,246,1)]"
-              >
-                {social.icon}
-              </Link>
-            ))} */}
-             <FloatingDock
-                items={SOCIAL_LINKS}
-                desktopClassName="flex items-center  justify-center"
-              />
+            </div>
           </motion.div>
         </motion.div>
       )}

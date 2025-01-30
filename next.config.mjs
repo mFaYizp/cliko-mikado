@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ["mikado-products.blr1.cdn.digitaloceanspaces.com"],
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: '**',
+                hostname: 'mikado-products.blr1.cdn.digitaloceanspaces.com',
+                pathname: '/**',
             },
         ],
     },
@@ -14,9 +14,7 @@ const nextConfig = {
     compiler: {
         removeConsole: process.env.NODE_ENV === "production",
     },
-    experimental: {
-        optimizeCss: true,
-    },
+    optimizeCss: true,
 };
 
 export default nextConfig;
