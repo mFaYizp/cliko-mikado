@@ -230,7 +230,7 @@ const HomeHero = (props: Props) => {
   return (
     <section className="w-full h-lvh relative flex items-center justify-center overflow-hidden my-4 py-4">
       <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-auto h-auto z-10">
-        <h1 className="text-[9rem] leading-tight font-extrabold text-white text-center">
+        <h1 className="text-[3.6rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[9rem] leading-tight font-extrabold text-white text-center">
           {" "}
           Bring your <br /> Brand to Life
         </h1>

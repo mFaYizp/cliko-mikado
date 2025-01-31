@@ -65,8 +65,8 @@ const Services = () => {
           fontSize={70}
           className="w-full h-auto text-start"
         />*/}
-        <h1 className="text-[9rem] leading-tight font-extrabold text-[#383737] text-centers">Services</h1>
-        <div className="w-full flex flex-col items-start justify-start xxs:gap-y-8 lg:gap-y-10">
+        <h1 className="mx-5 sm:mx-auto text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[9rem] leading-tight font-extrabold text-[#383737] text-centers">Services</h1>
+        <div className="w-full flex flex-col items-start justify-start gap-y-10 ">
           {SERVICES.map((item, index: number) => {
             return (
               <div key={index} className="w-full">
@@ -75,7 +75,7 @@ const Services = () => {
                   onMouseLeave={() => setModal({ active: false, index: null })}
                   className="relative w-full xxs:pb-8 lg:pb-12 hidden md:flex items-start justify-start font-light group cursor-pointer"
                 >
-                  <h3 className="w-full  text-left xxs:text-lg text-7xl font-semibold text-[#666666] hover:text-white pt-10">
+                  <h3 className="w-full  text-left text-lg md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-[#666666] hover:text-white pt-10">
                     {item.name}
                   </h3>
                   <motion.div
@@ -102,19 +102,19 @@ const Services = () => {
                 </div>
 
                 {/* Mobile View */}
-                <div className="w-full h-full flex gap-4 flex-wrap flex-col justify-center md:hidden relative">
+                <div className="w-full h-full flex gap-5 flex-wrap flex-col justify-center md:hidden relative">
                   <div className="w-full xs:w-[320px]">
                     <Image
                       src={item.img}
                       alt="team"
-                      className="w-full h-auto"
+                      className="w-full h-auto max-w-[320px]"
                       height={550}
                       width={550}
                       quality={100}
                     />
                   </div>
                   <div className="flex flex-col items-start justify-start">
-                    <h3 className="font-medium text-left xxs:text-lg text-xl xs:text-2xl uppercase text-white">
+                    <h3 className="font-medium text-left xxs:text-lg text-xl xs:text-2xl uppercase text-white mx-5">
                       {item.name}
                     </h3>
                   </div>

@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ClikoTextmotion from "../ui/clikoTextmotion";
+import HorizontalScrollCarousel from "../ui/horizontalScroll";
 
 const IMAGES = [
   {
@@ -47,7 +48,13 @@ const StackingImages = () => {
 
   return (
     <section className="w-full h-full relative bg-[#101010]">
-      <ParallaxCards cards={IMAGES} progress={scrollYProgress} />
+      <div className="w-full h-full md:flex hidden">
+        <ParallaxCards cards={IMAGES} progress={scrollYProgress} />
+      </div>
+
+      <div className="w-full h-full md:hidden flex">
+        <HorizontalScrollCarousel cards={IMAGES}  />
+      </div>
     </section>
   );
 };
@@ -89,7 +96,6 @@ const ParallaxCards: React.FC<ParallaxCardsProps> = ({ cards, progress }) => {
         </div>
       </div>
 
-
       {/* Content Container */}
       <div className="relative z-10">
         <div className="flex w-full mx-auto h-full mb-[25vh] flex-col mt-20 gap-[50vh]">
@@ -129,7 +135,7 @@ const Card: React.FC<CardComponentProps> = ({
   range,
   targetScale,
 }) => {
-  const translateX = index % 2 === 0 ? "0" : "12%";  
+  const translateX = index % 2 === 0 ? "0" : "12%";
   return (
     <section
       className="w-full h-full sticky top-[20%] flex items-center justify-center"
