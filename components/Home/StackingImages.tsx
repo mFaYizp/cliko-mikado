@@ -89,6 +89,7 @@ const ParallaxCards: React.FC<ParallaxCardsProps> = ({ cards, progress }) => {
         </div>
       </div>
 
+
       {/* Content Container */}
       <div className="relative z-10">
         <div className="flex w-full mx-auto h-full mb-[25vh] flex-col mt-20 gap-[50vh]">
