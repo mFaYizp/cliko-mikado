@@ -110,13 +110,21 @@ const Navbar = () => {
         </div>
       </div>
       <AnimatePresence>
-        {isMenuOpen && <MenuBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />}
+        {isMenuOpen && (
+          <MenuBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+        )}
       </AnimatePresence>
     </motion.nav>
   );
 };
 
-const MenuBar = ({ isMenuOpen, toggleMenu }: { isMenuOpen: boolean; toggleMenu: () => void }) => {
+const MenuBar = ({
+  isMenuOpen,
+  toggleMenu,
+}: {
+  isMenuOpen: boolean;
+  toggleMenu: () => void;
+}) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -182,7 +190,7 @@ const MenuBar = ({ isMenuOpen, toggleMenu }: { isMenuOpen: boolean; toggleMenu: 
 
   const menuItems = [
     { href: "/", label: "HOME" },
-    { href: "/work", label: "ABOUT" },
+    { href: "/about-us", label: "ABOUT" },
     { href: "/about", label: "PORTFOLIO" },
     { href: "/gallery", label: "CONTACT" },
   ];
