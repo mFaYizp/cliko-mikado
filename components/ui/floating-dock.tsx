@@ -37,7 +37,7 @@ const FloatingDockMobile = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={cn("relative block hidden", className)}>
+    <div className={cn("relative hidden", className)}>
       <AnimatePresence>
         {open && (
           <motion.div
