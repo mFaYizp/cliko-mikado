@@ -261,12 +261,12 @@ const MenuBar = ({ isMenuOpen, toggleMenu }: { isMenuOpen: boolean; toggleMenu: 
           <motion.div
             variants={childVariants}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="flex flex-col md:flex-row items-start justify-between mt-10"
+            className="flex flex-col-reverse md:flex-row items-start justify-between mt-10 gap-y-5"
           >
             <div className="w-full h-full flex flex-col flex-1 justify-between items-start gap-y-4">
-              <div className="flex justify-start items-center w-full md:w-[430px] h-[241px] ml-6 rounded-lg">
+              <div className="flex justify-start items-center w-full md:w-[430px] max-h-[350px] h-auto md:mx-0 md:ml-6 rounded-lg">
                 <video
-                  className="object-contain rounded-lg"
+                  className="object-cover h-full w-auto rounded-lg max-h-[270px] aspect-video"
                   width={530}
                   height={303}
                   src="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.mp4"
