@@ -65,7 +65,7 @@ const Services = () => {
           fontSize={70}
           className="w-full h-auto text-start"
         />*/}
-        <h1 className="mx-5 sm:mx-auto text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[9rem] leading-tight font-extrabold text-[#383737] text-centers">Services</h1>
+        <h1 className="text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[9rem] leading-tight font-extrabold text-[#383737] !text-start">Services</h1>
         <div className="w-full flex flex-col items-start justify-start gap-y-10 ">
           {SERVICES.map((item, index: number) => {
             return (
