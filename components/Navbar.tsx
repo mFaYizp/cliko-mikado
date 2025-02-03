@@ -191,7 +191,7 @@ const MenuBar = ({
   const menuItems = [
     { href: "/", label: "HOME" },
     { href: "/about-us", label: "ABOUT" },
-    { href: "/about", label: "PORTFOLIO" },
+    { href: "/portfolio", label: "PORTFOLIO" },
     { href: "/gallery", label: "CONTACT" },
   ];
 
@@ -269,7 +269,7 @@ const MenuBar = ({
           <motion.div
             variants={childVariants}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="flex flex-col-reverse md:flex-row items-start justify-between mt-10 gap-y-5"
+            className="flex flex-col md:flex-row items-start justify-between mt-10 gap-y-5"
           >
             <div className="w-full h-full flex flex-col flex-1 justify-between items-start gap-y-4">
               <div className="flex justify-start items-center w-full md:w-[430px] max-h-[350px] h-auto md:mx-0 md:ml-6 rounded-lg">
@@ -289,7 +289,7 @@ const MenuBar = ({
               <motion.div
                 variants={childVariants}
                 transition={{ delay: 0.4, duration: 0.5 }}
-                className="w-fit flex items-start gap-6 justify-start mt-6 ml-6"
+                className="w-fit hidden md:flex items-start gap-6 justify-start mt-6 ml-6"
               >
                 <FloatingDock
                   items={SOCIAL_LINKS}
@@ -320,6 +320,16 @@ const MenuBar = ({
                 ))}
               </div>
             </div>
+            <motion.div
+                variants={childVariants}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="w-fit flex md:hidden items-start gap-6 justify-start mt-6 ml-6"
+              >
+                <FloatingDock
+                  items={SOCIAL_LINKS}
+                  desktopClassName="flex items-center justify-center"
+                />
+              </motion.div>
           </motion.div>
         </motion.div>
       )}
