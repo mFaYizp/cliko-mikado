@@ -21,19 +21,19 @@ import { useMenu } from "@/contexts/MenuContext";
 const socialLinks = [
   {
     href: "https://facebook.com",
-    icon: <FaFacebookF className="text-xl text-gray-400 " />,
+    icon: <FaFacebookF className="text-xl text-gray-400" />,
   },
   {
     href: "https://instagram.com",
-    icon: <PiInstagramLogoBold className="text-xl text-gray-400 " />,
+    icon: <PiInstagramLogoBold className="text-xl text-gray-400" />,
   },
   {
     href: "https://twitter.com",
-    icon: <BsTwitterX className="text-xl text-gray-400 " />,
+    icon: <BsTwitterX className="text-xl text-gray-400" />,
   },
   {
     href: "https://linkedin.com",
-    icon: <TfiLinkedin className="text-xl text-gray-400 " />,
+    icon: <TfiLinkedin className="text-xl text-gray-400" />,
   },
 ];
 
@@ -58,6 +58,7 @@ const Navbar = () => {
       }
     }
   });
+
   return (
     <motion.nav
       variants={{
@@ -70,7 +71,7 @@ const Navbar = () => {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 1, ease: "easeInOut" }}
-      className="w-full h-20  px-7 text-[#f2f2f2] fixed top-0 left-0 z-50 bg-[#101010]"
+      className="w-full h-20 px-7 text-[#f2f2f2] fixed top-0 left-0 z-50 bg-[#101010]"
     >
       <div className="w-full h-full flex justify-between items-center">
         <div className="pl-3">
@@ -99,27 +100,23 @@ const Navbar = () => {
         </div>
 
         <div className="md:hidden flex items-center">
-          <Button variant={"link"} className="text-2xl" onClick={toggleMenu}>
+          <Button
+            variant={"link"}
+            className="text-2xl text-white hover:opacity-70 transition-opacity"
+            onClick={toggleMenu}
+          >
             ☰
           </Button>
         </div>
       </div>
       <AnimatePresence>
-        {isMenuOpen && (
-          <MenuBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-        )}
+        {isMenuOpen && <MenuBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />}
       </AnimatePresence>
     </motion.nav>
   );
 };
 
-const MenuBar = ({
-  isMenuOpen,
-  toggleMenu,
-}: {
-  isMenuOpen: boolean;
-  toggleMenu: () => void;
-}) => {
+const MenuBar = ({ isMenuOpen, toggleMenu }: { isMenuOpen: boolean; toggleMenu: () => void }) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -216,7 +213,7 @@ const MenuBar = ({
       {isMenuOpen && (
         <motion.div
           ref={menuRef}
-          className="fixed top-0 left-0 h-3/4 w-full bg-[#101010] text-white z-50"
+          className="fixed top-0 left-0 h-full md:h-[90vh] xl:h-3/4 w-full bg-[#101010] text-white z-50"
           variants={menuVariants}
           initial="initial"
           animate="animate"
@@ -225,7 +222,7 @@ const MenuBar = ({
           <motion.nav
             variants={childVariants}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="flex justify-between items-center px-7 py-5 bg-[#101010] text-[#f2f2f2]"
+            className="flex flex-row justify-between items-center px-6 py-5 md:px-7 md:py-3 bg-[#101010] text-[#f2f2f2]"
           >
             <Link href={"/"}>
               <Image
@@ -233,9 +230,18 @@ const MenuBar = ({
                 alt="logo"
                 width={80}
                 height={80}
-                className="object-contain"
+                className="object-contain w-24 h-24 md:w-20 md:h-20"
               />
             </Link>
+
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={toggleMenu}
+                className="text-3xl hover:opacity-70 transition-opacity focus:outline-none"
+              >
+                ✕
+              </button>
+            </div>
 
             <div className="hidden md:flex space-x-8">
               <Link href="/" onClick={toggleMenu}>
@@ -250,15 +256,6 @@ const MenuBar = ({
                 </button>
               </Link>
             </div>
-
-            <div className="md:hidden flex items-center">
-              <button
-                onClick={toggleMenu}
-                className="text-2xl hover:opacity-70 transition-opacity"
-              >
-                ✕
-              </button>
-            </div>
           </motion.nav>
 
           <motion.div
@@ -266,9 +263,8 @@ const MenuBar = ({
             transition={{ delay: 0.3, duration: 0.5 }}
             className="flex flex-col md:flex-row items-start justify-between mt-10"
           >
-            {/* Video Placeholder */}.
             <div className="w-full h-full flex flex-col flex-1 justify-between items-start gap-y-4">
-              <div className="flex justify-start items-center w-[430px] h-[241px] bg-slate-400 ml-6 rounded-lg">
+              <div className="flex justify-start items-center w-full md:w-[430px] h-[241px] ml-6 rounded-lg">
                 <video
                   className="object-contain rounded-lg"
                   width={530}
@@ -285,35 +281,36 @@ const MenuBar = ({
               <motion.div
                 variants={childVariants}
                 transition={{ delay: 0.4, duration: 0.5 }}
-                className="w-fit flex items-start  gap-6 justify-left mt-6 ml-6"
+                className="w-fit flex items-start gap-6 justify-start mt-6 ml-6"
               >
                 <FloatingDock
                   items={SOCIAL_LINKS}
-                  desktopClassName="flex items-center  justify-center"
+                  desktopClassName="flex items-center justify-center"
                 />
               </motion.div>
             </div>
-            <div className="flex flex-1 flex-col items-end justify-center  pr-48 font-extrabold">
+
+            <div className="flex flex-1 flex-col items-end justify-center pr-6 md:pr-48 font-extrabold">
               <div className="w-fit flex flex-col space-y-2">
-              {menuItems.map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  custom={i}
-                  variants={linkVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                >
-                  <Link
-                    href={item.href}
-                    className="text-[4rem] leading-tight hover:text-gray-300 transition-colors"
-                    onClick={toggleMenu}
+                {menuItems.map((item, i) => (
+                  <motion.div
+                    key={item.label}
+                    custom={i}
+                    variants={linkVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
                   >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
+                    <Link
+                      href={item.href}
+                      className="text-[3rem] md:text-[4rem] leading-tight hover:text-gray-300 transition-colors"
+                      onClick={toggleMenu}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </motion.div>

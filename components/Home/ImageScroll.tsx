@@ -97,7 +97,7 @@ const ImageScroll = () => {
   }, [scrollYProgress, isLoading]);
 
   return (
-    <div className="w-full h-[300vh] bg-black" ref={containerRef}>
+    <div className="w-full h-[300vh]" ref={containerRef}>
       <div className="sticky top-0 w-full h-screen">
         {error ? (
           <div className="w-full h-full flex items-center justify-center text-white">

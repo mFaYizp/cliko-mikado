@@ -12,12 +12,12 @@ const Home = () => {
   return (
     <main className="w-full bg-[#101010]">
       <HomeHero />
-      {/* <HomeAbout /> */}
+       <HomeAbout /> 
       <ImageScroll />
       <Services />
       <PortfolioSection/>
       <StackingImages />
-      {/* <ContactForm /> */}
+       <ContactForm />
     </main>
   )
 }

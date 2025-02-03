@@ -102,7 +102,7 @@ const Services = () => {
                 </div>
 
                 {/* Mobile View */}
-                <div className="w-full h-full flex gap-5 flex-wrap flex-col justify-center md:hidden relative">
+                <div className="w-full h-auto flex gap-5 flex-wrap flex-col justify-center md:hidden relative">
                   <div className="w-full xs:w-[320px]">
                     <Image
                       src={item.img}
@@ -124,23 +124,23 @@ const Services = () => {
           })}
         </div>
       </div>
-      <div className="w-full h-full aspect-video">
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          // poster="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.webp"
-        >
-          <source
-            src="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      <div className="w-full aspect-video max-h-[90vh] rounded-lg overflow-hidden">
+  <video
+    className="w-full h-full object-cover"
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="metadata"
+  >
+    <source
+      src="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.mp4"
+      type="video/mp4"
+    />
+    Your browser does not support the video tag.
+  </video>
+</div>
+
     </section>
   );
 };

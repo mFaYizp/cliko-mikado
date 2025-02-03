@@ -72,3 +72,7 @@
     @apply bg-background text-foreground bg-black text-white;
   }
 }
+html,body{
+  overflow-x: hidden;
+}
+
