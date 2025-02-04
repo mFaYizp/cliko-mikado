@@ -23,9 +23,9 @@ const IMAGES = [
     alt: "Fashion",
   },
   {
-    title: "Catelogue",
+    title: "Catalogue",
     src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/6_Last_section/4.webp",
-    alt: "Catelogue",
+    alt: "Catalogue",
   },
   {
     title: "Lifestyle",
@@ -47,7 +47,7 @@ const StackingImages = () => {
   });
 
   return (
-    <section className="w-full h-full relative bg-[#101010]">
+    <section className="w-full h-full relative bg-[#101010] mb-[10vh] md:mb-[30vh]">
       <div className="w-full h-full md:flex hidden">
         <ParallaxCards cards={IMAGES} progress={scrollYProgress} />
       </div>
@@ -98,7 +98,7 @@ const ParallaxCards: React.FC<ParallaxCardsProps> = ({ cards, progress }) => {
 
       {/* Content Container */}
       <div className="relative z-10">
-        <div className="flex w-full mx-auto h-full mb-[25vh] flex-col mt-20 gap-[50vh]">
+        <div className="flex w-full mx-auto h-full mb-[50vh] md:mb-[30vh] flex-col mt-20 gap-[50vh]">
           {cards.map((card, index) => {
             const targetScale = 1 - (cards.length - index) * 0.05;
             const range = [index * 0.35, 1];
