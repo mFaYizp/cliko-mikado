@@ -191,7 +191,7 @@ const MenuBar = ({
   const menuItems = [
     { href: "/", label: "HOME" },
     { href: "/about-us", label: "ABOUT" },
-    { href: "/portfolio", label: "PORTFOLIO" },
+    { href: "/portfolio/grid", label: "PORTFOLIO" },
     { href: "/gallery", label: "CONTACT" },
   ];
 

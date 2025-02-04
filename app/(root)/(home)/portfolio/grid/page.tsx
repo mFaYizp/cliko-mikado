@@ -1,16 +1,14 @@
 import PortfolioGrid from '@/components/Portfolio/PortfolioGrid';
-import PortfolioTwo from '@/components/Portfolio/PortfolioTwo';
 import Hero from '@/components/ui/Hero';
 import React from 'react'
 
-const Portfolio = () => {
+const PortfolioGridPage = () => {
   return (
     <main>
         <Hero title="Portfolio" />
-        {/* <PortfolioGrid /> */}
-        <PortfolioTwo />
+        <PortfolioGrid />
     </main>
   )
 }
 
-export default Portfolio;
+export default PortfolioGridPage;
