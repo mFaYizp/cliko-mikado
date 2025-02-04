@@ -4,7 +4,7 @@ import React from 'react'
 
 const Portfolio = () => {
   return (
-    <main>
+    <main className="w-full bg-[#101010]">
         <Hero title="Portfolio" />
         <PortfolioGrid />
     </main>
