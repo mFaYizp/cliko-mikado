@@ -7,9 +7,7 @@ const AboutUs = () => {
   return (
     <main className="w-full bg-[#101010]">
         <Hero title="About Us" />
-      
         <AboutStory/>
-      
         <ImageCarousel/>
     </main>
   )

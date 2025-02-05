@@ -1,5 +1,5 @@
 "use client";
- 
+
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,7 +17,7 @@ import { TfiLinkedin } from "react-icons/tfi";
 import { SOCIAL_LINKS } from "./Footer";
 import { FloatingDock } from "./ui/floating-dock";
 import { useMenu } from "@/contexts/MenuContext";
- 
+
 const socialLinks = [
   {
     href: "https://facebook.com",
@@ -36,19 +36,19 @@ const socialLinks = [
     icon: <TfiLinkedin className="text-xl text-gray-400" />,
   },
 ];
- 
+
 const Navbar = () => {
   const { scrollY } = useScroll();
   const { isMenuOpen, setIsMenuOpen } = useMenu();
   const [hidden, setHidden] = useState(false);
- 
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
- 
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
- 
+
     if (previous) {
       if (latest > previous && latest > 100) {
         setHidden(true);
@@ -58,7 +58,7 @@ const Navbar = () => {
       }
     }
   });
- 
+
   return (
     <motion.nav
       variants={{
@@ -90,7 +90,7 @@ const Navbar = () => {
             Menu
           </Link>
         </div>
- 
+
         <div className="hidden md:flex items-center">
           <Link href="/contact">
             <button className="px-3 text-white rounded-full">
@@ -98,7 +98,7 @@ const Navbar = () => {
             </button>
           </Link>
         </div>
- 
+
         <div className="md:hidden flex items-center">
           <Button
             variant={"link"}
@@ -117,7 +117,7 @@ const Navbar = () => {
     </motion.nav>
   );
 };
- 
+
 const MenuBar = ({
   isMenuOpen,
   toggleMenu,
@@ -127,30 +127,30 @@ const MenuBar = ({
 }) => {
   const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
- 
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         toggleMenu();
       }
     };
- 
+
     if (isMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
- 
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isMenuOpen, toggleMenu]);
- 
+
   const menuVariants = {
     initial: { y: "-100%" },
     animate: {
       y: 0,
       transition: {
         type: "spring",
-        duration: 0.10,
+        duration: 0.1,
         bounce: 0.2,
         delayChildren: 0.2,
         staggerChildren: 0.1,
@@ -168,7 +168,7 @@ const MenuBar = ({
       },
     },
   };
- 
+
   const childVariants = {
     initial: { y: 50, opacity: 0 },
     animate: {
@@ -188,7 +188,7 @@ const MenuBar = ({
       },
     },
   };
- 
+
   const menuItems = [
     { href: "/", label: "HOME" },
     { href: "/about-us", label: "ABOUT" },
@@ -196,12 +196,12 @@ const MenuBar = ({
       label: "PORTFOLIO",
       dropdown: [
         { href: "/portfolio/grid", label: "PORTFOLIO1" },
-        { href: "/portfolio/grid-two", label: "PORTFOLIO2" },        
-      ]
+        { href: "/portfolio/grid-two", label: "PORTFOLIO2" },
+      ],
     },
-    { href: "/gallery", label: "GALLERY" },
+    // { href: "/gallery", label: "GALLERY" },
   ];
- 
+
   const linkVariants = {
     initial: { x: -50, opacity: 0 },
     animate: (i: number) => ({
@@ -222,7 +222,7 @@ const MenuBar = ({
       },
     }),
   };
- 
+
   return (
     <div className="w-full h-full">
       {isMenuOpen && (
@@ -248,7 +248,7 @@ const MenuBar = ({
                 className="object-contain w-24 h-24 md:w-20 md:h-20"
               />
             </Link>
- 
+
             <div className="md:hidden flex items-center">
               <button
                 onClick={toggleMenu}
@@ -257,13 +257,13 @@ const MenuBar = ({
                 ✕
               </button>
             </div>
- 
+
             <div className="hidden md:flex space-x-8">
               <Link href="/" onClick={toggleMenu}>
                 Close
               </Link>
             </div>
- 
+
             <div className="hidden md:flex items-center">
               <Link href="/contact">
                 <button className="px-6 py-2 text-white rounded-full">
@@ -272,7 +272,7 @@ const MenuBar = ({
               </Link>
             </div>
           </motion.nav>
- 
+
           <motion.div
             variants={childVariants}
             transition={{ delay: 0.3, duration: 0.5 }}
@@ -292,7 +292,7 @@ const MenuBar = ({
                   draggable="false"
                 ></video>
               </div>
- 
+
               <motion.div
                 variants={childVariants}
                 transition={{ delay: 0.4, duration: 0.5 }}
@@ -304,7 +304,7 @@ const MenuBar = ({
                 />
               </motion.div>
             </div>
- 
+
             <div className="flex flex-1 flex-col items-end justify-center pr-6 md:pr-48 font-extrabold">
               <div className="w-fit flex flex-col space-y-2">
                 {menuItems.map((item, i) => (
@@ -315,6 +315,7 @@ const MenuBar = ({
                     initial="initial"
                     animate="animate"
                     exit="exit"
+                    onClick={toggleMenu}
                   >
                     {item.dropdown ? (
                       <div
@@ -360,5 +361,5 @@ const MenuBar = ({
     </div>
   );
 };
- 
+
 export default Navbar;
