@@ -5,6 +5,7 @@ const PortfolioData = [
     type: "Fashion",
     image:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/charcol.png",
+    href: "/portfolio/1",
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ const PortfolioData = [
     type: "Fashion",
     image:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/chicken-3.jpg",
+    href: "/portfolio/2",
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ const PortfolioData = [
     type: "Fashion",
     image:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/charcol.png",
+    href: "/portfolio/3",
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ const PortfolioData = [
     type: "Fashion",
     image:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/chicken-3.jpg",
+    href: "/portfolio/4",
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ const PortfolioData = [
     type: "Fashion",
     image:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/charcol.png",
+    href: "/portfolio/5",
   },
   {
     id: 6,
@@ -40,6 +45,7 @@ const PortfolioData = [
     type: "Fashion",
     image:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/chicken-3.jpg",
+    href: "/portfolio/6",
   },
   {
     id: 7,
@@ -47,6 +53,7 @@ const PortfolioData = [
     type: "Fashion",
     image:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/charcol.png",
+    href: "/portfolio/7",
   },
 ];
 

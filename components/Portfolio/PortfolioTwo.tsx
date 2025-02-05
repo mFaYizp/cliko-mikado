@@ -5,7 +5,7 @@ import Image from "next/image";
 const PortfolioTwo = () => {
   return (
     <section className="w-full h-full py-20">
-      <div className="w-full container mx-auto">
+      <div className="w-auto mx-5 md:mx-10 lg:mx-20">
         <div className="hidden md:flex flex-col gap-20">
           {/* Group items in sets of 3 */}
           {Array.from({ length: Math.ceil(PortfolioData.length / 3) }).map(

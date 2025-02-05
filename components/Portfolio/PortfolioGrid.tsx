@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import PortfolioData from "./portfolioData";
 import { Parallax, ParallaxProvider } from "react-scroll-parallax";
+import Link from "next/link";
 
 const PortfolioGrid = () => {
   const shouldParallax = (index: number) => {
@@ -25,7 +26,8 @@ const PortfolioGrid = () => {
                     speed={10}
                     className="w-full h-full flex items-center justify-center"
                   >
-                    <div
+                    <Link
+                      href={item.href}
                       className={`overflow-hidden rounded-lg h-[350px] w-fit relative group`}
                     >
                       <Image
@@ -43,10 +45,11 @@ const PortfolioGrid = () => {
                           {item.type}
                         </p>
                       </div>
-                    </div>
+                    </Link>
                   </Parallax>
                 ) : (
-                  <div
+                  <Link
+                    href={item.href}
                     className={`w-full h-full overflow-hidden rounded-lg relative group`}
                   >
                     <Image
@@ -64,7 +67,7 @@ const PortfolioGrid = () => {
                         {item.type}
                       </p>
                     </div>
-                  </div>
+                  </Link>
                 )}
               </div>
             ))}
