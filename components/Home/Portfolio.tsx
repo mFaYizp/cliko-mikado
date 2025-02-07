@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { motion } from 'framer-motion';
 
 const images = [
   { src: 'https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/5_Portfolio/hover_1.webp', alt: 'Product 1' },
@@ -10,6 +11,19 @@ const images = [
   { src: 'https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/5_Portfolio/hover_3.webp', alt: 'Product 3' },
   { src: 'https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/5_Portfolio/hover_4.webp', alt: 'Product 4' }
 ];
+
+const textAnimation = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.15,
+      duration: 0.6,
+      ease: 'easeOut'
+    }
+  })
+};
 
 const PortfolioSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -26,19 +40,8 @@ const PortfolioSection = () => {
     const cursor = cursorRef.current;
     if (!container || trails.length === 0 || !cursor) return;
 
-    // Initialize positions
-    gsap.set(trails, {
-      scale: 1,
-      xPercent: -50,
-      yPercent: -50,
-      opacity: 0
-    });
-
-    gsap.set(cursor, {
-      xPercent: -50,
-      yPercent: -50,
-      opacity: 0
-    });
+    gsap.set(trails, { scale: 1, xPercent: -50, yPercent: -50, opacity: 0 });
+    gsap.set(cursor, { xPercent: -50, yPercent: -50, opacity: 0 });
 
     const hideImage = (index: number) => {
       const trail = trails[index];
@@ -47,7 +50,7 @@ const PortfolioSection = () => {
           opacity: 0,
           scale: 0.8,
           duration: 0.4,
-          ease: "power2.inOut",
+          ease: 'power2.inOut',
           onComplete: () => {
             visibleImages.current = visibleImages.current.filter(img => img.index !== index);
             delete hideTimeoutsRef.current[index];
@@ -60,7 +63,6 @@ const PortfolioSection = () => {
       if (hideTimeoutsRef.current[index]) {
         clearTimeout(hideTimeoutsRef.current[index]);
       }
-
       hideTimeoutsRef.current[index] = setTimeout(() => {
         hideImage(index);
       }, 1000);
@@ -74,69 +76,34 @@ const PortfolioSection = () => {
       const distance = Math.hypot(x - lastPos.current.x, y - lastPos.current.y);
       if (distance > 150) {
         lastPos.current = { x, y };
-        
+
         const currentTrail = trails[currentIndex];
         if (currentTrail) {
-          visibleImages.current = [
-            ...visibleImages.current,
-            { index: currentIndex, timestamp: Date.now() }
-          ];
-          
-          gsap.fromTo(currentTrail,
-            {
-              x,
-              y,
-              opacity: 0,
-              scale: 0.8
-            },
-            {
-              x,
-              y,
-              opacity: 1,
-              scale: 1,
-              duration: 0.3,
-              ease: "power2.out",
-              overwrite: true
-            }
+          visibleImages.current = [...visibleImages.current, { index: currentIndex, timestamp: Date.now() }];
+          gsap.fromTo(
+            currentTrail,
+            { x, y, opacity: 0, scale: 0.8 },
+            { x, y, opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out', overwrite: true }
           );
 
           scheduleHideForImage(currentIndex);
-          setCurrentIndex((prev) => (prev + 1) % images.length);
+          setCurrentIndex(prev => (prev + 1) % images.length);
         }
       }
 
-      // Animate cursor
-      gsap.to(cursor, {
-        x,
-        y,
-        opacity: 1,
-        duration: 0.15,
-        ease: "none"
-      });
+      gsap.to(cursor, { x, y, opacity: 1, duration: 0.15, ease: 'none' });
     };
 
     const handleMouseLeave = () => {
-      Object.values(hideTimeoutsRef.current).forEach(timeout => {
-        clearTimeout(timeout);
+      Object.values(hideTimeoutsRef.current).forEach(timeout => clearTimeout(timeout));
+      visibleImages.current.sort((a, b) => a.timestamp - b.timestamp).forEach((img, i) => {
+        setTimeout(() => hideImage(img.index), i * 200);
       });
-
-      visibleImages.current
-        .sort((a, b) => a.timestamp - b.timestamp)
-        .forEach((img, i) => {
-          setTimeout(() => hideImage(img.index), i * 200);
-        });
-
-      gsap.to(cursor, {
-        opacity: 0,
-        duration: 0.2
-      });
+      gsap.to(cursor, { opacity: 0, duration: 0.2 });
     };
 
     const handleMouseEnter = () => {
-      gsap.to(cursor, {
-        opacity: 1,
-        duration: 0.2
-      });
+      gsap.to(cursor, { opacity: 1, duration: 0.2 });
     };
 
     container.addEventListener('mousemove', handleMouseMove);
@@ -147,22 +114,14 @@ const PortfolioSection = () => {
       container.removeEventListener('mousemove', handleMouseMove);
       container.removeEventListener('mouseleave', handleMouseLeave);
       container.removeEventListener('mouseenter', handleMouseEnter);
-      Object.values(hideTimeoutsRef.current).forEach(timeout => {
-        clearTimeout(timeout);
-      });
+      Object.values(hideTimeoutsRef.current).forEach(timeout => clearTimeout(timeout));
     };
   }, [currentIndex]);
 
   return (
-    <section 
-      ref={containerRef}
-      className="relative h-screen overflow-hidden"
-    >
+    <section ref={containerRef} className="relative h-screen overflow-hidden">
       {/* Custom Cursor */}
-      <div 
-        ref={cursorRef}
-        className="absolute w-4 h-4  rounded-full pointer-events-none z-50 mix-blend-difference"
-      />
+      <div ref={cursorRef} className="absolute w-4 h-4 rounded-full pointer-events-none z-50 mix-blend-difference" />
 
       {/* Images Container */}
       <div className="absolute inset-0">
@@ -173,24 +132,30 @@ const PortfolioSection = () => {
               if (el) trailsRef.current[index] = el;
             }}
             className="absolute left-0 top-0 pointer-events-none"
-            style={{ 
-              zIndex: images.length - index,
-              opacity: 0
-            }}
+            style={{ zIndex: images.length - index, opacity: 0 }}
           >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              width={350}
-              height={100}
-              className="object-cover shadow-lg"
-            />
+            <Image src={image.src} alt={image.alt} width={350} height={100} className="object-cover shadow-lg" />
           </div>
         ))}
       </div>
 
+      {/* Animated "PORTFOLIO" Text */}
       <div className="relative z-40 h-full flex items-center justify-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white">PORTFOLIO</h1>
+        <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white flex">
+          {[...'PORTFOLIO'].map((letter, i) => (
+            <motion.span
+              key={i}
+              custom={i}
+              variants={textAnimation}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="inline-block"
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </motion.h1>
       </div>
     </section>
   );

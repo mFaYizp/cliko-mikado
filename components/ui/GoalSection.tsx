@@ -3,7 +3,7 @@ import React from "react";
 
 type GoalSectionProps = {
   section: string;
- 
+
   desc: string[];
 };
 
