@@ -26,7 +26,6 @@ const HomeAbout = () => {
             </Parallax>
           </ParallaxProvider>
         </div>
-
         {/* Text Section */}
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center gap-y-6 md:gap-y-10 text-center md:text-left min-h-full mt-72 sm:pt-20">
           

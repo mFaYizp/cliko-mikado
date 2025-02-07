@@ -91,7 +91,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center">
-          <Link href="/contact">
+          <Link href="/contact-us">
             <button className="px-3 text-white rounded-full">
               Get in Touch
             </button>
