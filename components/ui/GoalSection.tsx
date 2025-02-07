@@ -3,11 +3,11 @@ import React from "react";
 
 type GoalSectionProps = {
   section: string;
-  title: string;
+ 
   desc: string[];
 };
 
-const GoalSection: React.FC<GoalSectionProps> = ({ section, title, desc }) => {
+const GoalSection: React.FC<GoalSectionProps> = ({ section, desc }) => {
   return (
     <div className=" text-white px-8 md:px-20 py-16 md:py-32">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -22,7 +22,6 @@ const GoalSection: React.FC<GoalSectionProps> = ({ section, title, desc }) => {
 
         {/* Right Side Content */}
         <div className="md:col-span-2 space-y-6">
-          <h3 className="text-2xl font-medium">{title}</h3>
           {desc.map((paragraph, index) => (
             <p key={index} className="text-lg leading-relaxed">
               {paragraph}

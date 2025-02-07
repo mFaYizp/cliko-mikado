@@ -11,9 +11,8 @@ import { FloatingDock } from "./ui/floating-dock";
 const LINKS = [
   { name: "Home", link: "/" },
   { name: "About Us", link: "/about-us" },
-  { name: "Portfolio", link: "/portfolio" },
-  { name: "Services", link: "/services" },
-  { name: "Contact", link: "/contact" },
+  { name: "Portfolio", link: "/portfolio/grid" },
+  { name: "Contact", link: "/contact-us" },
 ];
 
 export const SOCIAL_LINKS = [
@@ -126,7 +125,7 @@ const Footer = () => {
             <div className="w-fit flex flex-col items-center md:items-start gap-4 sm:gap-6">
               <h4 className="text-sm sm:text-md text-[#777373]">Email:</h4>
               <p>
-                <Link href="mailto:info@example.com">info@example.com</Link>
+                <Link href="mailto:info@example.com">info@mikado.biz</Link>
               </p>
               <h4 className="text-sm sm:text-md text-[#777373]">Mobile No:</h4>
               <p>+91 8197278080</p>

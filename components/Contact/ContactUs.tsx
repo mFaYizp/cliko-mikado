@@ -1,13 +1,12 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { FloatingDock } from '../ui/floating-dock';
-import { FaFacebookF } from 'react-icons/fa';
-import { PiInstagramLogoBold } from 'react-icons/pi';
-import { BsTwitterX } from 'react-icons/bs';
-import { TfiLinkedin } from 'react-icons/tfi';
-import { SOCIAL_LINKS } from '../Footer';
+import { FloatingDock } from "../ui/floating-dock";
+import { FaFacebookF } from "react-icons/fa";
+import { PiInstagramLogoBold } from "react-icons/pi";
+import { BsTwitterX } from "react-icons/bs";
+import { TfiLinkedin } from "react-icons/tfi";
+import { SOCIAL_LINKS } from "../Footer";
 import { Button } from "../ui/button";
-
 
 const socialLinks = [
   {
@@ -28,34 +27,34 @@ const socialLinks = [
   },
 ];
 
-  const ContactPage= () =>
-  {
+const ContactPage = () => {
   return (
     <div className="min-h-screen text-white p-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left Section */}
         <div className="pl-24">
-  <h2 className="text-4xl font-bold mb-5 pl-4">Get in Touch</h2>
-  <h3 className="text-5xl font-bold mb-8 pl-4">Drop Us A Line</h3>
-  <div className="space-y-5">
-    <p className="flex items-center pl-4">
-    949,28th main, 100 feet<br/>
-ring rd, Marenahalli,<br/>
-Jayanagara 9th block,<br/>
-Bengaluru
-    </p>
-    <p className="flex items-center pl-4">
-    +91 8197278080
-    </p>
-    <p className="flex items-center pl-4">
-       info@mikado.com
-    </p>
-    <div className="relative left-0 top-8">
-    <FloatingDock items={SOCIAL_LINKS} desktopClassName="flex  gap-1" />
-  </div>
-  </div>
-</div>
-
+          <h2 className="text-4xl font-bold mb-5 pl-4">Get in Touch</h2>
+          <h3 className="text-5xl font-bold mb-8 pl-4">Drop Us A Line</h3>
+          <div className="space-y-5">
+            <p className="flex items-center pl-4">
+              949,28th main, 100 feet
+              <br />
+              ring rd, Marenahalli,
+              <br />
+              Jayanagara 9th block,
+              <br />
+              Bengaluru
+            </p>
+            <p className="flex items-center pl-4">+91 8197278080</p>
+            <p className="flex items-center pl-4">info@mikado.biz</p>
+            <div className="relative left-0 top-8">
+              <FloatingDock
+                items={SOCIAL_LINKS}
+                desktopClassName="flex  gap-1"
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Right Section (Form) */}
         <form className="space-y-5">
@@ -69,7 +68,9 @@ Bengaluru
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Email address *</label>
+              <label className="block text-sm font-medium mb-1">
+                Email address *
+              </label>
               <input
                 type="email"
                 className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none"
@@ -86,7 +87,9 @@ Bengaluru
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Select an option *</label>
+            <label className="block text-sm font-medium mb-1">
+              Select an option *
+            </label>
             <select
               className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none"
               required
@@ -101,7 +104,7 @@ Bengaluru
             <label className="block text-sm font-medium mb-1">Message *</label>
             <textarea
               rows={5}
-              className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none"
+              className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none resize-none"
               required
             ></textarea>
           </div>
@@ -110,7 +113,7 @@ Bengaluru
           </div>
           <Button
             type="submit"
-            className="px-8 py-3 bg-transparent border-2 border-gray-500 text-white rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400"
+            className="font-normal text-[0.75rem] md:text-[1rem]  md:px-10 md:py-6 flex items-center space-x-1 border rounded-none hover:text-black hover:bg-white"
           >
             Send Message
           </Button>
@@ -118,5 +121,5 @@ Bengaluru
       </div>
     </div>
   );
-}
+};
 export default ContactPage;

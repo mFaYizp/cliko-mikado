@@ -218,19 +218,22 @@ const MenuBar = ({
   return (
     <div className="w-full h-full">
       {isMenuOpen && (
-        <motion.div
-          ref={menuRef}
-          className="fixed top-0 left-0 h-full md:h-[90vh] xl:h-3/4 w-full bg-[#101010] text-white z-50"
-          variants={menuVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        >
-          <motion.nav
-            variants={childVariants}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="flex flex-row justify-between items-center px-6 py-5 md:px-7 md:py-3 bg-[#101010] text-[#f2f2f2]"
-          >
+       <motion.div
+       ref={menuRef}
+       className="fixed top-0 left-0 h-full md:h-[90vh] xl:h-3/4 w-full bg-black/70  backdrop-blur-lg border border-white/10 rounded-xl text-white z-50 shadow-lg"
+       variants={menuVariants}
+       initial="initial"
+       animate="animate"
+       exit="exit"
+     >
+     
+        
+     <motion.nav
+  variants={childVariants}
+  transition={{ delay: 0.2, duration: 0.5 }}
+  className="flex flex-row justify-between items-center px-6 py-5 md:px-7 md:py-3 text-[#f2f2f2] bg-black/70 backdrop-blur-lg  shadow-lg"
+>
+
             <Link href={"/"}>
               <Image
                 src="/logo.png"

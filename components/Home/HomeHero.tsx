@@ -258,10 +258,10 @@ const HomeHero = (props: Props) => {
                   clipPath: "inset(0 0 0 0)", // Fully reveal the text from top to bottom
                   filter: "brightness(1)",
                   transition: {
-                    duration: 0.7,
+                    duration: 0.2,
                     ease: [0.22, 1, 0.36, 1],
                     clipPath: {
-                      duration: 0.7,
+                      duration: 0.2,
                       ease: [0.22, 1, 0.36, 1],
                     },
                   },
@@ -271,10 +271,10 @@ const HomeHero = (props: Props) => {
                   clipPath: "inset(0 0 100% 0)", // Hide from top to bottom
                   filter: "brightness(2)",
                   transition: {
-                    duration: 0.5,
+                    duration: 0.2,
                     ease: [0.22, 1, 0.36, 1],
                     clipPath: {
-                      duration: 0.5,
+                      duration: 0.2,
                       ease: [0.22, 1, 0.36, 1],
                     },
                   },
@@ -298,8 +298,9 @@ const HomeHero = (props: Props) => {
               position: "absolute",
               top: positions[index]?.top,
               left: positions[index]?.left,
+          
             }}
-            className="transition-all duration-500 hover:scale-110 hover:z-10"
+            className="transition-all duration-500 hover:scale-110 hover:z-10 opacity-[0.5]"
           >
               <Image
                 src={item.image}
