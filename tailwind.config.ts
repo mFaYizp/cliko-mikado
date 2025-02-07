@@ -26,6 +26,9 @@ const config: Config = {
 				xl: "5rem",
 			},
 		},
+		screens: {
+			xs: "480px",
+		},
 		fontFamily: {
             gilroy: ["var(--font-gilroy)"],
         },
