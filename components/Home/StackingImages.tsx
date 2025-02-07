@@ -138,7 +138,7 @@ const Card: React.FC<CardComponentProps> = ({
   const translateX = index % 2 === 0 ? "0" : "12%";
   return (
     <section
-      className="w-full h-full sticky top-[20%] flex items-center justify-center"
+      className="w-full h-full sticky top-[15%] flex items-center justify-center"
       key={index}
     >
       <motion.div
@@ -157,7 +157,7 @@ const Card: React.FC<CardComponentProps> = ({
             alt={card.alt}
             width={600}
             height={600}
-            className={`aspect-square object-contain `}
+            className={` lg:aspect-square object-contain `}
           />
         </div>
       </motion.div>
