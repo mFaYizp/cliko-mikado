@@ -15,16 +15,16 @@ const PortfolioGrid = () => {
     <ParallaxProvider>
       <section className="w-full h-full py-20">
         <div className="w-full container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-20 gap-x-5">
             {PortfolioData.map((item, index) => (
               <div
                 key={item.id}
-                className={`w-full h-full flex items-center justify-center`}
+                className={`w-full h-fit flex items-center justify-center`}
               >
                 {shouldParallax(index) ? (
                   <Parallax
-                    speed={10}
-                    className="w-full h-full flex items-center justify-center"
+                    speed={8}
+                    className="w-full h-fit flex items-center justify-center overflow-hidden"
                   >
                     <Link
                       href={item.href}

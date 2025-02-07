@@ -47,14 +47,14 @@ const PortfolioData = [
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/chicken-3.jpg",
     href: "/portfolio/6",
   },
-  {
-    id: 7,
-    title: "Portfolio 7",
-    type: "Fashion",
-    image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/charcol.png",
-    href: "/portfolio/7",
-  },
+  // {
+  //   id: 7,
+  //   title: "Portfolio 7",
+  //   type: "Fashion",
+  //   image:
+  //     "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/charcol.png",
+  //   href: "/portfolio/7",
+  // },
 ];
 
 export default PortfolioData;
