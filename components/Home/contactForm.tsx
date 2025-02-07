@@ -60,7 +60,7 @@ const ContactForm = () => {
 
                 {/* Submit Button */}
                 <div className="flex justify-center sm:justify-end">
-                    <button className="bg-black text-white py-2 px-6 sm:px-8 border border-white rounded hover:bg-gray-800 transition-all duration-300">
+                    <button className="bg-black text-white py-2 px-6 sm:px-8 border border-white rounded-none hover:bg-white hover:text-black transition-all duration-300">
                         Submit
                     </button>
                 </div>
