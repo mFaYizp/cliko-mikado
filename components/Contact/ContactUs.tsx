@@ -30,9 +30,9 @@ const socialLinks = [
 const ContactPage = () => {
   return (
     <div className="min-h-screen text-white p-10">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left Section */}
-        <div className="pl-24">
+        <div>
           <h2 className="text-4xl font-bold mb-5 pl-4">Get in Touch</h2>
           <h3 className="text-5xl font-bold mb-8 pl-4">Drop Us A Line</h3>
           <div className="space-y-5">

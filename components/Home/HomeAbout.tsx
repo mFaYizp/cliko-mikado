@@ -10,7 +10,7 @@ import { motion } from "framer-motion"; // Import Framer Motion
 const HomeAbout = () => {
   return (
     <section className="w-full min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="container mx-auto w-full max-w-[100vw] flex flex-col md:flex-row md:flex-nowrap items-center md:items-start justify-between py-16 md:py-36 gap-y-10 px-4">
+      <div className="container mx-auto w-full flex flex-col md:flex-row md:flex-nowrap items-center md:items-start justify-between py-16 md:py-36 gap-y-10 px-4">
         
         {/* Image Section */}
         <div className="w-full md:w-1/2 flex justify-center md:justify-start pb-10 sm:pb-20 mt-32">
