@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ClikoTextmotion from "../ui/clikoTextmotion";
 import HorizontalScrollCarousel from "../ui/horizontalScroll";
+import { ArrowRightIcon } from "lucide-react";
 
 const IMAGES = [
   {
@@ -16,6 +17,7 @@ const IMAGES = [
     title: "Architect",
     src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/6_Last_section/2.webp",
     alt: "Architectural",
+    portrait: true,
   },
   {
     title: "Fashion",
@@ -26,6 +28,7 @@ const IMAGES = [
     title: "Catalogue",
     src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/6_Last_section/4.webp",
     alt: "Catalogue",
+    portrait: true,
   },
   {
     title: "Lifestyle",
@@ -36,6 +39,7 @@ const IMAGES = [
     title: "Sports",
     src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/6_Last_section/6.webp",
     alt: "Sports",
+    portrait: true,
   },
 ];
 
@@ -53,7 +57,7 @@ const StackingImages = () => {
       </div>
 
       <div className="w-full h-full md:hidden flex">
-        <HorizontalScrollCarousel cards={IMAGES}  />
+        <HorizontalScrollCarousel cards={IMAGES} />
       </div>
     </section>
   );
@@ -63,6 +67,7 @@ interface CardProps {
   src: string;
   alt: string;
   title: string;
+  portrait?: boolean;
 }
 
 interface ParallaxCardsProps {
@@ -98,10 +103,12 @@ const ParallaxCards: React.FC<ParallaxCardsProps> = ({ cards, progress }) => {
 
       {/* Content Container */}
       <div className="relative z-10">
-        <div className="flex w-full mx-auto h-full mb-[50vh] md:mb-[30vh] flex-col mt-20 gap-[50vh]">
+        <div className="flex w-full mx-auto h-full mb-[50vh] md:mb-[30vh] flex-col items-center justify-center mt-20 gap-[50vh]">
           {cards.map((card, index) => {
             const targetScale = 1 - (cards.length - index) * 0.05;
             const range = [index * 0.35, 1];
+            const targetOpacity =
+              (0.9 * (cards.length - 1 - index)) / (cards.length - 1);
 
             return (
               <Card
@@ -111,6 +118,7 @@ const ParallaxCards: React.FC<ParallaxCardsProps> = ({ cards, progress }) => {
                 range={range}
                 targetScale={targetScale}
                 progress={progress}
+                targetOpacity={targetOpacity}
               />
             );
           })}
@@ -126,6 +134,7 @@ interface CardComponentProps {
   progress: any;
   range: Array<number>;
   targetScale: number;
+  targetOpacity: number;
 }
 
 const Card: React.FC<CardComponentProps> = ({
@@ -134,31 +143,51 @@ const Card: React.FC<CardComponentProps> = ({
   progress,
   range,
   targetScale,
+  targetOpacity,
 }) => {
   const translateX = index % 2 === 0 ? "0" : "12%";
+  // const opacity = useTransform(
+  //   progress, 
+  //   range, 
+  //   [0, 1 - (index * 0.2)]
+  // );
   return (
     <section
-      className="w-full h-full sticky top-[15%] flex items-center justify-center"
+      className="w-full h-full sticky top-[25%] flex items-center justify-center"
       key={index}
     >
       <motion.div
-        className="h-full flex items-center justify-center origin-bottom relative"
+        className="h-fit flex flex-col items-center justify-center origin-bottom relative"
         style={{
-          bottom: `calc(-5vh + ${index * 5}px)`,
-          left: `calc(-5vh + ${index * 5}px)`,
+          top: `calc(-5vh + ${index * 5}px)`,
+          right: `calc(-5vh + ${index * 5}px)`,
           transform: `translateX(${translateX})`,
+          // opacity,
         }}
       >
         <div
-          className={`relative flex items-center justify-center w-full h-full`}
+          className={`relative flex flex-col items-center justify-center w-full h-fit ${
+            !card.portrait && "my-[15%]"
+          }`}
         >
           <Image
             src={card.src}
             alt={card.alt}
             width={600}
             height={600}
-            className={` lg:aspect-square object-contain `}
+            className={`object-contain max-h-[600px] w-fit h-fit ${
+              card.portrait && "lg:aspect-square "
+            }`}
           />
+          {!card.portrait && (
+            <Link
+              href={""}
+              className="w-full flex flex-row justify-between items-center bg-black mx-auto py-2"
+            >
+              <h6 className="text-white text-2xl font-bold">{card.title}</h6>
+              <ArrowRightIcon className="text-white text-2xl font-bold" />
+            </Link>
+          )}
         </div>
       </motion.div>
     </section>

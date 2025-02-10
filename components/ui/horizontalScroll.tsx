@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowRightIcon } from "lucide-react";
 
 const HorizontalScrollCarousel = ({ cards }: { cards: CardType[] }) => {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -25,7 +26,7 @@ const HorizontalScrollCarousel = ({ cards }: { cards: CardType[] }) => {
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    isMobile ? ["210%", "-220%"] : ["0.3%", "-100%"]
+    isMobile ? ["230%", "-230%"] : ["0.3%", "-100%"]
   );
 
   return (
@@ -52,7 +53,7 @@ interface CardType {
 const Card = ({ card }: { card: CardType }) => {
   return (
     <section className="w-full h-full flex items-center justify-center px-4">
-      <div className="relative flex items-center justify-center w-full min-w-[80vw] max-w-[80vw] h-full">
+      <div className="relative flex flex-col items-center justify-center w-full min-w-[80vw] max-w-[80vw] h-full">
         <Image
           src={card.src}
           alt={card.alt}
@@ -60,6 +61,13 @@ const Card = ({ card }: { card: CardType }) => {
           height={1200}
           className="w-full h-auto object-contain max-h-[80vh]"
         />
+        <Link
+              href={""}
+              className="w-full flex flex-row justify-between items-center bg-black mx-auto py-2"
+            >
+              <h6 className="text-white text-2xl font-bold">{card.title}</h6>
+              <ArrowRightIcon className="text-white text-2xl font-bold" />
+            </Link>
       </div>
     </section>
   );
