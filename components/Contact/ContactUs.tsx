@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { FloatingDock } from "../ui/floating-dock";
 import { FaFacebookF } from "react-icons/fa";
 import { PiInstagramLogoBold } from "react-icons/pi";
@@ -11,19 +11,19 @@ import { Button } from "../ui/button";
 const socialLinks = [
   {
     href: "https://facebook.com",
-    icon: <FaFacebookF className="text-xl text-gray-400" />,
+    icon: <FaFacebookF className="text-xl" />,
   },
   {
     href: "https://instagram.com",
-    icon: <PiInstagramLogoBold className="text-xl text-gray-400" />,
+    icon: <PiInstagramLogoBold className="text-xl" />,
   },
   {
     href: "https://twitter.com",
-    icon: <BsTwitterX className="text-xl text-gray-400" />,
+    icon: <BsTwitterX className="text-xl " />,
   },
   {
     href: "https://linkedin.com",
-    icon: <TfiLinkedin className="text-xl text-gray-400" />,
+    icon: <TfiLinkedin className="text-xl" />,
   },
 ];
 
@@ -50,7 +50,7 @@ const ContactPage = () => {
             <div className="relative left-0 top-8">
               <FloatingDock
                 items={SOCIAL_LINKS}
-                desktopClassName="flex  gap-1"
+                desktopClassName="flex gap-1"
               />
             </div>
           </div>
@@ -63,7 +63,7 @@ const ContactPage = () => {
               <label className="block text-sm font-medium mb-1">Name *</label>
               <input
                 type="text"
-                className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none "
+                className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none"
                 required
               />
             </div>
@@ -113,7 +113,7 @@ const ContactPage = () => {
           </div>
           <Button
             type="submit"
-            className="font-normal text-[0.75rem] md:text-[1rem]  md:px-10 md:py-6 flex items-center space-x-1 border rounded-none hover:text-black hover:bg-white"
+            className="font-normal text-[0.75rem] md:text-[1rem] md:px-10 md:py-6 flex items-center space-x-1 border rounded-none hover:text-black hover:bg-white"
           >
             Send Message
           </Button>
@@ -122,4 +122,5 @@ const ContactPage = () => {
     </div>
   );
 };
+
 export default ContactPage;
