@@ -96,7 +96,7 @@
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
         className={cn(
-          "mx-auto hidden md:flex h-16 gap-[4px] items-end bg-black-50 dark:bg-neutral-900 px-4 pb-3",
+          "mx-auto hidden md:flex h-16 gap-[4px] items-end bg-black-50 px-4 pb-3",
           className
         )}
         // style={{
@@ -138,8 +138,8 @@
       return val - bounds.x - bounds.width / 2;
     });
 
-    let widthTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
-    let heightTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+    let widthTransform = useTransform(distance, [-140, 0, 150], [35, 80, 35]);
+    let heightTransform = useTransform(distance, [-150, 0, 150], [35, 80, 35]);
 
     let width = useSpring(widthTransform, {
       mass: 0.1,
@@ -161,7 +161,7 @@
           style={{ width, height }}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          className="aspect-square bg-[#3F3F3F] dark:bg-neutral-800 flex items-center justify-center relative"
+          className="aspect-square bg-[#3F3F3F] flex items-center justify-center relative"
         >
           <AnimatePresence>
             {hovered && (
@@ -169,7 +169,7 @@
                 initial={{ opacity: 0, y: 10, x: "-50%" }}
                 animate={{ opacity: 1, y: 0, x: "-50%" }}
                 exit={{ opacity: 0, y: 2, x: "-50%" }}
-                className="px-2 py-0.5 whitespace-pre rounded-md bg-black-100 dark:bg-neutral-800 dark:text-white text-white-700 absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-xs "
+                className="px-2 py-0.5 whitespace-pre rounded-md bg-black-100 text-white-700 absolute left-1/2 -translate-x-1/2 -top-8 w-fit text-xs"
               >
                 {title}
               </motion.div>

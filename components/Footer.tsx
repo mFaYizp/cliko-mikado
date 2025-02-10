@@ -18,22 +18,22 @@ const LINKS = [
 export const SOCIAL_LINKS = [
   {
     title: "Facebook",
-    icon: <FaFacebookF className="text-xl text-gray-400" />,
+    icon: <FaFacebookF className="text-xl text-white" />,
     href: "https://www.facebook.com/mikado.biz",
   },
   {
     title: "Instagram",
-    icon: <PiInstagramLogoBold className="text-xl text-gray-400" />,
+    icon: <PiInstagramLogoBold className="text-xl text-white" />,
     href: "https://www.instagram.com/mikado.biz",
   },
   {
     title: "Twitter",
-    icon: <BsTwitterX className="text-xl text-gray-400" />,
+    icon: <BsTwitterX className="text-xl text-white" />,
     href: "https://twitter.com/design_mikado",
   },
   {
     title: "LinkedIn",
-    icon: <TfiLinkedin className="text-xl text-gray-400" />,
+    icon: <TfiLinkedin className="text-xl text-white" />,
     href: "https://www.linkedin.com/company/mikado-design-studio/",
   },
 ];

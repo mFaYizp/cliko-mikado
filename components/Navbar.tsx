@@ -17,24 +17,6 @@ import { SOCIAL_LINKS } from "./Footer";
 import { FloatingDock } from "./ui/floating-dock";
 import { useMenu } from "@/contexts/MenuContext";
 
-const socialLinks = [
-  {
-    href: "https://facebook.com",
-    icon: <FaFacebookF className="text-xl text-gray-400" />,
-  },
-  {
-    href: "https://instagram.com",
-    icon: <PiInstagramLogoBold className="text-xl text-gray-400" />,
-  },
-  {
-    href: "https://twitter.com",
-    icon: <BsTwitterX className="text-xl text-gray-400" />,
-  },
-  {
-    href: "https://linkedin.com",
-    icon: <TfiLinkedin className="text-xl text-gray-400" />,
-  },
-];
 
 const Navbar = () => {
   const { scrollY } = useScroll();
@@ -85,9 +67,9 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="hidden md:flex space-x-8">
-          <Link href="/" onClick={toggleMenu}>
+          <div onClick={toggleMenu} className="cursor-pointer">
             Menu
-          </Link>
+          </div>
         </div>
 
         <div className="hidden md:flex items-center">
@@ -251,9 +233,9 @@ const MenuBar = ({
             </div>
 
             <div className="hidden md:flex space-x-8">
-              <Link href="/" onClick={toggleMenu}>
+              <div onClick={toggleMenu} className="cursor-pointer">
                 Close
-              </Link>
+              </div>
             </div>
 
             <div className="hidden md:flex items-center">

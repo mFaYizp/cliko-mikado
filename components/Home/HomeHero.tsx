@@ -101,7 +101,7 @@ const HomeHero = (props: Props) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentCategory((prev) => (prev + 1) % dynamicTexts.length);
-    }, 4000);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, []);
@@ -260,12 +260,12 @@ const HomeHero = (props: Props) => {
                 key={currentCategory}
                 initial={{
                   opacity: 0,
-                  clipPath: "inset(100% 0 0 0)", // Start from top to bottom
+                  clipPath: "inset(100% 0 0 0)", 
                   filter: "brightness(2)",
                 }}
                 animate={{
                   opacity: 1,
-                  clipPath: "inset(0 0 0 0)", // Fully reveal the text from top to bottom
+                  clipPath: "inset(0 0 0 0)", 
                   filter: "brightness(1)",
                   transition: {
                     duration: 0.2,
@@ -278,7 +278,7 @@ const HomeHero = (props: Props) => {
                 }}
                 exit={{
                   opacity: 0,
-                  clipPath: "inset(0 0 100% 0)", // Hide from top to bottom
+                  clipPath: "inset(0 0 100% 0)", 
                   filter: "brightness(2)",
                   transition: {
                     duration: 0.2,
