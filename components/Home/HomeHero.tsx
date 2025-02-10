@@ -226,18 +226,67 @@ const HomeHero = (props: Props) => {
 
     generateRandomPositions();
   }, []);
-
+  const letterAnimation = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 3,
+        delay: i * 0.05,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    }),
+  };
+  
+  
   return (
     <section className="w-full h-lvh relative flex items-center justify-center overflow-hidden my-4 py-4">
       <div className="inset-0 flex flex-col gap-y-5 items-center justify-center w-auto h-auto z-10">
-        <motion.h1
-          className="text-[3.6rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[9rem] leading-tight font-extrabold text-white text-center"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }} // Increased duration for a slower transition
-        >
-          Bring your <br /> Brand to Life
-        </motion.h1>
+      <motion.h1 className="text-[3.6rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[9rem] leading-tight font-extrabold text-white text-center">
+  {/* First Line: "Bring your" */}
+  <div className="flex flex-wrap justify-center">
+    {"Bring your".split("").map((letter, i) => (
+      <motion.span
+        key={`first-line-${i}`}
+        custom={i}
+        variants={letterAnimation}
+        initial="hidden"
+        animate="visible"
+        className={`inline-block ${letter === " " ? "w-2" : ""}`}
+      >
+        {letter}
+      </motion.span>
+    ))}
+  </div>
+
+  {/* Second Line: "Brand to Life" (starts animating after the first line finishes) */}
+  <motion.div
+    className="flex flex-wrap justify-center"
+    initial="hidden"
+    animate="visible"
+    variants={{
+      visible: {
+        transition: {
+          delayChildren: 1.5, 
+          staggerChildren: 0.05,
+        },
+      },
+    }}
+  >
+    {"Brand to Life".split("").map((letter, i) => (
+      <motion.span
+        key={`second-line-${i}`}
+        custom={i}
+        variants={letterAnimation}
+        className={`inline-block ${letter === " " ? "w-2" : ""}`}
+      >
+        {letter}
+      </motion.span>
+    ))}
+  </motion.div>
+</motion.h1>
+
 
         <motion.p
           className="text-[1rem] text-center text-white font-light flex flex-row gap-x-5 items-center justify-center whitespace-nowrap"
