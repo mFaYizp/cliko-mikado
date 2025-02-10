@@ -2,6 +2,7 @@
 import React from "react";
 import GoalSection from "@/components/ui/GoalSection";
 
+
 const AboutStory = () => {
   return (
     <GoalSection

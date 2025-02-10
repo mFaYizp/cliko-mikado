@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { FloatingDock } from "../ui/floating-dock";
 import { FaFacebookF } from "react-icons/fa";
 import { PiInstagramLogoBold } from "react-icons/pi";
@@ -7,37 +7,30 @@ import { BsTwitterX } from "react-icons/bs";
 import { TfiLinkedin } from "react-icons/tfi";
 import { SOCIAL_LINKS } from "../Footer";
 import { Button } from "../ui/button";
-
-const socialLinks = [
-  {
-    href: "https://facebook.com",
-    icon: <FaFacebookF className="text-xl" />,
-  },
-  {
-    href: "https://instagram.com",
-    icon: <PiInstagramLogoBold className="text-xl" />,
-  },
-  {
-    href: "https://twitter.com",
-    icon: <BsTwitterX className="text-xl " />,
-  },
-  {
-    href: "https://linkedin.com",
-    icon: <TfiLinkedin className="text-xl" />,
-  },
-];
+import { motion, useInView } from "framer-motion";
 
 const ContactPage = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true }); // Animates only once when it enters the viewport
+
   return (
     <div className="min-h-screen text-white p-10">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left Section */}
-        <div className="pl-24">
+        <div>
           <h2 className="text-4xl font-bold mb-5 pl-4">Get in Touch</h2>
-          <h3 className="text-5xl font-bold mb-8 pl-4">Drop Us A Line</h3>
+          <motion.h3
+            ref={ref}
+            className="text-5xl font-bold mb-8 pl-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            Drop Us A Line
+          </motion.h3>
           <div className="space-y-5">
             <p className="flex items-center pl-4">
-              949,28th main, 100 feet
+              949, 28th main, 100 feet
               <br />
               ring rd, Marenahalli,
               <br />
@@ -48,10 +41,7 @@ const ContactPage = () => {
             <p className="flex items-center pl-4">+91 8197278080</p>
             <p className="flex items-center pl-4">info@mikado.biz</p>
             <div className="relative left-0 top-8">
-              <FloatingDock
-                items={SOCIAL_LINKS}
-                desktopClassName="flex gap-1"
-              />
+              <FloatingDock items={SOCIAL_LINKS} desktopClassName="flex gap-1" />
             </div>
           </div>
         </div>
@@ -104,7 +94,7 @@ const ContactPage = () => {
             <label className="block text-sm font-medium mb-1">Message *</label>
             <textarea
               rows={5}
-              className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none resize-none"
+              className="w-full p-3 bg-transparent pb-0 border-b-2 border-gray-700 rounded-none  pfocus:outline-none resize-none"
               required
             ></textarea>
           </div>

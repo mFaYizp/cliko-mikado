@@ -14,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // Preloader visible for 2 seconds
+    }, 1000); // Preloader visible for 2 seconds
 
     return () => clearTimeout(timer);
   }, []);
