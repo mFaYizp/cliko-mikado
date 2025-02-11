@@ -43,6 +43,7 @@ const Hero = ({ title }: Props) => {
               alt="Hero"
               width={350}
               height={350}
+              priority
               className="w-[200px] sm:w-[250px] md:w-[350px] object-contain opacity-[0.5]"
               sizes="(max-width: 768px) 300px, (max-width: 1200px) 350px, 400px"
             />
