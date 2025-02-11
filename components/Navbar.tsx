@@ -202,7 +202,7 @@ const MenuBar = ({
       {isMenuOpen && (
         <motion.div
           ref={menuRef}
-          className="fixed top-0 left-0 h-full md:h-[90vh] xl:h-3/4 w-full bg-black/70  backdrop-blur-lg border border-white/10 rounded-xl text-white z-50 shadow-lg"
+          className="fixed top-0 left-0 h-full md:h-[90vh] xl:h-3/4 w-full bg-black/70  backdrop-blur-xl border border-white/10  rounded-xl text-white z-50 shadow-lg"
           variants={menuVariants}
           initial="initial"
           animate="animate"

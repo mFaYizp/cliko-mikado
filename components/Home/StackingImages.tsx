@@ -14,8 +14,8 @@ const IMAGES = [
     alt: "Product",
   },
   {
-    title: "Architect",
-    src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/6_Last_section/2.webp",
+    title: "Short Story",
+    src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/6_Last_section/Short%20story.webp",
     alt: "Architectural",
     portrait: true,
   },
@@ -26,7 +26,7 @@ const IMAGES = [
   },
   {
     title: "Catalogue",
-    src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/6_Last_section/4.webp",
+    src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/6_Last_section/Kingfisher.webp",
     alt: "Catalogue",
     portrait: true,
   },
@@ -37,7 +37,7 @@ const IMAGES = [
   },
   {
     title: "Sports",
-    src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/6_Last_section/6.webp",
+    src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/6_Last_section/Sports.webp",
     alt: "Sports",
     portrait: true,
   },
@@ -145,7 +145,7 @@ const Card: React.FC<CardComponentProps> = ({
   targetScale,
   targetOpacity,
 }) => {
-  const translateX = index % 2 === 0 ? "0" : "12%";
+  const translateX = index % 2 === 0 ? "0" : "20%";
   // const opacity = useTransform(
   //   progress, 
   //   range, 
@@ -153,7 +153,7 @@ const Card: React.FC<CardComponentProps> = ({
   // );
   return (
     <section
-      className="w-full h-full sticky top-[25%] flex items-center justify-center"
+      className="w-full h-full sticky top-[15%] xl:top-[20%] 2xl:top-[25%] flex items-center justify-center"
       key={index}
     >
       <motion.div
@@ -179,15 +179,13 @@ const Card: React.FC<CardComponentProps> = ({
               card.portrait && "lg:aspect-square "
             }`}
           />
-          {!card.portrait && (
             <Link
               href={""}
-              className="w-full flex flex-row justify-between items-center bg-black mx-auto py-2"
+              className={`flex flex-row justify-between items-center bg-[#101010] p-2 ${card.portrait ? "w-[64%]" : "w-full"}`}
             >
               <h6 className="text-white text-2xl font-bold">{card.title}</h6>
               <ArrowRightIcon className="text-white text-2xl font-bold" />
             </Link>
-          )}
         </div>
       </motion.div>
     </section>
