@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import {motion} from 'framer-motion';
+import { motion } from "framer-motion";
 
 const ContactForm = () => {
   const [name, setName] = useState("");
@@ -93,7 +93,7 @@ const ContactForm = () => {
           placeholder="Spill the ink of your mind right here..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="bg-transparent border-b-2 border-gray-500 text-white font-thin outline-none w-full h-24 sm:h-32 mb-6 placeholder-gray-600 resize-none"
+          className="bg-transparent border-b-2 border-gray-500 text-white font-thin outline-none w-full h-30 sm:h-46 mb-6 placeholder-gray-600 resize-none leading-none pb-1"
         />
 
         {/* Submit Button */}
@@ -101,7 +101,7 @@ const ContactForm = () => {
           <button className="bg-black text-white py-2 px-6 sm:px-8 border border-white rounded-none hover:bg-white hover:text-black transition-all duration-300">
             Submit
           </button>
-        </div>
+        </div>  
       </div>
     </section>
   );

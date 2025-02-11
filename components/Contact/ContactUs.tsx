@@ -11,11 +11,11 @@ import { motion, useInView } from "framer-motion";
 
 const ContactPage = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true }); // Animates only once when it enters the viewport
+  const isInView = useInView(ref, { once: true }); 
 
   return (
     <div className="min-h-screen text-white p-10">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Left Section */}
         <div>
           <h2 className="text-4xl font-bold mb-5 pl-4">Get in Touch</h2>
@@ -81,7 +81,7 @@ const ContactPage = () => {
               Select an option *
             </label>
             <select
-              className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none"
+              className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none text-gray-400 text-sm"
               required
             >
               <option>Please choose an option</option>
@@ -93,7 +93,7 @@ const ContactPage = () => {
           <div>
             <label className="block text-sm font-medium mb-1">Message *</label>
             <textarea
-              rows={5}
+              rows={2}
               className="w-full p-3 bg-transparent pb-0 border-b-2 border-gray-700 rounded-none  pfocus:outline-none resize-none"
               required
             ></textarea>
