@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
 import ImageEffect from "../ui/ImageEffect";
 import { Parallax, ParallaxProvider } from "react-scroll-parallax";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 
 const HomeAbout = () => {
   return (
@@ -25,14 +25,15 @@ const HomeAbout = () => {
             </Parallax>
           </ParallaxProvider>
         </div>
+
         {/* Text Section */}
-        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center gap-y-6  md:gap-y-10 text-center md:text-left min-h-full mt-16 sm:mt-72 sm:pt-20">
+        <div className="w-full md:w-1/2 flex flex-col items-start sm:items-center md:items-start justify-center gap-y-6 md:gap-y-10 text-left sm:text-center md:text-left min-h-full mt-16 sm:mt-72 sm:pt-20">
           {/* Animated Text */}
           <motion.p
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            viewport={{ once: true, amount: 0.2 }} // Animation triggers when 20% of the element is visible
+            viewport={{ once: true, amount: 0.2 }}
             className="text-[#CCCCCC] font-light text-[1.25rem] md:text-[1.75rem] max-w-[35ch]"
           >
             At <span className="text-white font-normal">Cliko</span>, we
@@ -46,8 +47,8 @@ const HomeAbout = () => {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1, delay: 0.1 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <Button className="font-normal text-[1.25rem] md:text-[1.75rem] px-8 py-4 md:px-10 md:py-6 flex items-center space-x-2 border rounded-none hover:text-black hover:bg-white">
               Studio <ChevronRight className="min-w-6 min-h-8" />
@@ -60,3 +61,4 @@ const HomeAbout = () => {
 };
 
 export default HomeAbout;
+  

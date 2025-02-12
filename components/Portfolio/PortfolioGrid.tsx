@@ -5,6 +5,7 @@ import React from "react";
 import PortfolioData from "./portfolioData";
 import { Parallax, ParallaxProvider } from "react-scroll-parallax";
 import Link from "next/link";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 const PortfolioGrid = () => {
   const shouldParallax = (index: number) => {
@@ -31,7 +32,6 @@ const PortfolioGrid = () => {
                       className="flex flex-row items-center justify-between gap-10"
                     >
                       {shouldParallax(firstIndex) ? (
-                        // First item with parallax
                         <Parallax speed={8} className="flex-1">
                           <Link
                             href={PortfolioData[firstIndex].href}
@@ -54,17 +54,16 @@ const PortfolioGrid = () => {
                           </Link>
                         </Parallax>
                       ) : (
-                        // First item without parallax
                         <Link
                           href={PortfolioData[firstIndex].href}
                           className="w-[55%] h-[450px] relative group overflow-hidden rounded-lg"
                         >
-                            <Image
-                              src={PortfolioData[firstIndex].image}
-                              alt={PortfolioData[firstIndex].title}
-                              fill
-                              className="object-cover"
-                            />
+                          <Image
+                            src={PortfolioData[firstIndex].image}
+                            alt={PortfolioData[firstIndex].title}
+                            fill
+                            className="object-cover"
+                          />
                           <div className="absolute top-[75%] left-10 w-full h-full text-white">
                             <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                               {PortfolioData[firstIndex].title}
@@ -78,8 +77,7 @@ const PortfolioGrid = () => {
 
                       {PortfolioData[secondIndex] &&
                         (shouldParallax(secondIndex) ? (
-                          // Second item with parallax
-                          <Parallax speed={8} className="flex-1 ">
+                          <Parallax speed={8} className="flex-1">
                             <Link
                               href={PortfolioData[secondIndex].href}
                               className="block h-[450px] relative group overflow-hidden rounded-lg ml-[15%]"
@@ -101,7 +99,6 @@ const PortfolioGrid = () => {
                             </Link>
                           </Parallax>
                         ) : (
-                          // Second item without parallax
                           <Link
                             href={PortfolioData[secondIndex].href}
                             className="w-[55%] h-[450px] relative group overflow-hidden rounded-lg"
@@ -128,29 +125,34 @@ const PortfolioGrid = () => {
               )}
             </div>
 
-            {/* Mobile Layout */}
+            {/* Mobile Layout with Animation */}
             <div className="flex md:hidden flex-col gap-10">
-              {PortfolioData.map((item) => (
-                <Link
+              {PortfolioData.map((item, index) => (
+                <motion.div
                   key={item.id}
-                  href={item.href}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  viewport={{ once: true, amount: 0.2 }}
                   className="w-full overflow-hidden rounded-lg h-[350px] relative group"
                 >
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-[75%] left-10 w-full h-full text-white">
-                    <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                      {item.type}
-                    </p>
-                  </div>
-                </Link>
+                  <Link href={item.href} className="block h-full relative">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-[75%] left-10 w-full h-full text-white">
+                      <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                        {item.type}
+                      </p>
+                    </div>
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </div>

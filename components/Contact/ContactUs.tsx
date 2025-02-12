@@ -17,7 +17,7 @@ const ContactPage = () => {
     <section className="h-full text-white">
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-14 md:py-20 xl:py-36">
         {/* Left Section */}
-        <div className="flex flex-col justify-between">
+        <div className="hidden md:block  flex-col justify-between">
           <div className=" flex flex-col">
             <h2 className="text-4xl font-bold mb-5">Get in Touch</h2>
             <motion.h3
@@ -47,7 +47,18 @@ const ContactPage = () => {
             <FloatingDock items={SOCIAL_LINKS} desktopClassName="flex gap-1" />
           </div>
         </div>
-
+        <div className="block md:hidden">
+          <h2 className="text-4xl font-bold mb-5 pl-4">Get in Touch</h2>
+          <motion.h3
+            ref={ref}
+            className="text-5xl font-bold mb-8 pl-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            Drop Us A Line
+          </motion.h3>
+        </div>
         {/* Right Section (Form) */}
         <form className="space-y-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -55,7 +66,7 @@ const ContactPage = () => {
               <label className="block text-sm font-medium mb-1">Name *</label>
               <input
                 type="text"
-                className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none"
+                className="w-full p-3 bg-transparent border-b-2 border-opacity-50 border-gray-700 rounded-none focus:outline-none"
                 required
               />
             </div>
@@ -65,7 +76,7 @@ const ContactPage = () => {
               </label>
               <input
                 type="email"
-                className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none"
+                className="w-full p-3 bg-transparent border-b-2 border-opacity-50 border-gray-700 rounded-none focus:outline-none"
                 required
               />
             </div>
@@ -74,7 +85,7 @@ const ContactPage = () => {
             <label className="block text-sm font-medium mb-1">Subject *</label>
             <input
               type="text"
-              className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none"
+              className="w-full p-3 bg-transparent border-b-2 border-opacity-50 border-gray-700 rounded-none focus:outline-none"
               required
             />
           </div>
@@ -83,7 +94,7 @@ const ContactPage = () => {
               Select an option *
             </label>
             <select
-              className="w-full p-3 bg-transparent border-b-2 border-gray-700 rounded-none focus:outline-none text-gray-400 text-sm"
+              className="w-full p-3 bg-transparent border-b-2 border-opacity-50 border-gray-700 rounded-none focus:outline-none text-gray-400 text-sm"
               required
             >
               <option>Please choose an option</option>
@@ -96,7 +107,7 @@ const ContactPage = () => {
             <label className="block text-sm font-medium mb-1">Message *</label>
             <textarea
               rows={2}
-              className="w-full p-3 bg-transparent pb-0 border-b-2 border-gray-700 rounded-none  pfocus:outline-none resize-none"
+              className="w-full p-3 bg-transparent pb-0 border-b-2 border-opacity-50 border-gray-700 rounded-none  pfocus:outline-none resize-none"
               required
             ></textarea>
           </div>

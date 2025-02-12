@@ -46,7 +46,7 @@ const ImageCarousel: React.FC = () => {
         <Slider {...settings}>
           {images.map((image, index) => (
             <div key={index} className="px-2">
-              <div className="relative h-[400px] overflow-hidden rounded-lg shadow-lg">
+              <div className="relative h-[500px] overflow-hidden rounded-lg shadow-lg">
                 <Image
                   src={image}
                   alt={`Image ${index + 1}`}
