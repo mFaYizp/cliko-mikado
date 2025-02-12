@@ -119,7 +119,7 @@ const PortfolioSection = () => {
   }, [currentIndex]);
 
   return (
-    <section ref={containerRef} className="relative h-screen overflow-hidden">
+    <section ref={containerRef} className="relative h-screen overflow-hidden hidden md:block">
       {/* Custom Cursor */}
       <div ref={cursorRef} className="absolute w-4 h-4 rounded-full pointer-events-none z-50 mix-blend-difference" />
 

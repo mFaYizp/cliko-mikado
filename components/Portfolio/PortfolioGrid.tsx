@@ -35,7 +35,7 @@ const PortfolioGrid = () => {
                         <Parallax speed={8} className="flex-1">
                           <Link
                             href={PortfolioData[firstIndex].href}
-                            className="block h-[450px] relative group overflow-hidden rounded-lg"
+                            className="block h-[450px] relative group overflow-hidden rounded-lg mr-[15%]"
                           >
                             <Image
                               src={PortfolioData[firstIndex].image}
@@ -57,14 +57,14 @@ const PortfolioGrid = () => {
                         // First item without parallax
                         <Link
                           href={PortfolioData[firstIndex].href}
-                          className="w-[60%] h-[450px] relative group overflow-hidden rounded-lg"
+                          className="w-[55%] h-[450px] relative group overflow-hidden rounded-lg"
                         >
-                          <Image
-                            src={PortfolioData[firstIndex].image}
-                            alt={PortfolioData[firstIndex].title}
-                            fill
-                            className="object-cover"
-                          />
+                            <Image
+                              src={PortfolioData[firstIndex].image}
+                              alt={PortfolioData[firstIndex].title}
+                              fill
+                              className="object-cover"
+                            />
                           <div className="absolute top-[75%] left-10 w-full h-full text-white">
                             <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                               {PortfolioData[firstIndex].title}
@@ -79,10 +79,10 @@ const PortfolioGrid = () => {
                       {PortfolioData[secondIndex] &&
                         (shouldParallax(secondIndex) ? (
                           // Second item with parallax
-                          <Parallax speed={8} className="flex-1">
+                          <Parallax speed={8} className="flex-1 ">
                             <Link
                               href={PortfolioData[secondIndex].href}
-                              className="block h-[450px] relative group overflow-hidden rounded-lg"
+                              className="block h-[450px] relative group overflow-hidden rounded-lg ml-[15%]"
                             >
                               <Image
                                 src={PortfolioData[secondIndex].image}
@@ -104,7 +104,7 @@ const PortfolioGrid = () => {
                           // Second item without parallax
                           <Link
                             href={PortfolioData[secondIndex].href}
-                            className="w-[60%] h-[450px] relative group overflow-hidden rounded-lg"
+                            className="w-[55%] h-[450px] relative group overflow-hidden rounded-lg"
                           >
                             <Image
                               src={PortfolioData[secondIndex].image}
