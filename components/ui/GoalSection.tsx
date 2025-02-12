@@ -72,7 +72,7 @@ const GoalSection: React.FC<GoalSectionProps> = ({ section, desc }) => {
               whileInView="visible"
               viewport={{ once: true }}
               variants={paragraphAnimation}
-              className="text-lg leading-relaxed"
+              className="text-lg leading-relaxed w-[75%]"
             >
               {paragraph}
             </motion.p>

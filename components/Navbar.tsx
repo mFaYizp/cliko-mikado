@@ -239,7 +239,7 @@ const MenuBar = ({
             </div>
 
             <div className="hidden md:flex items-center">
-              <Link href="/contact">
+              <Link href="/contact-us">
                 <button className="px-6 py-2 text-white rounded-full">
                   Get in Touch
                 </button>
@@ -253,9 +253,9 @@ const MenuBar = ({
             className="flex flex-col md:flex-row items-start justify-between mt-10 gap-y-5"
           >
             <div className="w-full h-full flex flex-col flex-1 justify-between items-start gap-y-4">
-              <div className="flex justify-start items-center w-full md:w-[430px] max-h-[350px] h-auto md:mx-0 md:ml-6 rounded-lg">
+              <div className="flex justify-start items-center w-full xl:max-w-[500px] md:max-w-[430px] xl:max-h-[400px] md:max-h-[360px] max-h-[350px] h-auto md:mx-0 md:ml-6 rounded-lg">
                 <video
-                  className="object-cover h-full w-auto rounded-lg max-h-[270px] aspect-video"
+                  className="object-cover h-full w-full rounded-lg aspect-video"
                   width={530}
                   height={303}
                   src="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.mp4"
@@ -270,7 +270,7 @@ const MenuBar = ({
               <motion.div
                 variants={childVariants}
                 transition={{ delay: 0.4, duration: 0.5 }}
-                className="w-fit hidden md:flex items-start gap-6 justify-start mt-6 ml-6"
+                className="w-fit hidden md:flex items-start gap-6 justify-start mt-6 2xl:mt-8 ml-6"
               >
                 <FloatingDock
                   items={SOCIAL_LINKS}

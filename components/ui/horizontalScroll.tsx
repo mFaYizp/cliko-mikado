@@ -30,10 +30,16 @@ const HorizontalScrollCarousel = ({ cards }: { cards: CardType[] }) => {
   );
 
   return (
-    <section ref={targetRef} className="relative w-full h-full flex items-center justify-center">
+    <section
+      ref={targetRef}
+      className="relative w-full h-full flex items-center justify-center"
+    >
       <div className="relative w-full h-[250vh]">
         <div className="sticky top-[10%] flex h-auto items-center overflow-hidden pb-20">
-          <motion.div style={{ x }} className="flex items-center justify-center gap-4 w-full h-full">
+          <motion.div
+            style={{ x }}
+            className="flex items-center justify-center gap-4 w-full h-full"
+          >
             {cards.map((card, index) => {
               return <Card card={card} key={index} />;
             })}
@@ -62,12 +68,12 @@ const Card = ({ card }: { card: CardType }) => {
           className="w-full h-auto object-contain max-h-[80vh]"
         />
         <Link
-              href={""}
-              className="w-full flex flex-row justify-between items-center bg-black mx-auto py-2"
-            >
-              <h6 className="text-white text-2xl font-bold">{card.title}</h6>
-              <ArrowRightIcon className="text-white text-2xl font-bold" />
-            </Link>
+          href={""}
+          className="w-full flex flex-row justify-between items-center bg-[#101010] mx-auto py-2"
+        >
+          <h6 className="text-white text-2xl font-bold">{card.title}</h6>
+          <ArrowRightIcon className="text-white text-2xl font-bold" />
+        </Link>
       </div>
     </section>
   );
