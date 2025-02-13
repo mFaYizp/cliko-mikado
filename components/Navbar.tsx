@@ -11,8 +11,6 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
-import { PiInstagramLogoBold } from "react-icons/pi";
-import { TfiLinkedin } from "react-icons/tfi";
 import { SOCIAL_LINKS } from "./Footer";
 import { FloatingDock } from "./ui/floating-dock";
 import { useMenu } from "@/contexts/MenuContext";
@@ -128,7 +126,7 @@ const MenuBar = ({
     animate: {
       y: 0,
       transition: {
-        type: "spring",
+        // type: "spring",
         duration: 0.8,
         bounce: 0.2,
         delayChildren: 0.2,
@@ -200,7 +198,6 @@ const MenuBar = ({
     <div className="w-full h-full">
       {isMenuOpen && (
         <motion.div
-          ref={menuRef}
           variants={menuVariants}
           initial="initial"
           animate="animate"
@@ -208,7 +205,8 @@ const MenuBar = ({
           className="fixed top-0 left-0 h-full min-h-svh w-full  backdrop-blur-md"
         >
           <motion.div
-            className="h-full md:h-[90vh] xl:h-3/4 w-full bg-black/70  backdrop-blur-xl border border-white/10  rounded-xl text-white z-50 shadow-lg"
+            ref={menuRef}
+            className="h-full md:h-[90vh] xl:h-3/4 w-full bg-black/70 border border-white/10  rounded-xl text-white z-50 shadow-lg"
             variants={menuVariants}
             initial="initial"
             animate="animate"
@@ -311,7 +309,7 @@ const MenuBar = ({
               <motion.div
                 variants={childVariants}
                 transition={{ delay: 0.4, duration: 0.5 }}
-                className="w-fit flex md:hidden items-start gap-6 justify-start mt-6 ml-6"
+                className="w-fit flex md:hidden items-start gap-6 justify-start mt-6"
               >
                 <FloatingDock
                   items={SOCIAL_LINKS}

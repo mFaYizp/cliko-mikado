@@ -56,7 +56,7 @@ const PortfolioGrid = () => {
                       ) : (
                         <Link
                           href={PortfolioData[firstIndex].href}
-                          className="w-[55%] h-[450px] relative group overflow-hidden rounded-lg"
+                          className="w-[53%] h-[450px] relative group overflow-hidden rounded-lg"
                         >
                           <Image
                             src={PortfolioData[firstIndex].image}
@@ -101,7 +101,7 @@ const PortfolioGrid = () => {
                         ) : (
                           <Link
                             href={PortfolioData[secondIndex].href}
-                            className="w-[55%] h-[450px] relative group overflow-hidden rounded-lg"
+                            className="w-[53%] h-[450px] relative group overflow-hidden rounded-lg"
                           >
                             <Image
                               src={PortfolioData[secondIndex].image}

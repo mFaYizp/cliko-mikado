@@ -96,7 +96,7 @@
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
         className={cn(
-          "mx-auto hidden md:flex h-16 gap-[4px] items-end bg-black-50 px-4 pb-3",
+          "mx-auto hidden md:flex h-16 gap-[4px] items-end bg-black-50 pb-3",
           className
         )}
         // style={{
