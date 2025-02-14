@@ -41,11 +41,15 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`w-full h-20 px-7 pt-5 fixed top-0 left-0 z-50 transition-transform duration-300 ease-in-out ${
+        className={`w-full h-20 px-7 fixed top-0 left-0 z-50 transition-transform duration-300 ease-in-out ${
           isNavbarVisible ? "translate-y-0" : "-translate-y-full"
-        } ${isMenuOpen ? "bg-black/70 backdrop-blur-lg shadow-lg" : "bg-transparent"}`}
+        } ${
+          isMenuOpen
+            ? "bg-black/70 backdrop-blur-lg shadow-lg"
+            : "bg-black/20 backdrop-blur-md shadow-lg"
+        }`}
       >
-        <div className="w-full flex justify-between items-center">
+        <div className="w-full h-full flex justify-between items-center">
           {/* Logo Section */}
           <div className="w-24 h-10 pl-3">
             <Link href="/">
@@ -85,7 +89,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="md:hidden flex items-center ">
+          <div className="md:hidden flex items-center">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={isMenuOpen ? "close-icon" : "menu-icon"}
