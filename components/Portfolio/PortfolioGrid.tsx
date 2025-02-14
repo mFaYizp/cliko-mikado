@@ -32,7 +32,7 @@ const PortfolioGrid = () => {
                       className="flex flex-row items-center justify-between gap-10"
                     >
                       {shouldParallax(firstIndex) ? (
-                        <Parallax speed={8} className="flex-1">
+                        <Parallax speed={6} className="flex-1">
                           <Link
                             href={PortfolioData[firstIndex].href}
                             className="block h-[450px] relative group overflow-hidden rounded-lg mr-[25%]"
@@ -77,7 +77,7 @@ const PortfolioGrid = () => {
 
                       {PortfolioData[secondIndex] &&
                         (shouldParallax(secondIndex) ? (
-                          <Parallax speed={8} className="flex-1">
+                          <Parallax speed={6} className="flex-1">
                             <Link
                               href={PortfolioData[secondIndex].href}
                               className="block h-[450px] relative group overflow-hidden rounded-lg ml-[25%]"
