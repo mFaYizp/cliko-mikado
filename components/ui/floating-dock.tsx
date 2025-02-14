@@ -1,3 +1,4 @@
+  "use client";
   import { cn } from "@/lib/utils";
   import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
   import {
@@ -96,7 +97,7 @@
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
         className={cn(
-          "mx-auto hidden md:flex h-16 gap-[4px] items-end bg-black-50 pb-3",
+          "mx-auto hidden md:flex h-16 gap-[7px] items-end bg-black-50 pb-3",
           className
         )}
         // style={{
@@ -157,13 +158,13 @@
     return (
       <Link href={href}>
         <motion.div
-          ref={ref}
+          ref={ref} 
           style={{ width, height }}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          className="aspect-square bg-[#3F3F3F] flex items-center justify-center relative"
+          className="aspect-square bg-[#222222] flex items-center justify-center relative"
         >
-          <AnimatePresence>
+         {/* <AnimatePresence>
             {hovered && (
               <motion.div
                 initial={{ opacity: 0, y: 10, x: "-50%" }}
@@ -174,7 +175,7 @@
                 {title}
               </motion.div>
             )}
-          </AnimatePresence>
+          </AnimatePresence>*/}
 
           <motion.div
             style={{
