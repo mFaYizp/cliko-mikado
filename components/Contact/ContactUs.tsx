@@ -1,10 +1,6 @@
 "use client";
 import React, { useRef } from "react";
 import { FloatingDock } from "../ui/floating-dock";
-import { FaFacebookF } from "react-icons/fa";
-import { PiInstagramLogoBold } from "react-icons/pi";
-import { BsTwitterX } from "react-icons/bs";
-import { TfiLinkedin } from "react-icons/tfi";
 import { SOCIAL_LINKS } from "../Footer";
 import { Button } from "../ui/button";
 import { motion, useInView } from "framer-motion";
@@ -43,7 +39,7 @@ const ContactPage = () => {
               <p className="flex items-center">info@mikado.biz</p>
             </div>
           </div>
-          <div className="relative bottom-8">
+          <div className="">
             <FloatingDock items={SOCIAL_LINKS} desktopClassName="flex gap-1" />
           </div>
         </div>

@@ -35,7 +35,7 @@ const PortfolioGrid = () => {
                         <Parallax speed={8} className="flex-1">
                           <Link
                             href={PortfolioData[firstIndex].href}
-                            className="block h-[450px] relative group overflow-hidden rounded-lg mr-[15%]"
+                            className="block h-[450px] relative group overflow-hidden rounded-lg mr-[25%]"
                           >
                             <Image
                               src={PortfolioData[firstIndex].image}
@@ -80,7 +80,7 @@ const PortfolioGrid = () => {
                           <Parallax speed={8} className="flex-1">
                             <Link
                               href={PortfolioData[secondIndex].href}
-                              className="block h-[450px] relative group overflow-hidden rounded-lg ml-[15%]"
+                              className="block h-[450px] relative group overflow-hidden rounded-lg ml-[25%]"
                             >
                               <Image
                                 src={PortfolioData[secondIndex].image}
