@@ -5,7 +5,7 @@ import React from 'react'
 const AboutUs = () => {
   return (
     <main className="w-full bg-[#101010]">
-        <Hero title="Contactus" />
+        <Hero title="Contact us" />
         <ContactPage />
     </main>
   )

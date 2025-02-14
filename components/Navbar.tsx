@@ -17,18 +17,21 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      if (currentScrollY < 50) {
+        setIsNavbarVisible(true);
+        return;
+      }
       if (currentScrollY > lastScrollY) {
-        setIsNavbarVisible(false); // Hide on scroll down
+        setIsNavbarVisible(false);
+        setIsMenuOpen(false);
       } else {
-        setIsNavbarVisible(true); // Show on scroll up
+        setIsNavbarVisible(true);
       }
       lastScrollY = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const menuItems = [

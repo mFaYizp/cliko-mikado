@@ -25,11 +25,22 @@ const Hero = ({ title }: Props) => {
   return (
     <section className="w-full h-svh flex items-center justify-center relative">
       <ParallaxProvider>
-        <Parallax translateY={[-10, 10]} speed={10} className="w-full h-full absolute inset-0 z-0">
+        <Parallax
+          translateY={[-10, 10]}
+          speed={10}
+          className="w-full h-full absolute inset-0 z-0"
+        >
           <div className="w-full h-full absolute inset-0 top-0 md:top-5 lg:top-10 flex items-center justify-center opacity-[0.06]">
             <h1 className="text-[4.5rem] sm:text-[7rem] md:text-[8rem] lg:text-[9rem] xl:text-[11rem] leading-tight font-extrabold text-white">
               {[...title].map((letter, i) => (
-                <motion.span key={i} custom={i} variants={letterAnimation} initial="hidden" animate="visible" className="inline-block">
+                <motion.span
+                  key={i}
+                  custom={i}
+                  variants={letterAnimation}
+                  initial="hidden"
+                  animate="visible"
+                  className="inline-block  whitespace-pre-wrap"
+                >
                   {letter}
                 </motion.span>
               ))}
@@ -53,7 +64,14 @@ const Hero = ({ title }: Props) => {
           <div className="w-full h-full flex items-center justify-center flex-col gap-10">
             <h1 className="text-[3.6rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[9rem] leading-tight font-extrabold text-white">
               {[...title].map((letter, i) => (
-                <motion.span key={i} custom={i} variants={letterAnimation} initial="hidden" animate="visible" className="inline-block">
+                <motion.span
+                  key={i}
+                  custom={i}
+                  variants={letterAnimation}
+                  initial="hidden"
+                  animate="visible"
+                  className="inline-block  whitespace-pre-wrap"
+                >
                   {letter}
                 </motion.span>
               ))}
