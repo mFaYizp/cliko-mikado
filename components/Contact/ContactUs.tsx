@@ -17,7 +17,7 @@ const ContactPage = () => {
     <section className="h-full text-white">
       <div className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-14 md:py-20 xl:py-36">
         {/* Left Section */}
-        <div className="hidden md:block  flex-col justify-between">
+        <div className="h-full hidden md:flex flex-col justify-between">
           <div className=" flex flex-col">
             <h2 className="text-4xl font-bold mb-5">Get in Touch</h2>
             <motion.h3
@@ -43,7 +43,7 @@ const ContactPage = () => {
               <p className="flex items-center">info@mikado.biz</p>
             </div>
           </div>
-          <div className="relative right-4 bottom-3">
+          <div className="relative bottom-8">
             <FloatingDock items={SOCIAL_LINKS} desktopClassName="flex gap-1" />
           </div>
         </div>
