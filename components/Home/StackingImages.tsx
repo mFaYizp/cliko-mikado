@@ -153,7 +153,7 @@ const Card: React.FC<CardComponentProps> = ({
   // );
   return (
     <section
-      className="w-full h-full sticky top-[15%] xl:top-[20%] 2xl:top-[25%] flex items-center justify-center"
+      className="w-full h-full sticky top-[15%] xl:top-[17%] 2xl:top-[20%] flex items-center justify-center"
       key={index}
     >
       <motion.div
