@@ -18,7 +18,7 @@ const PortfolioGrid = () => {
         <div className="w-full container mx-auto">
           <div className="flex flex-col gap-20">
             {/* Desktop Layout */}
-            <div className="hidden md:flex flex-col gap-20">
+            <div className="hidden md:flex flex-col gap-20 md:gap-y-36">
               {Array.from({ length: Math.ceil(PortfolioData.length / 2) }).map(
                 (_, rowIndex) => {
                   const firstIndex = rowIndex * 2;
