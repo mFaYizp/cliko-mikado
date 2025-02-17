@@ -4,6 +4,13 @@ import { FloatingDock } from "../ui/floating-dock";
 import { SOCIAL_LINKS } from "../Footer";
 import { Button } from "../ui/button";
 import { motion, useInView } from "framer-motion";
+import {
+  Select,
+  SelectItem,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 const ContactPage = () => {
   const ref = useRef(null);
@@ -89,7 +96,17 @@ const ContactPage = () => {
             <label className="block text-sm font-medium mb-1">
               Select an option *
             </label>
-            <select
+            <Select required>
+              <SelectTrigger>
+                <SelectValue className="text-gray-400" placeholder="Please choose an option" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="General Inquiry">General Inquiry</SelectItem>
+                <SelectItem value="Support">Support</SelectItem>
+                <SelectItem value="Feedback">Feedback</SelectItem>
+              </SelectContent>
+            </Select>
+            {/* <select
               className="w-full p-3 bg-transparent border-b-2 border-opacity-50 border-gray-700 rounded-none focus:outline-none text-gray-400 text-sm"
               required
             >
@@ -97,7 +114,7 @@ const ContactPage = () => {
               <option>General Inquiry</option>
               <option>Support</option>
               <option>Feedback</option>
-            </select>
+            </select> */}
           </div>
           <div>
             <label className="block text-sm font-medium mb-1">Message *</label>
