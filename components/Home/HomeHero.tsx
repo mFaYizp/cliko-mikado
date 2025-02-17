@@ -253,7 +253,7 @@ const HomeHero = (props: Props) => {
         variants={letterAnimation}
         initial="hidden"
         animate="visible"
-        className={`inline-block ${letter === " " ? "w-2" : ""}`}
+        className={`inline-block whitespace-pre-wrap `}
       >
         {letter}
       </motion.span>
@@ -279,7 +279,7 @@ const HomeHero = (props: Props) => {
         key={`second-line-${i}`}
         custom={i}
         variants={letterAnimation}
-        className={`inline-block ${letter === " " ? "w-2" : ""}`}
+        className={`inline-block whitespace-pre-wrap`}
       >
         {letter}
       </motion.span>
