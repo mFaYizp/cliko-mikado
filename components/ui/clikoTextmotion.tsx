@@ -1,94 +1,52 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { Marquee } from "./marquee";
 
 const ClikoTextMotion = () => {
-  const getSpeed = (index: number) => {
-    if (index === 0 || index === 2 || index === 4) {
-      return 20;
-    }
-    return 10;
-  };
-
   const textLines = Array.from({ length: 5 }, (_, index) => ({
     id: index,
-    yOffset: index * 50,
-    speed: getSpeed(index) 
+    reverse: index % 2 === 0,
+    speed: index % 2 === 0 ? 20 : 10
   }));
 
   return (
-    <section className="w-full h-svh relative overflow-hidden">
-      <div className="w-screen h-full absolute flex flex-col inset-0 -rotate-12">
-        {textLines.map(({ id, yOffset, speed }) => (
-          <div key={id} className="relative" style={{ top: `${yOffset}px` }}>
-            <div className="flex relative w-screen">
-              <motion.div
-                initial={{ x: "0%" }}
-                animate={{ x: "-50%" }}
-                transition={{
-                  duration: speed,
-                  repeat: Infinity,
-                  ease: "linear",
-                  repeatType: "loop"
-                }}
-                className="flex whitespace-nowrap"
-              >
-                <motion.div className="flex shrink-0">
-                  <motion.svg
-                    width="100vw"
-                    height="160"
-                    className="shrink-0"
-                    style={{ opacity: 0.5 }}
+    <section className="w-full h-svh relative right-0 flex justify-center items-center overflow-hidden">
+      <div className="w-[120%] h-full absolute flex flex-col justify-evenly -rotate-12">
+        {textLines.map(({ id, reverse, speed }) => (
+          <div key={id} className="w-full flex-none h-[140px] overflow-hidden">
+            <Marquee
+              reverse={reverse}
+              className={`[--duration:20s]`}
+              pauseOnHover={false}
+            >
+              <div className="mx-4">
+                <svg
+                  width="1450"
+                  height="140"
+                  className="shrink-0"
+                  style={{ opacity: 0.9 }}
+                >
+                  <text
+                    x="0"
+                    y="50%"
+                    textAnchor="start"
+                    dominantBaseline="middle"
+                    className="font-extrabold select-none"
+                    stroke="white"
+                    strokeWidth={1}
+                    vectorEffect="non-scaling-stroke"
+                    shapeRendering="geometricPrecision"
+                    paintOrder="stroke fill"
+                    strokeLinejoin="bevel"
+                    strokeLinecap="butt"
+                    fill="#101010"
+                    fontSize="140px"
                   >
-                    <text
-                      x="0"
-                      y="50%"
-                      textAnchor="start"
-                      dominantBaseline="middle"
-                      className="font-extrabold"
-                      stroke="white"
-                      strokeWidth={1.5}
-                      vectorEffect="non-scaling-stroke"
-                      shapeRendering="geometricPrecision"
-                      paintOrder="stroke fill"        
-                      strokeLinejoin="bevel"
-                      strokeLinecap="butt"
-                      fill="#101010"
-                      fontSize="150px"
-                    >
-                      CLIKO PHOTOGRAPHY  CLIKO PHOTOGRAPHY  CLIKO PHOTOGRAPHY
-                    </text>
-                  </motion.svg>
-                </motion.div>
-                <motion.div className="flex shrink-0">
-                  <motion.svg
-                    width="100vw"
-                    height="160"
-                    className="shrink-0"
-                    style={{ opacity: 0.5 }}  
-                  >
-                    <text
-                      x="0"
-                      y="50%"
-                      textAnchor="start"
-                      dominantBaseline="middle"
-                      className="font-extrabold"
-                      stroke="white"
-                      strokeWidth={1.5}
-                      vectorEffect="non-scaling-stroke"
-                      shapeRendering="geometricPrecision"
-                      paintOrder="stroke fill"
-                      strokeLinejoin="bevel"
-                      strokeLinecap="butt"
-                      fill="#101010"
-                      fontSize="150px"
-                    >
-                      CLIKO PHOTOGRAPHY  CLIKO PHOTOGRAPHY  CLIKO PHOTOGRAPHY
-                    </text>
-                  </motion.svg>
-                </motion.div>
-              </motion.div>
-            </div>
+                    CLIKO PHOTOGRAPHY
+                  </text>
+                </svg>
+              </div>
+            </Marquee>
           </div>
         ))}
       </div>
