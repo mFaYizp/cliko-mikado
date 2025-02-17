@@ -22,9 +22,9 @@ const config: Config = {
 				DEFAULT: "1rem",
 				sm: "2rem",
 				md: "2rem",
-				lg: "2rem",
-				xl:"3rem",
-				"2xl": "3rem",
+				lg: "3rem",
+				xl:"4rem",
+				"2xl": "4rem",
 			},
 		},
 		screens: {
