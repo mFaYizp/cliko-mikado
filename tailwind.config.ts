@@ -23,8 +23,8 @@ const config: Config = {
 				sm: "2rem",
 				md: "2rem",
 				lg: "2rem",
-				xl:"1rem",
-				"2xl": "1rem",
+				xl:"3rem",
+				"2xl": "3rem",
 			},
 		},
 		screens: {
