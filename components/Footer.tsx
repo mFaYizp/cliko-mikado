@@ -12,7 +12,7 @@ const LINKS = [
   { name: "Home", link: "/" },
   { name: "About Us", link: "/about-us" },
   { name: "Portfolio", link: "/portfolio/grid" },
-  { name: "Contact", link: "/contact-us" },
+  { name: "Contact Us", link: "/contact-us" },
 ];
 
 export const SOCIAL_LINKS = [

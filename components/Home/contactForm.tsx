@@ -54,7 +54,7 @@ const ContactForm = () => {
         </motion.h3>
 
         {/* Subheading */}
-        <p className="text-left text-gray-600 mb-6 text-sm sm:text-base 2xl:text-lg">
+        <p className="text-left text-gray-600 mb-6 text-lg sm:text-xl 2xl:text-2xl">
           Drop us a line or come grab a coffee, it&apos;s on us, and let&apos;s
           design the extraordinary together.
         </p>
@@ -94,7 +94,7 @@ const ContactForm = () => {
           placeholder="Spill the ink of your mind right here..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="bg-transparent border-b-2 border-opacity-50 border-gray-500 text-white font-thin outline-none w-full h-30 sm:h-46 mb-6 placeholder-gray-600 resize-none leading-none pb-1"
+          className="bg-transparent border-b-2 border-opacity-50 border-gray-500 text-white font-thin outline-none w-full h-30 sm:h-46 mb-6 placeholder-gray-600 placeholder:text-lg sm:placeholder:text-xl resize-none leading-none pb-1"
         />
 
         {/* Submit Button */}
