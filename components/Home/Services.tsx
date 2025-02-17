@@ -59,7 +59,7 @@ const Services = () => {
           ))}
         </motion.div>
 
-        <div className="w-full flex flex-col items-start justify-start gap-y-10">
+        <div className="w-full flex flex-col items-start justify-start gap-y-10 md:gap-y-20">
           {SERVICES.map((item, index) => (
             <div key={index} className="w-full">
               {/* Desktop View */}
