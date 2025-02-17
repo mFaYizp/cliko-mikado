@@ -68,14 +68,14 @@ const Services = () => {
                 onMouseLeave={() => setModal({ active: false, index: null })}
                 className="relative w-full hidden md:flex items-start justify-between font-light group cursor-pointer"
               >
-                <h3 className="text-left text-lg md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-[#666666] group-hover:text-white pt-10">
+                <h3 className="text-left text-lg md:text-4xl lg:text-5xl xl:text-7xl font-semibold text-[#666666] group-hover:text-white pt-10">
                   {item.name}
                 </h3>
                 <motion.div
                   variants={scaleAnimation}
                   initial="initial"
                   animate={modal.active && modal.index === index ? "open" : "closed"}
-                  className="absolute flex items-center justify-center w-[320px] md:right-[25%] lg:right-[15%] top-[50%] z-10"
+                  className="absolute flex items-center justify-center md:w-[250px] lg:w-[300px] xl:w-[320px] md:right-[0%] xl:right-[13%] top-[50%] z-10"
                 >
                   <Image src={item.img} alt={item.name} className="w-full h-auto" height={550} width={550} quality={100} />
                 </motion.div>
