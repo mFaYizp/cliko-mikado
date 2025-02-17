@@ -35,7 +35,7 @@ const PortfolioGrid = () => {
                         <Parallax speed={6} className="flex-1">
                           <Link
                             href={PortfolioData[firstIndex].href}
-                            className="block h-[350px] lg:h-[450px] relative group overflow-hidden rounded-lg mr-[25%]"
+                            className="block h-[350px] 2xl:h-[450px] relative group overflow-hidden rounded-lg mr-[25%]"
                           >
                             <Image
                               src={PortfolioData[firstIndex].image}
@@ -56,7 +56,7 @@ const PortfolioGrid = () => {
                       ) : (
                         <Link
                           href={PortfolioData[firstIndex].href}
-                          className="w-[53%] h-[350px] lg:h-[450px] relative group overflow-hidden rounded-lg"
+                          className="w-[53%] h-[350px] 2xl:h-[450px] relative group overflow-hidden rounded-lg"
                         >
                           <Image
                             src={PortfolioData[firstIndex].image}
@@ -80,7 +80,7 @@ const PortfolioGrid = () => {
                           <Parallax speed={6} className="flex-1">
                             <Link
                               href={PortfolioData[secondIndex].href}
-                              className="block h-[350px] lg:h-[450px] relative group overflow-hidden rounded-lg ml-[25%]"
+                              className="block h-[350px] 2xl:h-[450px] relative group overflow-hidden rounded-lg ml-[25%]"
                             >
                               <Image
                                 src={PortfolioData[secondIndex].image}
@@ -101,7 +101,7 @@ const PortfolioGrid = () => {
                         ) : (
                           <Link
                             href={PortfolioData[secondIndex].href}
-                            className="w-[53%] h-[350px] lg:h-[450px] relative group overflow-hidden rounded-lg"
+                            className="w-[53%] h-[350px] 2xl:h-[450px] relative group overflow-hidden rounded-lg"
                           >
                             <Image
                               src={PortfolioData[secondIndex].image}
