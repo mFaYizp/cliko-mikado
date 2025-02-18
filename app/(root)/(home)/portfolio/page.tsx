@@ -5,7 +5,7 @@ import React from 'react'
 const PortfolioGridPage = () => {
   return (
     <main className="w-full bg-[#101010]">
-        <Hero title="Portfolio" />
+        <Hero title="Portfolio" subtitle='Selected Works'/>
         <PortfolioGrid />
     </main>
   )

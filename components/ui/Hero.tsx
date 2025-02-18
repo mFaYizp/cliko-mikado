@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 type Props = {
   title: string;
+  subtitle: string;
 };
 
 const letterAnimation = {
@@ -21,7 +22,7 @@ const letterAnimation = {
   }),
 };
 
-const Hero = ({ title }: Props) => {
+const Hero = ({ title, subtitle }: Props) => {
   return (
     <section className="w-full h-svh flex items-center justify-center relative">
       <ParallaxProvider>
@@ -76,7 +77,7 @@ const Hero = ({ title }: Props) => {
                 </motion.span>
               ))}
             </h1>
-            <span className="text-white text-xl">Selected Works</span>
+            <span className="text-white text-xl">{subtitle}</span>
           </div>
         </div>
       </ParallaxProvider>

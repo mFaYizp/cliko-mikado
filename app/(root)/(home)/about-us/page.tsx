@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 const AboutUs = () => {
   return (
     <main className="w-full bg-[#101010]">
-        <Hero title="About Us" />
+        <Hero title="About Us" subtitle="Our Journey" />
         <AboutStory/>
         <ImageCarousel/>
     </main>
