@@ -4,12 +4,12 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 
 const SERVICES = [
-  { name: "Product Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp" },
-  { name: "Architectural Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp" },
-  { name: "Lifestyle Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp" },
-  { name: "Catalogue Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp" },
-  { name: "Fashion Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp" },
-  { name: "360 Videography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp" },
+  { name: "Product Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp", mobileImg:"https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp" },
+  { name: "Architectural Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp", mobileImg:"https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp"  },
+  { name: "Lifestyle Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp", mobileImg:"https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp"  },
+  { name: "Catalogue Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp", mobileImg:"https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp"  },
+  { name: "Fashion Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp", mobileImg:"https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp"  },
+  { name: "360 Videography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",mobileImg:"https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp"  },
 ];
 
 const textContainer = {
@@ -84,7 +84,7 @@ const Services = () => {
               {/* Mobile View */}
               <div className="w-full flex flex-col gap-5 md:hidden">
                 <div className="w-full xs:w-[320px]">
-                  <Image src={item.img} alt={item.name} className="w-full h-auto max-w-[320px]" height={550} width={550} quality={100} />
+                  <Image src={item.mobileImg} alt={item.name} className="w-full h-auto max-w-[320px]" height={550} width={550} quality={100} />
                 </div>
                 <h3 className="font-medium text-left text-xl xs:text-2xl uppercase text-white mx-5">{item.name}</h3>
               </div>

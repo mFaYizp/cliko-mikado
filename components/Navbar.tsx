@@ -16,6 +16,8 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      if (isMenuOpen) return; // Prevent scrolling when menu is open
+
       const currentScrollY = window.scrollY;
       if (currentScrollY < 50) {
         setIsNavbarVisible(true);
@@ -31,8 +33,17 @@ const Navbar = () => {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [isMenuOpen]);
 
   const menuItems = [
     { href: "/", label: "HOME" },
@@ -53,7 +64,6 @@ const Navbar = () => {
         } shadow-lg`}
       >
         <div className="w-full h-full flex justify-between items-center">
-          {/* Logo Section */}
           <div className="w-24 h-10 xl:w-32 xl:h-12 pl-3">
             <Link href="/">
               <Image
@@ -66,7 +76,6 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Menu Button for Desktop */}
           <div className="hidden md:flex space-x-8">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
@@ -82,7 +91,6 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          {/* Contact Button */}
           <div className="hidden md:flex items-center">
             <Link href="/contact-us">
               <button className="px-4 py-2 xl:px-6 xl:py-3 text-white text-sm xl:text-base transition-opacity">
@@ -91,7 +99,6 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
           <div className="md:hidden flex items-center">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
@@ -109,7 +116,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -118,13 +124,14 @@ const Navbar = () => {
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ type: "spring", duration: 1.5, bounce: 0.2 }}
+            onClick={() => setIsMenuOpen(false)}
           >
-            <motion.div className="flex flex-col md:flex-row items-center justify-between mt-16 gap-y-5  pl-4">
-              {/* Video and Social Links */}
+            <motion.div className="flex flex-col md:flex-row items-center justify-between mt-16 gap-y-5 pl-4">
               <div className="flex-1 flex flex-col justify-between items-start gap-y-4">
-                <div className="flex justify-start items-center w-full max-h-[175px] pt-40 2xl:pt-60 h-auto rounded-lg pr-4 pl-0 md:pl-8 xl:max-w-[600px] 2xl:max-w-[800px] 2xl:max-h-[250px]">
+              <div className="flex-1 flex flex-col items-end justify-center pl-0 md:pl-7  pr-5 md:pr-0 lg:pr-48 xl:pr-0 font-extrabold pt-[40px] 2xl:pt-18">
+
                   <video
-                    className="object-cover h-full w-full rounded-lg aspect-video"
+                    className="object-cover w-full h-auto rounded-lg aspect-video  md:w-[600px] md:h-[250px] lg:w-[850px] lg:h-[300px] 2xl:w-[900px] 2xl:h-[350px]"
                     width={800}
                     height={450}
                     src="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.mp4"
@@ -136,7 +143,7 @@ const Navbar = () => {
                   ></video>
                 </div>
 
-                <motion.div className="w-fit hidden md:flex items-start justify-start pl-0 md:pl-8 pt-44 2xl:pt-60">
+                <motion.div className="w-fit hidden md:flex items-start justify-start pl-0 md:pl-8  pt-44 md:pt-9 2xl:pt-46">
                   <FloatingDock
                     items={SOCIAL_LINKS}
                     desktopClassName="flex items-center justify-center"
@@ -144,8 +151,7 @@ const Navbar = () => {
                 </motion.div>
               </div>
 
-              {/* Menu Items */}
-              <div className="flex-1 flex flex-col items-end justify-center pr-6 md:pr-48 font-extrabold pt-20 2xl:pt-40">
+              <div className="flex-1 flex flex-col items-end justify-center pr-6 md:pr-18 lg:pr-20 xl:pr-28 font-extrabold pt-18 md:pt-36 2xl:pt-12">
                 <div className="w-fit flex flex-col space-y-2">
                   {menuItems.map((item) => (
                     <motion.div key={item.label}>

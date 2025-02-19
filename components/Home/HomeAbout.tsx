@@ -27,14 +27,14 @@ const HomeAbout = () => {
         </div>
 
         {/* Text Section */}
-        <div className="w-full md:w-1/2 flex flex-col items-start sm:items-center md:items-start justify-center gap-y-6 md:gap-y-10 text-left sm:text-center md:text-left min-h-full mt-16 sm:mt-72 sm:pt-20">
+        <div className="w-full md:w-1/2 flex flex-col items-start sm:items-center md:items-start justify-center gap-y-6 md:gap-y-4 xl:gap-y-12 text-left sm:text-center md:text-left min-h-full mt-16 sm:mt-72 sm:pt-20 md:pt-0 md:pl-6">
           {/* Animated Text */}
           <motion.p
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true, amount: 0.2 }}
-            className="text-[#CCCCCC] font-light text-[1.25rem] md:text-[1.75rem] max-w-[35ch]"
+            className="text-[#CCCCCC] font-light text-[1.25rem] md:text-[1.50rem] max-w-[35ch]"
           >
             At <span className="text-white font-normal">Cliko</span>, we
             specialize in high-quality corporate photography, capturing stunning
