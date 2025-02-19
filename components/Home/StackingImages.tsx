@@ -103,7 +103,7 @@ const ParallaxCards: React.FC<ParallaxCardsProps> = ({ cards, progress }) => {
 
       {/* Content Container */}
       <div className="relative z-10">
-        <div className="flex w-full mx-auto h-full mb-[50vh] md:mb-[30vh] flex-col items-center justify-center mt-20 gap-[50vh]">
+        <div className="flex w-full mx-auto h-full flex-col items-center justify-center mt-20 gap-[50vh]">
           {cards.map((card, index) => {
             const targetScale = 1 - (cards.length - index) * 0.05;
             const range = [index * 0.35, 1];
