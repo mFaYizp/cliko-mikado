@@ -5,11 +5,18 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { motion } from 'framer-motion';
 
+interface ImageItem {
+  index: number;
+  timestamp: number;
+}
+
 const images = [
   { src: 'https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/5_Portfolio/hover_1.webp', alt: 'Product 1' },
   { src: 'https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/5_Portfolio/hover_2.webp', alt: 'Product 2' },
   { src: 'https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/5_Portfolio/hover_3.webp', alt: 'Product 3' },
-  { src: 'https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/5_Portfolio/hover_4.webp', alt: 'Product 4' }
+  { src: 'https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/5_Portfolio/hover_4.webp', alt: 'Product 4' },
+  { src: 'https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/5_Portfolio/hover_1.webp', alt: 'Product 5' },
+  { src: 'https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/5_Portfolio/hover_2.webp', alt: 'Product 6' },
 ];
 
 const textAnimation = {
@@ -33,6 +40,7 @@ const PortfolioSection = () => {
   const lastPos = useRef({ x: 0, y: 0 });
   const visibleImages = useRef<Array<{ index: number; timestamp: number }>>([]);
   const hideTimeoutsRef = useRef<{ [key: number]: NodeJS.Timeout }>({});
+  const moveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const trails = trailsRef.current;
@@ -40,7 +48,12 @@ const PortfolioSection = () => {
     const cursor = cursorRef.current;
     if (!container || trails.length === 0 || !cursor) return;
 
-    gsap.set(trails, { scale: 1, xPercent: -50, yPercent: -50, opacity: 0 });
+    gsap.set(trails, { 
+      scale: 1, 
+      xPercent: -50, 
+      yPercent: -50, 
+      opacity: 0
+    });
     gsap.set(cursor, { xPercent: -50, yPercent: -50, opacity: 0 });
 
     const hideImage = (index: number) => {
@@ -48,8 +61,8 @@ const PortfolioSection = () => {
       if (trail) {
         gsap.to(trail, {
           opacity: 0,
-          scale: 0.8,
-          duration: 0.4,
+          scale: 0.95,
+          duration: 0.5,
           ease: 'power2.inOut',
           onComplete: () => {
             visibleImages.current = visibleImages.current.filter(img => img.index !== index);
@@ -57,6 +70,28 @@ const PortfolioSection = () => {
           }
         });
       }
+    };
+
+    const hideAllImages = () => {
+      visibleImages.current
+        .sort((a: ImageItem, b: ImageItem) => b.timestamp - a.timestamp)
+        .forEach((img: ImageItem, i: number) => {
+          setTimeout(() => {
+            const trail = trails[img.index];
+            if (trail) {
+              gsap.to(trail, {
+                opacity: 0,
+                scale: 0.95,
+                duration: 0.4,
+                ease: 'power2.inOut',
+                onComplete: () => {
+                  visibleImages.current = visibleImages.current.filter(image => image.index !== img.index);
+                  delete hideTimeoutsRef.current[img.index];
+                }
+              });
+            }
+          }, i * 100);
+        });
     };
 
     const scheduleHideForImage = (index: number) => {
@@ -73,6 +108,16 @@ const PortfolioSection = () => {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
+      // Clear previous timeout
+      if (moveTimeoutRef.current) {
+        clearTimeout(moveTimeoutRef.current);
+      }
+
+      // Set new timeout to hide images if movement stops
+      moveTimeoutRef.current = setTimeout(() => {
+        hideAllImages();
+      }, 400);
+
       const distance = Math.hypot(x - lastPos.current.x, y - lastPos.current.y);
       if (distance > 150) {
         lastPos.current = { x, y };
@@ -80,10 +125,30 @@ const PortfolioSection = () => {
         const currentTrail = trails[currentIndex];
         if (currentTrail) {
           visibleImages.current = [...visibleImages.current, { index: currentIndex, timestamp: Date.now() }];
+          
+          gsap.set(currentTrail, { clipPath: 'circle(0% at center)' });
           gsap.fromTo(
             currentTrail,
-            { x, y, opacity: 0, scale: 0.8 },
-            { x, y, opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out', overwrite: true }
+            { 
+              x, 
+              y, 
+              opacity: 0, 
+              scale: 0.8,
+              clipPath: 'circle(0% at center)' 
+            },
+            { 
+              x, 
+              y, 
+              opacity: 1, 
+              scale: 1,
+              clipPath: 'circle(50% at center)',
+              duration: 0.4, 
+              ease: 'power2.out', 
+              overwrite: true,
+              onComplete: () => {
+                gsap.set(currentTrail, { clipPath: 'none' });
+              }
+            }
           );
 
           scheduleHideForImage(currentIndex);
@@ -91,14 +156,38 @@ const PortfolioSection = () => {
         }
       }
 
-      gsap.to(cursor, { x, y, opacity: 1, duration: 0.15, ease: 'none' });
+      gsap.to(cursor, { 
+        x, 
+        y, 
+        opacity: 1, 
+        duration: 0.15, 
+        ease: 'none' 
+      });
     };
 
     const handleMouseLeave = () => {
+      if (moveTimeoutRef.current) {
+        clearTimeout(moveTimeoutRef.current);
+      }
       Object.values(hideTimeoutsRef.current).forEach(timeout => clearTimeout(timeout));
-      visibleImages.current.sort((a, b) => a.timestamp - b.timestamp).forEach((img, i) => {
-        setTimeout(() => hideImage(img.index), i * 200);
-      });
+      visibleImages.current
+        .sort((a: ImageItem, b: ImageItem) => b.timestamp - a.timestamp)
+        .forEach((img: ImageItem, i: number) => {
+          setTimeout(() => {
+            const trail = trails[img.index];
+            if (trail) {
+              gsap.to(trail, {
+                opacity: 0,
+                scale: 0.95,
+                duration: 0.4,
+                ease: 'power2.inOut',
+                onComplete: () => {
+                  visibleImages.current = visibleImages.current.filter(image => image.index !== img.index);
+                }
+              });
+            }
+          }, i * 100);
+        });
       gsap.to(cursor, { opacity: 0, duration: 0.2 });
     };
 
@@ -115,13 +204,19 @@ const PortfolioSection = () => {
       container.removeEventListener('mouseleave', handleMouseLeave);
       container.removeEventListener('mouseenter', handleMouseEnter);
       Object.values(hideTimeoutsRef.current).forEach(timeout => clearTimeout(timeout));
+      if (moveTimeoutRef.current) {
+        clearTimeout(moveTimeoutRef.current);
+      }
     };
   }, [currentIndex]);
 
   return (
     <section ref={containerRef} className="relative h-screen overflow-hidden hidden md:block">
       {/* Custom Cursor */}
-      <div ref={cursorRef} className="absolute w-4 h-4 rounded-full pointer-events-none z-50 mix-blend-difference" />
+      <div 
+        ref={cursorRef} 
+        className="absolute w-4 h-4 rounded-full pointer-events-none z-50 mix-blend-difference bg-white" 
+      />
 
       {/* Images Container */}
       <div className="absolute inset-0">
@@ -131,10 +226,19 @@ const PortfolioSection = () => {
             ref={el => {
               if (el) trailsRef.current[index] = el;
             }}
-            className="absolute left-0 top-0 pointer-events-none"
-            style={{ zIndex: images.length - index, opacity: 0 }}
+            className="absolute left-0 top-0 pointer-events-none overflow-hidden"
+            style={{ 
+              zIndex: images.length - index, 
+              opacity: 0
+            }}
           >
-            <Image src={image.src} alt={image.alt} width={350} height={100} className="object-cover shadow-lg" />
+            <Image 
+              src={image.src} 
+              alt={image.alt} 
+              width={350} 
+              height={100} 
+              className="object-cover shadow-lg rounded-lg"
+            />
           </div>
         ))}
       </div>
