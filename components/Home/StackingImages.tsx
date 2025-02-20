@@ -157,14 +157,14 @@ const Card: React.FC<CardComponentProps> = ({
       key={index}
     >
       <motion.div
-        className="h-fit flex flex-col items-center justify-center origin-bottom relative"
-        style={{
-          top: `calc(-5vh + ${index * 5}px)`,
-          right: `calc(-5vh + ${index * 5}px)`,
-          transform: `translateX(${translateX})`,
-          // opacity,
-        }}
-      >
+  className="h-fit flex flex-col items-center justify-center origin-bottom relative md:pr-[80px]"
+  style={{
+    top: `calc(-5vh + ${index * 5}px)`,
+    right: `calc(-5vh + ${index * 5}px)`,
+    transform: `translateX(${translateX})`,
+  }}
+>
+
         <div
           className={`relative flex flex-col items-center justify-center w-full h-fit ${
             !card.portrait && "my-[15%]"

@@ -97,7 +97,7 @@ const Footer = () => {
               ))}
             </ul>
             <p className="text-xs text-[#777373] mt-6 sm:mt-8 hidden md:flex">
-              © 2024 Cliko Studio. <br /> All rights reserved
+              © 2024 Cliko Studio. All rights reserved
             </p>
           </div>
 
