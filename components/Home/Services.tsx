@@ -4,12 +4,42 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 
 const SERVICES = [
-  { name: "Product Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp", mobileImg:"https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp" },
-  { name: "Architectural Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp", mobileImg:"https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp"  },
-  { name: "Lifestyle Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp", mobileImg:"https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp"  },
-  { name: "Catalogue Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp", mobileImg:"https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp"  },
-  { name: "Fashion Photography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp", mobileImg:"https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp"  },
-  { name: "360 Videography", img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",mobileImg:"https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp"  },
+  {
+    name: "Product Photography",
+    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
+    mobileImg:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
+  },
+  {
+    name: "Architectural Photography",
+    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
+    mobileImg:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
+  },
+  {
+    name: "Lifestyle Photography",
+    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
+    mobileImg:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
+  },
+  {
+    name: "Catalogue Photography",
+    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
+    mobileImg:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
+  },
+  {
+    name: "Fashion Photography",
+    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
+    mobileImg:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
+  },
+  {
+    name: "360 Videography",
+    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
+    mobileImg:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
+  },
 ];
 
 const textContainer = {
@@ -28,14 +58,26 @@ const textVariant = {
 };
 
 const Services = () => {
-  const [modal, setModal] = useState<{ active: boolean; index: number | null }>({ active: false, index: null });
+  const [modal, setModal] = useState<{ active: boolean; index: number | null }>(
+    { active: false, index: null }
+  );
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   const scaleAnimation = {
     initial: { scale: 0, x: "-10%", y: "-50%" },
-    open: { scale: 1, x: "-10%", y: "-50%", transition: { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] } },
-    closed: { scale: 0, x: "-10%", y: "-50%", transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] } },
+    open: {
+      scale: 1,
+      x: "-10%",
+      y: "-50%",
+      transition: { duration: 0.5, ease: [0.6, 0.01, -0.05, 0.9] },
+    },
+    closed: {
+      scale: 0,
+      x: "-10%",
+      y: "-50%",
+      transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] },
+    },
   };
 
   return (
@@ -74,19 +116,37 @@ const Services = () => {
                 <motion.div
                   variants={scaleAnimation}
                   initial="initial"
-                  animate={modal.active && modal.index === index ? "open" : "closed"}
+                  animate={
+                    modal.active && modal.index === index ? "open" : "closed"
+                  }
                   className="absolute flex items-center justify-center md:w-[250px] lg:w-[300px] xl:w-[320px] md:right-[0%] xl:right-[13%] top-[50%] z-10"
                 >
-                  <Image src={item.img} alt={item.name} className="w-full h-auto" height={550} width={550} quality={100} />
+                  <Image
+                    src={item.img}
+                    alt={item.name}
+                    className="w-full h-auto"
+                    height={550}
+                    width={550}
+                    quality={100}
+                  />
                 </motion.div>
               </div>
 
               {/* Mobile View */}
               <div className="w-full flex flex-col gap-5 md:hidden">
                 <div className="w-full xs:w-[320px]">
-                  <Image src={item.mobileImg} alt={item.name} className="w-full h-auto max-w-[320px]" height={550} width={550} quality={100} />
+                  <Image
+                    src={item.mobileImg}
+                    alt={item.name}
+                    className="w-full h-auto max-w-[320px]"
+                    height={550}
+                    width={550}
+                    quality={100}
+                  />
                 </div>
-                <h3 className="font-medium text-left text-xl xs:text-2xl uppercase text-white mx-5">{item.name}</h3>
+                <h3 className="font-medium text-left text-xl xs:text-2xl uppercase text-white mx-5">
+                  {item.name}
+                </h3>
               </div>
             </div>
           ))}
@@ -95,8 +155,18 @@ const Services = () => {
 
       {/* Video Section */}
       <div className="w-full aspect-video max-h-[90vh] rounded-lg overflow-hidden">
-        <video className="w-full h-full object-cover" autoPlay muted loop playsInline preload="metadata">
-          <source src="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.mp4" type="video/mp4" />
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        >
+          <source
+            src="https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/Service/servicesection/photography.mp4"
+            type="video/mp4"
+          />
           Your browser does not support the video tag.
         </video>
       </div>

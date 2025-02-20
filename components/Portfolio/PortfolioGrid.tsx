@@ -14,11 +14,11 @@ const PortfolioGrid = () => {
 
   return (
     <ParallaxProvider>
-      <section className="w-full h-full py-20">
+      <section className="w-full h-full pt-10 pb-20 lg:pb-40">
         <div className="w-full container mx-auto">
           <div className="flex flex-col gap-20">
             {/* Desktop Layout */}
-            <div className="hidden md:flex flex-col gap-20 md:gap-y-36">
+            <div className="hidden md:flex flex-col gap-20 md:gap-y-36 xl:gap-y-48">
               {Array.from({ length: Math.ceil(PortfolioData.length / 2) }).map(
                 (_, rowIndex) => {
                   const firstIndex = rowIndex * 2;
