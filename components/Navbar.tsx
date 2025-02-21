@@ -94,7 +94,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center">
             <Link href="/contact-us">
               <button className="px-4 py-2 xl:px-6 xl:py-3 text-white text-sm xl:text-base transition-opacity">
-                Get in Touch
+                Contact Us
               </button>
             </Link>
           </div>

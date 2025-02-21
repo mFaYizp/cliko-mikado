@@ -81,7 +81,7 @@ const Services = () => {
   };
 
   return (
-    <section className="w-full h-full bg-black text-white">
+    <section className="w-full h-full bg-[#101010] text-white">
       <div className="container mx-auto flex flex-col items-start justify-center w-full gap-y-10 py-36">
         <motion.div
           ref={ref}

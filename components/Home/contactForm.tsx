@@ -68,8 +68,15 @@ const ContactForm = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="bg-transparent border-b-2 border-opacity-50 border-gray-500 text-white outline-none placeholder-opacity-50 placeholder-gray-600 w-full sm:w-auto"
-          />{" "}
-          <span>Let&apos;s grab a virtual coffee</span>
+          />
+          <span className="hidden md:block md:pt-[20px]">
+            {/* Breaks on tablet */}
+            Let&apos;s grab a virtual coffee
+          </span>
+          <span className="md:hidden ">
+            {/* Visible on other screens */}
+            Let&apos;s grab a virtual coffee
+          </span>
         </p>
 
         {/* Email Input */}
@@ -98,7 +105,7 @@ const ContactForm = () => {
         />
 
         {/* Submit Button */}
-        <div className="flex justify-center sm:justify-end">
+        <div className="flex justify-start sm:justify-end md:justify-start">
           <button className="bg-black text-white flex items-center justify-center py-3 px-10 2xl:py-4 2xl:px-12 border border-white rounded-none hover:bg-white hover:text-black transition-all duration-300">
             Submit
           </button>
