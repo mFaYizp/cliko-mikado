@@ -36,10 +36,10 @@ const ContactPage = () => {
     try {
       setIsSubmitting(true);
       await emailjs.sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         form.current,
-        "YOUR_PUBLIC_KEY"
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
       setSubmitStatus("success");
       // Reset form
