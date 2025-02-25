@@ -18,8 +18,10 @@ const ContactPage = () => {
   const form = useRef<HTMLFormElement>(null);
   const isInView = useInView(ref, { once: true });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
   // Form states
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -34,12 +36,12 @@ const ContactPage = () => {
     try {
       setIsSubmitting(true);
       await emailjs.sendForm(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
         form.current,
-        'YOUR_PUBLIC_KEY'
+        "YOUR_PUBLIC_KEY"
       );
-      setSubmitStatus('success');
+      setSubmitStatus("success");
       // Reset form
       setName("");
       setEmail("");
@@ -48,11 +50,11 @@ const ContactPage = () => {
       setMessage("");
       form.current.reset();
     } catch (error) {
-      setSubmitStatus('error');
-      console.log('Failed to send email:', error);
+      setSubmitStatus("error");
+      console.log("Failed to send email:", error);
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 3000);
+      setTimeout(() => setSubmitStatus("idle"), 3000);
     }
   };
 
@@ -117,7 +119,9 @@ const ContactPage = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Email address *</label>
+              <label className="block text-sm font-medium mb-1">
+                Email address *
+              </label>
               <input
                 type="email"
                 name="user_email"
@@ -140,15 +144,20 @@ const ContactPage = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Select an option *</label>
-            <Select 
+            <label className="block text-sm font-medium mb-1">
+              Select an option *
+            </label>
+            <Select
               name="option"
-              value={option} 
+              value={option}
               onValueChange={setOption}
               required
             >
               <SelectTrigger>
-                <SelectValue className="text-gray-400" placeholder="Please choose an option" />
+                <SelectValue
+                  className="text-gray-400"
+                  placeholder="Please choose an option"
+                />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="General Inquiry">General Inquiry</SelectItem>
@@ -176,14 +185,18 @@ const ContactPage = () => {
             disabled={isSubmitting}
             className="font-normal text-[0.75rem] md:text-[1rem] md:px-10 md:py-6 flex items-center space-x-1 border rounded-none hover:text-black hover:bg-white disabled:opacity-50"
           >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
+            {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
 
-          {submitStatus === 'success' && (
-            <p className="text-green-500 text-center">Message sent successfully!</p>
+          {submitStatus === "success" && (
+            <p className="text-green-500 text-center">
+              Message sent successfully!
+            </p>
           )}
-          {submitStatus === 'error' && (
-            <p className="text-red-500 text-center">Failed to send message. Please try again.</p>
+          {submitStatus === "error" && (
+            <p className="text-red-500 text-center">
+              Failed to send message. Please try again.
+            </p>
           )}
         </form>
       </div>
