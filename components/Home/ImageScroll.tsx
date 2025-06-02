@@ -16,12 +16,12 @@ const ImageScroll = () => {
 
   useEffect(() => {
     let loadedImages = 0;
-    const totalImages = 46;
+    const totalImages = 51;
 
     const loadImage = (index: number): Promise<HTMLImageElement> => {
       return new Promise((resolve, reject) => {
         const img = new Image();
-        const imagePath = `https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/8_image_Timelaps/0${index + 1}.webp`;
+        const imagePath = `https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/8_image_Timelaps/0${index + 1}.jpg`;
         
         img.onload = () => {
           loadedImages++;
