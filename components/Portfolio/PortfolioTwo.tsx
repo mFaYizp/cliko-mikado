@@ -2,7 +2,15 @@ import React from "react";
 import PortfolioData from "./portfolioData";
 import Image from "next/image";
 
-const PortfolioTwo = ({images}:{images:string[]}) => {
+interface PortfolioItem {
+  id: number;
+  image: string;
+  title: string;
+  type: string;
+}
+
+const PortfolioTwo = ({ images }: { images: PortfolioItem[] }) => {
+
   return (
     <section className="w-full h-full py-20">
       <div className="w-auto mx-5 md:mx-10 lg:mx-20">

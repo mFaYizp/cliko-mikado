@@ -28,7 +28,7 @@ const PortfolioData = [
     title: "Portfolio 4",
     type: "Fashion",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/chicken-3.jpg",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/1.jpg",
     href: "/portfolio/4",
   },
   {
@@ -36,7 +36,7 @@ const PortfolioData = [
     title: "Portfolio 5",
     type: "Fashion",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/charcol.png",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/2.jpg",
     href: "/portfolio/5",
   },
   {
@@ -44,7 +44,7 @@ const PortfolioData = [
     title: "Portfolio 6",
     type: "Fashion",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/chicken-3.jpg",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/3.jpg",
     href: "/portfolio/6",
   },
   // {
