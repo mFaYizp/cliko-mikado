@@ -22,13 +22,13 @@ const PortfolioTwo = ({ images }: { images: PortfolioItem[] }) => {
                 {/* First row - Single item */}
                 {PortfolioData[groupIndex * 6] && (
                   <div className="w-full flex justify-center">
-                    <div className="w-full overflow-hidden rounded-lg h-[400px] xl:h-[600px] relative group">
+                    <div className="w-full overflow-hidden rounded-lg h-full relative group">
                       <Image
                         src={PortfolioData[groupIndex * 6].image}
                         alt={PortfolioData[groupIndex * 6].title}
                         width={1200}
                         height={800}
-                        className="w-full h-full object-cover"
+                        className="w-full h-auto object-cover aspect-video"
                       />
                       <div className="absolute top-[80%] left-10 w-full h-full text-white">
                         <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
@@ -51,14 +51,14 @@ const PortfolioTwo = ({ images }: { images: PortfolioItem[] }) => {
                     return (
                       <div
                         key={item.id}
-                        className="w-full h-[300px] xl:h-[400px] relative group overflow-hidden rounded-lg"
+                        className="w-full h-full relative group overflow-hidden rounded-lg"
                       >
                         <Image
                           src={item.image}
                           alt={item.title}
                           width={800}
                           height={800}
-                          className="w-full h-full object-cover"
+                          className="w-full h-auto object-cover aspect-video"
                         />
                         <div className="absolute top-[75%] left-10 w-full h-full text-white">
                           <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
