@@ -16,9 +16,10 @@ const InnerPageAbout = (props: Props) => {
           <p className="text-xl text-[#b9b9b9] w-full md:w-full xl:w-2/3">
             Our product photography service focuses on creating high-quality,
             conversion-ready visuals designed for both digital and print
-            marketing platforms. Whether it's for an e-commerce catalog, Amazon
-            listing, or social media campaign, we ensure every image captures
-            the product's unique features, textures, and intended appeal.
+            marketing platforms. Whether it&apos;s for an e-commerce catalog,
+            Amazon listing, or social media campaign, we ensure every image
+            captures the product&apos;s unique features, textures, and intended
+            appeal.
           </p>
         </div>
       </div>
