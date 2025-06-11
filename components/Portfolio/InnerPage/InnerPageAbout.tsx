@@ -26,11 +26,11 @@ const InnerPageAbout = (props: Props) => {
         <div className="w-full h-full overflow-hidden">
           <Parallax
             translateY={[-10, 10]}
-            className="w-full h-full max-h-[calc(100vh-200px)]"
+            className="w-full h-full"
           >
             <Image
               src={
-                "https://mikado-products.blr1.cdn.digitaloceanspaces.com/mikado-revamp/case-study/onStudio/Talent%20in%20Focus-min.png"
+                "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/1).jpg"
               }
               alt="about"
               width={1000}

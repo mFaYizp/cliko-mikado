@@ -1,60 +1,93 @@
 const PortfolioData = [
   {
     id: 1,
-    title: "Portfolio 1",
-    type: "Fashion",
+    title: "",
+    type: "",
+    category: "product",
     image:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/1).jpg",
     href: "/portfolio/1",
   },
   {
     id: 2,
-    title: "Portfolio 2",
-    type: "Fashion",
+    title: "",
+    type: "",
+    category: "product",
     image:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/1.jpg",
     href: "/portfolio/2",
   },
   {
     id: 3,
-    title: "Portfolio 3",
-    type: "Fashion",
+    title: "",
+    type: "",
+    category: "product",
     image:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/2.jpg",
     href: "/portfolio/3",
   },
   {
     id: 4,
-    title: "Portfolio 4",
-    type: "Fashion",
+    title: "",
+    type: "",
+    category: "product",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/1.jpg",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/1-img.jpg",
     href: "/portfolio/4",
   },
   {
     id: 5,
-    title: "Portfolio 5",
-    type: "Fashion",
+    title: "",
+    type: "",
+    category: "product",
     image:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/2.jpg",
     href: "/portfolio/5",
   },
   {
     id: 6,
-    title: "Portfolio 6",
-    type: "Fashion",
+    title: "",
+    type: "",
+    category: "product",
     image:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/3.jpg",
     href: "/portfolio/6",
   },
-  // {
-  //   id: 7,
-  //   title: "Portfolio 7",
-  //   type: "Fashion",
-  //   image:
-  //     "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/charcol.png",
-  //   href: "/portfolio/7",
-  // },
+   {
+     id: 7,
+    title: "",
+    type: "",
+    category: "product",
+    image:
+    "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img-6.jpg",
+    href: "/portfolio/7",
+   },
+   {
+    id: 8,
+   title: "",
+   type: "",
+   category: "product",
+   image:
+   "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img-7.jpg",
+   href: "/portfolio/8",
+  },
+  {
+    id: 9,
+    title: "",
+    type: "",
+    category: "architecture",
+    image: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/architecture/1.jpg",
+    href: "/portfolio/9",
+  },
+  {
+    id: 10,
+    title: "",
+    type: "",
+    category: "architecture",
+    image: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/architecture/2.jpg",
+    href: "/portfolio/10",
+  },
+ 
 ];
 
 export default PortfolioData;
