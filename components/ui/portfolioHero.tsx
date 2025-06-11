@@ -52,7 +52,7 @@ const CaseStudyHero = ({
                           dark ? "text-[#1c1c1c]" : "text-white"
                         }`}
                       >
-                        Client
+                        Industry
                       </span>{" "}
                       <span
                         className={`xxs:w-[55%] xl:w-[60%] 5xl:w-2/3 xl:text-2xl 5xl:text-3xl ${
@@ -77,7 +77,7 @@ const CaseStudyHero = ({
                           dark ? "text-[#1c1c1c]" : "text-gray-200"
                         }`}
                       >
-                        Role
+                        Type
                       </span>{" "}
                       <span
                         className={`xxs:w-[55%] xl:w-[60%] 5xl:w-2/3 md:text-2xl tb:text-xl lg:text-xl xl:text-2xl 5xl:text-3xl ${
