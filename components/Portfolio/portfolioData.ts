@@ -1,6 +1,6 @@
 const PortfolioData = [
   {
-    id: 1,
+    slug: "1",
     title: "",
     type: "",
     category: "product",
@@ -9,7 +9,7 @@ const PortfolioData = [
     href: "/portfolio/1",
   },
   {
-    id: 2,
+    slug: "2",
     title: "",
     type: "",
     category: "product",
@@ -18,7 +18,7 @@ const PortfolioData = [
     href: "/portfolio/2",
   },
   {
-    id: 3,
+    slug: "3",
     title: "",
     type: "",
     category: "product",
@@ -27,7 +27,7 @@ const PortfolioData = [
     href: "/portfolio/3",
   },
   {
-    id: 4,
+    slug: "4",
     title: "",
     type: "",
     category: "product",
@@ -36,7 +36,7 @@ const PortfolioData = [
     href: "/portfolio/4",
   },
   {
-    id: 5,
+    slug: "5",
     title: "",
     type: "",
     category: "product",

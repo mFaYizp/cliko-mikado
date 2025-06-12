@@ -1,9 +1,13 @@
 import InnerPageAbout from "@/components/Portfolio/InnerPage/InnerPageAbout";
 import InnerPageHero from "@/components/Portfolio/InnerPage/InnerPageHero";
 import PortfolioTwo from "@/components/Portfolio/PortfolioTwo";
+import PortfolioData from "@/components/Portfolio/portfolioData";
 import React from "react";
 
-const page = () => {
+const PortfolioInnerPage = async ({params}: {params: Promise<{slug: string}>}) => {
+  const {slug} = await params;
+  const portfolioData = PortfolioData.find((item) => item.slug === slug);
+  console.log(portfolioData);
   return (
     <main className="w-full h-full">
       <InnerPageHero />
@@ -14,4 +18,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default PortfolioInnerPage;
