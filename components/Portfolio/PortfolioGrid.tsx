@@ -34,7 +34,7 @@ const PortfolioGrid = () => {
                       {shouldParallax(firstIndex) ? (
                         <Parallax speed={6} className="flex-1">
                           <Link
-                            href={PortfolioData[firstIndex].href}
+                            href={`/portfolio/${PortfolioData[firstIndex].slug}`}
                             className="block h-[350px] 2xl:h-[450px] relative group overflow-hidden rounded-lg mr-[25%]"
                           >
                             <Image
@@ -55,7 +55,7 @@ const PortfolioGrid = () => {
                         </Parallax>
                       ) : (
                         <Link
-                          href={PortfolioData[firstIndex].href}
+                          href={`/portfolio/${PortfolioData[firstIndex].slug}`}
                           className="w-[53%] h-[350px] 2xl:h-[450px] relative group overflow-hidden rounded-lg"
                         >
                           <Image
@@ -79,7 +79,7 @@ const PortfolioGrid = () => {
                         (shouldParallax(secondIndex) ? (
                           <Parallax speed={6} className="flex-1">
                             <Link
-                              href={PortfolioData[secondIndex].href}
+                              href={`/portfolio/${PortfolioData[secondIndex].slug}`}
                               className="block h-[350px] 2xl:h-[450px] relative group overflow-hidden rounded-lg ml-[25%]"
                             >
                               <Image
@@ -100,7 +100,7 @@ const PortfolioGrid = () => {
                           </Parallax>
                         ) : (
                           <Link
-                            href={PortfolioData[secondIndex].href}
+                            href={`/portfolio/${PortfolioData[secondIndex].slug}`}
                             className="w-[53%] h-[350px] 2xl:h-[450px] relative group overflow-hidden rounded-lg"
                           >
                             <Image
@@ -129,14 +129,17 @@ const PortfolioGrid = () => {
             <div className="flex md:hidden flex-col gap-10">
               {PortfolioData.map((item, index) => (
                 <motion.div
-                  key={item.id}
+                  key={item.slug}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
                   viewport={{ once: true, amount: 0.2 }}
                   className="w-full overflow-hidden rounded-lg h-[350px] relative group"
                 >
-                  <Link href={item.href} className="block h-full relative">
+                  <Link
+                    href={`/portfolio/${item.slug}`}
+                    className="block h-full relative"
+                  >
                     <Image
                       src={item.image}
                       alt={item.title}

@@ -1,9 +1,9 @@
 import React from "react";
-import RevealEffect from "./RevealEffect";
+import RevealEffect from "@/components/ui/RevealEffect";
 
 
 type Props = {
-  bgImg: string;
+  bgImg?: string;
   bgPosition?: string;
   title: string;
   industry?: string;
@@ -12,7 +12,7 @@ type Props = {
   dark?: boolean;
 };
 
-const CaseStudyHero = ({
+const PortfolioInnerPageHero = ({
   bgImg,
   bgPosition,
   title,
@@ -98,4 +98,4 @@ const CaseStudyHero = ({
   );
 };
 
-export default CaseStudyHero;
+export default PortfolioInnerPageHero;
