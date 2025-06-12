@@ -10,7 +10,7 @@ const InnerPageHero = (props: Props) => {
     <CaseStudyHero
 
     bgImg="https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/New.jpg"
-    title="Product Photography"
+    title="Picture Perfect Product"
     industry="Beverages"
     service="Product Photography"
    
