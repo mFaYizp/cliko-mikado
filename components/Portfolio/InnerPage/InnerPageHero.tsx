@@ -8,10 +8,10 @@ type Props = {};
 const InnerPageHero = (props: Props) => {
   return (
     <CaseStudyHero
-    bgImg="https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/Hero%201_3.jpg"
-    title="Crafting a Website that Inspires & Empowers"
-    industry="Themetorium"
-    service="Branding"
+    bgImg="https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/New.jpg"
+    title="Picture Perfect Product"
+    industry="Beverages"
+    service="Product Photography"
   />
   );
 };
