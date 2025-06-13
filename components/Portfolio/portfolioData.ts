@@ -52,13 +52,28 @@ const PortfolioData = [
     ],
   },
   {
-    slug: "3",
-    title: "",
-    type: "",
-    category: "product",
+    slug: "lifestyle",
+    title: "Lifestyle Photography",
+    industry: "Beverages",
+    service: "lifestyle Photography",
+    heroBg:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/crop-stuff-training.jpg",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/2.jpg",
-    href: "/portfolio/3",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-banner.webp",
+    about: {
+      title: "Highlight",
+      description:
+        "Our product photography service focuses on creating high-quality, conversion-ready visuals designed for both digital and print marketing platforms. Whether it's for an e-commerce catalog, Amazon listing, or social media campaign, we ensure every image captures the product's unique features, textures, and intended appeal.",
+      src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-banner.webp",
+    },
+    images: [
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-img1.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-img2.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-img3.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img4-life.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-img5.webp",
+     
+    ],
   },
   {
     slug: "4",

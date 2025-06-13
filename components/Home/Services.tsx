@@ -22,24 +22,24 @@ const SERVICES = [
     mobileImg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
   },
-  {
-    name: "Catalogue Photography",
-    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
-    mobileImg:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
-  },
+  //{
+  //  name: "Catalogue Photography",
+  //  img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
+  //  mobileImg:
+  //    "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
+ // },
   {
     name: "Fashion Photography",
     img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
     mobileImg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
   },
-  {
-    name: "360 Videography",
-    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
-    mobileImg:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
-  },
+  //{
+  //  name: "360 Videography",
+  //  img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
+  //  mobileImg:
+  //    "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
+  //},
 ];
 
 const textContainer = {
