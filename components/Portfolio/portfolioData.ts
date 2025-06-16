@@ -28,8 +28,8 @@ const PortfolioData = [
   {
     slug: "architecture",
     title: "Architecture Photography",
-    industry: "Beverages",
-    service: "Product Photography",
+    industry: "Real Estate & Interior Design",
+    service: "Architecture Photography",
     heroBg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/arch-hero.webp",
     image:
@@ -37,7 +37,7 @@ const PortfolioData = [
     about: {
       title: "Highlight",
       description:
-        "Our product photography service focuses on creating high-quality, conversion-ready visuals designed for both digital and print marketing platforms. Whether it's for an e-commerce catalog, Amazon listing, or social media campaign, we ensure every image captures the product's unique features, textures, and intended appeal.",
+        "Our architecture photography service is crafted to showcase spatial design with precision, mood, and purpose. From modern interiors to large-scale commercial structures, we focus on delivering high-resolution visuals that highlight texture, light, scale, and form.",
       src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/arch-banner.webp",
     },
     images: [
@@ -54,8 +54,8 @@ const PortfolioData = [
   {
     slug: "lifestyle",
     title: "Lifestyle Photography",
-    industry: "Beverages",
-    service: "lifestyle Photography",
+    industry: "Fashion, Wellness, Home & Living",
+    service: "Lifestyle Photography",
     heroBg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/crop-stuff-training.jpg",
     image:
@@ -63,7 +63,7 @@ const PortfolioData = [
     about: {
       title: "Highlight",
       description:
-        "Our product photography service focuses on creating high-quality, conversion-ready visuals designed for both digital and print marketing platforms. Whether it's for an e-commerce catalog, Amazon listing, or social media campaign, we ensure every image captures the product's unique features, textures, and intended appeal.",
+        "Our lifestyle photography captures real moments with style and authenticity—blending people, products, and environments to create visual stories that connect emotionally and elevate your brand.",
       src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-banner.webp",
     },
     images: [
