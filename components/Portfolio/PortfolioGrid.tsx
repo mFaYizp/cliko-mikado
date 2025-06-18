@@ -43,12 +43,18 @@ const PortfolioGrid = () => {
                               fill
                               className="object-contain"
                             />
-                            <div className="absolute top-[60%] left-10 w-full h-full text-white">
+                            <div
+                              className={`absolute top-[60%] left-10 w-full h-full text-white ${
+                                PortfolioData[firstIndex]?.dark
+                                  ? "text-black"
+                                  : "text-white"
+                              }`}
+                            >
                               <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                                 {PortfolioData[firstIndex].title}
                               </h3>
                               <p className="text-sm opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                                {PortfolioData[firstIndex].type}
+                                {PortfolioData[firstIndex]?.service}
                               </p>
                             </div>
                           </Link>
@@ -64,12 +70,18 @@ const PortfolioGrid = () => {
                             fill
                             className="object-cover"
                           />
-                          <div className="absolute top-[75%] left-10 w-full h-full text-white">
+                          <div
+                            className={`absolute top-[75%] left-10 w-full h-full text-white ${
+                              PortfolioData[firstIndex]?.dark
+                                ? "text-black"
+                                : "text-white"
+                            }`}
+                          >
                             <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                               {PortfolioData[firstIndex].title}
                             </h3>
                             <p className="text-sm opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                              {PortfolioData[firstIndex].type}
+                              {PortfolioData[firstIndex]?.service}
                             </p>
                           </div>
                         </Link>
@@ -88,12 +100,18 @@ const PortfolioGrid = () => {
                                 fill
                                 className="object-contain"
                               />
-                              <div className="absolute top-[65%] left-10 w-full h-full text-white">
+                              <div
+                                className={`absolute top-[65%] left-10 w-full h-full text-white ${
+                                  PortfolioData[secondIndex]?.dark
+                                    ? "text-black"
+                                    : "text-white"
+                                }`}
+                              >
                                 <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                                   {PortfolioData[secondIndex].title}
                                 </h3>
                                 <p className="text-sm opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                                  {PortfolioData[secondIndex].type}
+                                  {PortfolioData[secondIndex]?.service}
                                 </p>
                               </div>
                             </Link>
@@ -109,12 +127,18 @@ const PortfolioGrid = () => {
                               fill
                               className="object-cover"
                             />
-                            <div className="absolute top-[75%] left-10 w-full h-full text-white">
+                            <div
+                              className={`absolute top-[75%] left-10 w-full h-full text-white ${
+                                PortfolioData[secondIndex]?.dark
+                                  ? "text-black"
+                                  : "text-white"
+                              }`}
+                            >
                               <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                                 {PortfolioData[secondIndex].title}
                               </h3>
                               <p className="text-sm opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                                {PortfolioData[secondIndex].type}
+                                {PortfolioData[secondIndex]?.service}
                               </p>
                             </div>
                           </Link>
@@ -146,12 +170,16 @@ const PortfolioGrid = () => {
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute top-[75%] left-10 w-full h-full text-white">
+                    <div
+                      className={`absolute top-[75%] left-10 w-full h-full text-white ${
+                        item?.dark ? "text-black" : "text-white"
+                      }`}
+                    >
                       <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                         {item.title}
                       </h3>
                       <p className="text-sm opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                        {item.type}
+                        {item.service}
                       </p>
                     </div>
                   </Link>
