@@ -13,20 +13,33 @@ const HorizontalScrollCarousel = ({ cards }: { cards: CardType[] }) => {
   });
 
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(screen.width < 768);
+      setIsMobile(window.innerWidth < 440);
+      setIsTablet(window.innerWidth >= 440 && window.innerWidth < 768);
     };
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Responsive scroll values based on screen size
+  const getScrollValues = () => {
+    if (isMobile) {
+      return ["230%", "-230%"]; // Smaller scroll for mobile
+    } else if (isTablet) {
+      return ["222%", "-222%"]; // Medium scroll for tablet
+    } else {
+      return ["230%", "-230%"]; // Full scroll for desktop
+    }
+  };
+
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    isMobile ? ["230%", "-230%"] : ["0.3%", "-100%"]
+    getScrollValues()
   );
 
   return (
@@ -35,7 +48,7 @@ const HorizontalScrollCarousel = ({ cards }: { cards: CardType[] }) => {
       className="relative w-full h-full flex items-center justify-center"
     >
       <div className="relative w-full h-[250vh]">
-        <div className="sticky top-[10%] flex h-auto items-center overflow-hidden pb-20">
+        <div className="sticky top-[15%] sm:top-[10%] flex h-auto items-center overflow-hidden pb-20">
           <motion.div
             style={{ x }}
             className="flex items-center justify-center gap-4 w-full h-full"
@@ -58,22 +71,24 @@ interface CardType {
 
 const Card = ({ card }: { card: CardType }) => {
   return (
-    <section className="w-full h-full flex items-center justify-center px-4">
+    <section className="w-fit h-full flex items-center justify-center px-4">
       <div className="relative flex flex-col items-center justify-center w-full min-w-[80vw] max-w-[80vw] h-full">
-        <Image
-          src={card.src}
-          alt={card.alt}
-          width={1200}
-          height={1200}
-          className="w-full h-auto object-contain max-h-[80vh]"
-        />
-        <Link
-          href={""}
-          className="w-full flex flex-row justify-between items-center bg-[#101010] mx-auto py-2"
-        >
-          <h6 className="text-white text-2xl font-bold">{card.title}</h6>
-          <ArrowRightIcon className="text-white text-2xl font-bold" />
-        </Link>
+        <div className="relative">
+          <Image
+            src={card.src}
+            alt={card.alt}
+            width={800}
+            height={800}
+            className="w-fit h-auto object-contain max-h-[80vh]"
+          />
+          <Link
+            href={""}
+            className="absolute bottom-0 left-0 right-0 flex flex-row justify-between items-center bg-[#101010] py-2 px-4"
+          >
+            <h6 className="text-white text-2xl font-bold">{card.title}</h6>
+            <ArrowRightIcon className="text-white text-2xl font-bold" />
+          </Link>
+        </div>
       </div>
     </section>
   );

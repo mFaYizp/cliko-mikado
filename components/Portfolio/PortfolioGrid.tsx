@@ -39,7 +39,7 @@ const PortfolioGrid = () => {
                           >
                             <Image
                               src={PortfolioData[firstIndex].image}
-                              alt={PortfolioData[firstIndex].title}
+                              alt={PortfolioData[firstIndex].cardTitle}
                               fill
                               className="object-contain"
                             />
@@ -51,7 +51,7 @@ const PortfolioGrid = () => {
                               }`}
                             >
                               <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
-                                {PortfolioData[firstIndex].title}
+                                {PortfolioData[firstIndex].cardTitle}
                               </h3>
                               <p className="text-sm opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                                 {PortfolioData[firstIndex]?.service}
@@ -66,7 +66,7 @@ const PortfolioGrid = () => {
                         >
                           <Image
                             src={PortfolioData[firstIndex].image}
-                            alt={PortfolioData[firstIndex].title}
+                            alt={PortfolioData[firstIndex].cardTitle}
                             fill
                             className="object-cover"
                           />
@@ -78,7 +78,7 @@ const PortfolioGrid = () => {
                             }`}
                           >
                             <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
-                              {PortfolioData[firstIndex].title}
+                              {PortfolioData[firstIndex].cardTitle}
                             </h3>
                             <p className="text-sm opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                               {PortfolioData[firstIndex]?.service}
@@ -96,7 +96,7 @@ const PortfolioGrid = () => {
                             >
                               <Image
                                 src={PortfolioData[secondIndex].image}
-                                alt={PortfolioData[secondIndex].title}
+                                alt={PortfolioData[secondIndex].cardTitle}
                                 fill
                                 className="object-contain"
                               />
@@ -108,7 +108,7 @@ const PortfolioGrid = () => {
                                 }`}
                               >
                                 <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
-                                  {PortfolioData[secondIndex].title}
+                                  {PortfolioData[secondIndex].cardTitle}
                                 </h3>
                                 <p className="text-sm opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                                   {PortfolioData[secondIndex]?.service}
@@ -123,7 +123,7 @@ const PortfolioGrid = () => {
                           >
                             <Image
                               src={PortfolioData[secondIndex].image}
-                              alt={PortfolioData[secondIndex].title}
+                              alt={PortfolioData[secondIndex].cardTitle}
                               fill
                               className="object-cover"
                             />
@@ -135,7 +135,7 @@ const PortfolioGrid = () => {
                               }`}
                             >
                               <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
-                                {PortfolioData[secondIndex].title}
+                                {PortfolioData[secondIndex].cardTitle}
                               </h3>
                               <p className="text-sm opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                                 {PortfolioData[secondIndex]?.service}
@@ -166,7 +166,7 @@ const PortfolioGrid = () => {
                   >
                     <Image
                       src={item.image}
-                      alt={item.title}
+                      alt={item.cardTitle}
                       fill
                       className="object-cover"
                     />
@@ -176,7 +176,7 @@ const PortfolioGrid = () => {
                       }`}
                     >
                       <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
-                        {item.title}
+                        {item.cardTitle}
                       </h3>
                       <p className="text-sm opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                         {item.service}

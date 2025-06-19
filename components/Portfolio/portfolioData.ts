@@ -1,7 +1,8 @@
 const PortfolioData = [
   {
     slug: "picture-perfect-product",
-    title: "Picture Perfect Product",
+    cardTitle: "Picture Perfect Product",
+    title: "Picture Perfect <br> Product",
     dark: true,
     industry: "Beverages",
     service: "Product Photography",
@@ -27,6 +28,7 @@ const PortfolioData = [
   },
   {
     slug: "architecture",
+    cardTitle: "Architecture Photography",
     title: "Architecture Photography",
     dark: true,
     industry: "Real Estate & Interior Design",
@@ -53,6 +55,7 @@ const PortfolioData = [
   },
   {
     slug: "lifestyle",
+    cardTitle: "Lifestyle Photography",
     title: "Lifestyle Photography",
     dark: true,
     industry: "Fashion, Wellness, Home & Living",

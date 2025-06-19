@@ -112,24 +112,23 @@ const Navbar = () => {
                 {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
               </motion.div>
             </AnimatePresence>
-          </div>      
+          </div>
         </div>
       </nav>
 
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="fixed top-0 left-0 w-full h-[80vh] bg-black/70 backdrop-blur-xl z-40"
+            className="fixed top-0 left-0 w-full h-full md:h-[80vh] bg-black/70 backdrop-blur-xl z-40"
             initial={{ y: "-100%" }}
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ type: "spring", duration: 1.5, bounce: 0.2 }}
             onClick={() => setIsMenuOpen(false)}
           >
-            <motion.div className="flex flex-col md:flex-row items-center justify-between mt-16 gap-y-5 pl-4">
+            <motion.div className="w-full h-full flex flex-col md:flex-row items-start justify-between mt-16 gap-y-5 pl-4">
               <div className="flex-1 flex flex-col justify-between items-start gap-y-4">
-              <div className="flex-1 flex flex-col items-end justify-center pl-0 md:pl-7  pr-5 md:pr-0 lg:pr-48 xl:pr-0 font-extrabold pt-[40px] 2xl:pt-18">
-
+                <div className="flex-1 flex flex-col items-end justify-center pl-0 md:pl-7  pr-5 md:pr-0 lg:pr-48 xl:pr-0 font-extrabold pt-[40px] 2xl:pt-18">
                   <video
                     className="object-cover w-full h-auto rounded-lg aspect-video  md:w-[600px] md:h-[250px] lg:w-[850px] lg:h-[300px] 2xl:w-[900px] 2xl:h-[350px]"
                     width={800}
@@ -143,7 +142,7 @@ const Navbar = () => {
                   ></video>
                 </div>
 
-                <motion.div className="w-fit hidden md:flex items-start justify-start pl-0 md:pl-8  pt-44 md:pt-9 2xl:pt-46">
+                <motion.div className="w-fit flex items-start justify-start pl-0 md:pl-8  pt-2 sm:pt-4 md:pt-9 2xl:pt-46">
                   <FloatingDock
                     items={SOCIAL_LINKS}
                     desktopClassName="flex items-center justify-center"
@@ -151,7 +150,7 @@ const Navbar = () => {
                 </motion.div>
               </div>
 
-              <div className="flex-1 flex flex-col items-end justify-center pr-6 md:pr-18 lg:pr-20 xl:pr-28 font-extrabold pt-18 md:pt-36 2xl:pt-12">
+              <div className="flex-1 h-full flex flex-col items-end justify-start pr-6 md:pr-18 lg:pr-20 xl:pr-28 font-extrabold md:pt-[38px]">
                 <div className="w-fit flex flex-col space-y-2">
                   {menuItems.map((item) => (
                     <motion.div key={item.label}>
