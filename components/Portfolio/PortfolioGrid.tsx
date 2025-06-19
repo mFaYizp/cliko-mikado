@@ -44,8 +44,8 @@ const PortfolioGrid = () => {
                               className="object-contain"
                             />
                             <div
-                              className={`absolute top-[60%] left-10 w-full h-full text-white ${
-                                PortfolioData[firstIndex]?.dark
+                              className={`absolute top-[60%] left-10 w-full h-full ${
+                                PortfolioData[firstIndex].dark
                                   ? "text-black"
                                   : "text-white"
                               }`}
@@ -71,8 +71,8 @@ const PortfolioGrid = () => {
                             className="object-cover"
                           />
                           <div
-                            className={`absolute top-[75%] left-10 w-full h-full text-white ${
-                              PortfolioData[firstIndex]?.dark
+                            className={`absolute top-[75%] left-10 w-full h-full ${
+                              PortfolioData[firstIndex].dark
                                 ? "text-black"
                                 : "text-white"
                             }`}
@@ -101,8 +101,8 @@ const PortfolioGrid = () => {
                                 className="object-contain"
                               />
                               <div
-                                className={`absolute top-[65%] left-10 w-full h-full text-white ${
-                                  PortfolioData[secondIndex]?.dark
+                                className={`absolute top-[65%] left-10 w-full h-full ${
+                                  PortfolioData[secondIndex].dark
                                     ? "text-black"
                                     : "text-white"
                                 }`}
@@ -128,8 +128,8 @@ const PortfolioGrid = () => {
                               className="object-cover"
                             />
                             <div
-                              className={`absolute top-[75%] left-10 w-full h-full text-white ${
-                                PortfolioData[secondIndex]?.dark
+                              className={`absolute top-[75%] left-10 w-full h-full ${
+                                PortfolioData[secondIndex].dark
                                   ? "text-black"
                                   : "text-white"
                               }`}
