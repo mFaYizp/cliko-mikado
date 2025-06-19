@@ -153,7 +153,7 @@ const PortfolioGrid = () => {
             <div className="flex md:hidden flex-col gap-10">
               {PortfolioData.map((item, index) => (
                 <motion.div
-                  key={item.slug || item.id || index}
+                  key={item.slug || index}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
