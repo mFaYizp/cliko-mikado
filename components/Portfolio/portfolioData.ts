@@ -1,15 +1,15 @@
 const PortfolioData = [
   {
     slug: "picture-perfect-product",
-    cardTitle: "Picture Perfect Product",
-    title: "Picture Perfect <br> Product",
+    cardTitle: "Product Photography",
+    title:"Product<br> Photograpy",
     dark: true,
     industry: "Beverages",
     service: "Product Photography",
     heroBg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/product-banner.webp",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/highlight.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img1.webp",
     about: {
       title: "Highlight",
       description:
@@ -24,6 +24,9 @@ const PortfolioData = [
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img-5.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img-6.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img-7.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img8.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img9.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img10.webp",
     ],
   },
   {
@@ -56,7 +59,7 @@ const PortfolioData = [
   {
     slug: "lifestyle",
     cardTitle: "Lifestyle Photography",
-    title: "Lifestyle Photography",
+    title: "Lifestyle<br> Photography",
     dark: true,
     industry: "Fashion, Wellness, Home & Living",
     service: "Lifestyle Photography",
