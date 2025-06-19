@@ -5,7 +5,7 @@ import React from "react";
 import PortfolioData from "./portfolioData";
 import { Parallax, ParallaxProvider } from "react-scroll-parallax";
 import Link from "next/link";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 
 const PortfolioGrid = () => {
   const shouldParallax = (index: number) => {
@@ -153,7 +153,7 @@ const PortfolioGrid = () => {
             <div className="flex md:hidden flex-col gap-10">
               {PortfolioData.map((item, index) => (
                 <motion.div
-                  key={item.slug}
+                  key={item.slug || item.id || index}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
