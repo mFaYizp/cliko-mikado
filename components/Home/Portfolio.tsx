@@ -244,7 +244,7 @@ const PortfolioSection = () => {
       </div>
 
       {/* Animated "PORTFOLIO" Text */}
-      <div className="relative z-40 h-full flex items-center justify-center">
+      <div className="relative z-30 h-full flex items-center justify-center">
         <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white flex">
           {[...'PORTFOLIO'].map((letter, i) => (
             <motion.span

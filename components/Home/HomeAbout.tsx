@@ -6,6 +6,7 @@ import { ChevronRight } from "lucide-react";
 import ImageEffect from "../ui/ImageEffect";
 import { Parallax, ParallaxProvider } from "react-scroll-parallax";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const HomeAbout = () => {
   return (
@@ -13,7 +14,7 @@ const HomeAbout = () => {
       <div className="container mx-auto w-full flex flex-col md:flex-row md:flex-nowrap items-center md:items-start justify-between py-16 md:py-36 gap-y-10 px-4">
         {/* Image Section */}
         <div className="w-full md:w-1/2 flex justify-center md:justify-start pb-10 sm:pb-20 mt-32">
-          <ParallaxProvider> 
+          <ParallaxProvider>
             <Parallax speed={-10} className="overflow-hidden">
               <ImageEffect
                 src="https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/2_About/About.webp"
@@ -50,8 +51,14 @@ const HomeAbout = () => {
             transition={{ duration: 1, delay: 0.1 }}
             viewport={{ once: true, amount: 0.1 }}
           >
-            <Button className="font-normal text-[1.25rem] md:text-[1.75rem] px-8 py-4 md:px-10 md:py-6 flex items-center space-x-2 border rounded-none hover:text-black hover:bg-white">
-              Studio <ChevronRight className="min-w-6 min-h-8" />
+            <Button className="font-normal text-[1.25rem] md:text-[1.75rem] px-8 py-4 md:px-10 md:py-6  border rounded-none hover:text-black hover:bg-white">
+              <Link
+                href={"/portfolio"}
+                className="flex items-center justify-center space-x-2"
+              >
+                <span className="pt-1"> Studio</span>{" "}
+                <ChevronRight className="min-w-6 min-h-8" />
+              </Link>
             </Button>
           </motion.div>
         </div>
@@ -61,4 +68,3 @@ const HomeAbout = () => {
 };
 
 export default HomeAbout;
-  
