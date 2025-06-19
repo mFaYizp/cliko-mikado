@@ -5,7 +5,7 @@ import React from "react";
 import PortfolioData from "./portfolioData";
 import { Parallax, ParallaxProvider } from "react-scroll-parallax";
 import Link from "next/link";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 
 const PortfolioGrid = () => {
   const shouldParallax = (index: number) => {
@@ -43,7 +43,10 @@ const PortfolioGrid = () => {
                               fill
                               className="object-contain"
                             />
-                            <div className="absolute top-[60%] left-10 w-full h-full text-white">
+                            {/* Overlay */}
+                            <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:opacity-60 z-[1]" />
+                            {/* Text */}
+                            <div className="absolute top-[60%] left-10 w-full h-full text-white z-[2]">
                               <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                                 {PortfolioData[firstIndex].title}
                               </h3>
@@ -64,7 +67,10 @@ const PortfolioGrid = () => {
                             fill
                             className="object-cover"
                           />
-                          <div className="absolute top-[75%] left-10 w-full h-full text-white">
+                          {/* Overlay */}
+                          <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:opacity-60 z-[1]" />
+                          {/* Text */}
+                          <div className="absolute top-[75%] left-10 w-full h-full text-white z-[2]">
                             <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                               {PortfolioData[firstIndex].title}
                             </h3>
@@ -88,7 +94,10 @@ const PortfolioGrid = () => {
                                 fill
                                 className="object-contain"
                               />
-                              <div className="absolute top-[65%] left-10 w-full h-full text-white">
+                              {/* Overlay */}
+                              <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:opacity-60 z-[1]" />
+                              {/* Text */}
+                              <div className="absolute top-[65%] left-10 w-full h-full text-white z-[2]">
                                 <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                                   {PortfolioData[secondIndex].title}
                                 </h3>
@@ -109,7 +118,10 @@ const PortfolioGrid = () => {
                               fill
                               className="object-cover"
                             />
-                            <div className="absolute top-[75%] left-10 w-full h-full text-white">
+                            {/* Overlay */}
+                            <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:opacity-60 z-[1]" />
+                            {/* Text */}
+                            <div className="absolute top-[75%] left-10 w-full h-full text-white z-[2]">
                               <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                                 {PortfolioData[secondIndex].title}
                               </h3>
@@ -129,7 +141,7 @@ const PortfolioGrid = () => {
             <div className="flex md:hidden flex-col gap-10">
               {PortfolioData.map((item, index) => (
                 <motion.div
-                  key={item.slug}
+                  key={item.slug || item.id || index}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -146,7 +158,10 @@ const PortfolioGrid = () => {
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute top-[75%] left-10 w-full h-full text-white">
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:opacity-60 z-[1]" />
+                    {/* Text */}
+                    <div className="absolute top-[75%] left-10 w-full h-full text-white z-[2]">
                       <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                         {item.title}
                       </h3>

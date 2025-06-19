@@ -112,7 +112,7 @@ const Navbar = () => {
                 {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
               </motion.div>
             </AnimatePresence>
-          </div>
+          </div>      
         </div>
       </nav>
 
