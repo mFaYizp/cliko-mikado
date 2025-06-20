@@ -3,13 +3,13 @@ const PortfolioData = [
     slug: "picture-perfect-product",
     cardTitle: "Product Photography",
     title:"Product<br> Photograpy",
-    dark: true,
+    dark: true, 
     industry: "Beverages",
     service: "Product Photography",
     heroBg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/product-banner.webp",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img1.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/image2.webp",
     about: {
       title: "Highlight",
       description:
@@ -24,9 +24,15 @@ const PortfolioData = [
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img-5.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img-6.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img-7.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/prod-large1.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/9.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/4.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img8.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img9.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img10.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/car.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/4.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/kf%201.webp",
     ],
   },
   {
@@ -79,6 +85,35 @@ const PortfolioData = [
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-img3.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img4-life.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-img5.webp",
+    ],
+  },
+
+   {
+    slug: "food",
+    cardTitle: "Food Photography",
+    title: "Food<br> Photography",
+    dark: true,
+    industry: "Fashion, Wellness, Home & Living",
+    service: "Food Photography",
+    heroBg:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-hero.webp",
+    image:
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-banner.webp",
+    about: {
+      title: "Highlight",
+      description:
+        "Our lifestyle photography captures real moments with style and authenticity—blending people, products, and environments to create visual stories that connect emotionally and elevate your brand.",
+      src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-banner.webp",
+    },
+    images: [
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-1.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-2.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-3.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-4.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-5.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-6.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-7.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-8.webp",
     ],
   },
 ];
