@@ -12,15 +12,15 @@ const SERVICES = [
   },
   {
     name: "Architectural Photography",
-    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
+    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/arch-round.webp",
     mobileImg:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/arch.webp",
   },
   {
     name: "Lifestyle Photography",
-    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
+    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-round%20(1).webp",
     mobileImg:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life.webp",
   },
   //{
   //  name: "Catalogue Photography",
@@ -29,10 +29,10 @@ const SERVICES = [
   //    "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
  // },
   {
-    name: "Fashion Photography",
-    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
+    name: "Food Photography",
+    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-round.webp",
     mobileImg:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food.webp",
   },
   //{
   //  name: "360 Videography",
