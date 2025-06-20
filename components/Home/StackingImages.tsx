@@ -170,6 +170,8 @@ const Card: React.FC<CardComponentProps> = ({
             !card.portrait && "my-[15%]"
           }`}
         >
+        <div className="relative">
+
           <Image
             src={card.src}
             alt={card.alt}
@@ -181,11 +183,12 @@ const Card: React.FC<CardComponentProps> = ({
           />
             <Link
               href={""}
-              className={`flex flex-row justify-between items-center bg-[#101010] p-2 ${card.portrait ? "w-[64%]" : "w-full"}`}
+              className={`absolute -bottom-10 flex flex-row justify-between items-center bg-[#101010] p-2 ${card.portrait ? "w-full lg:w-[64%] lg:right-[18%]" : "w-full right-0 left-0"}`}
             >
               <h6 className="text-white text-2xl font-bold">{card.title}</h6>
               <ArrowRightIcon className="text-white text-2xl font-bold" />
             </Link>
+        </div>
         </div>
       </motion.div>
     </section>

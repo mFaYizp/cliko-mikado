@@ -83,7 +83,7 @@ const Card = ({ card }: { card: CardType }) => {
           />
           <Link
             href={""}
-            className="absolute bottom-0 left-0 right-0 flex flex-row justify-between items-center bg-[#101010] py-2 px-4"
+            className="absolute -bottom-8 left-0 right-0 flex flex-row justify-between items-center bg-[#101010] py-2 px-4"
           >
             <h6 className="text-white text-2xl font-bold">{card.title}</h6>
             <ArrowRightIcon className="text-white text-2xl font-bold" />
