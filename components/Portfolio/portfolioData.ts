@@ -39,7 +39,7 @@ const PortfolioData = [
     slug: "architecture",
     cardTitle: "Architecture Photography",
     title: "Architecture Photography",
-    dark: true,
+    dark: false,
     industry: "Real Estate & Interior Design",
     service: "Architecture Photography",
     heroBg:
@@ -66,7 +66,7 @@ const PortfolioData = [
     slug: "lifestyle",
     cardTitle: "Lifestyle Photography",
     title: "Lifestyle<br> Photography",
-    dark: true,
+    dark: false,
     industry: "Fashion, Wellness, Home & Living",
     service: "Lifestyle Photography",
     heroBg:

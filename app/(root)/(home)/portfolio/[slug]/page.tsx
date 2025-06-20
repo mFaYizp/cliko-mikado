@@ -25,6 +25,7 @@ const PortfolioInnerPage = async ({
         title={portfolioData.title}
         industry={portfolioData.industry}
         service={portfolioData.service}
+        dark={portfolioData.dark}
       />
       {about && (
         <InnerPageAbout

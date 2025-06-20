@@ -44,9 +44,15 @@ const PortfolioGrid = () => {
                               className="object-contain"
                             />
                             {/* Overlay */}
-                            <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:opacity-60 z-[1]" />
+                            {/* <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:opacity-60 z-[1]" /> */}
                             {/* Text */}
-                            <div className="absolute top-[85%] left-5 w-full h-full text-white z-[2]">
+                            <div
+                              className={`absolute top-[85%] left-5 w-full h-full ${
+                                PortfolioData[firstIndex].dark
+                                  ? "text-black"
+                                  : "text-white"
+                              } z-[2]`}
+                            >
                               <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                                 {PortfolioData[firstIndex].cardTitle}
                               </h3>
@@ -68,9 +74,15 @@ const PortfolioGrid = () => {
                             className="object-cover"
                           />
                           {/* Overlay */}
-                          <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:opacity-60 z-[1]" />
+                          {/* <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:opacity-60 z-[1]" /> */}
                           {/* Text */}
-                          <div className="absolute top-[85%] left-10 w-full h-full text-white z-[2]">
+                          <div
+                            className={`absolute top-[85%] left-10 w-full h-full ${
+                              PortfolioData[firstIndex].dark
+                                ? "text-black"
+                                : "text-white"
+                            } z-[2]`}
+                          >
                             <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                               {PortfolioData[firstIndex].cardTitle}
                             </h3>
@@ -94,6 +106,9 @@ const PortfolioGrid = () => {
                                 fill
                                 className="object-contain"
                               />
+                              {/* Overlay */}
+                              {/* <div className="w- h-full absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:opacity-60 z-[1]" /> */}
+                              {/* Text */}
                               <div
                                 className={`absolute top-[65%] left-10 w-full h-full ${
                                   PortfolioData[secondIndex].dark
@@ -124,7 +139,13 @@ const PortfolioGrid = () => {
                             {/* Overlay */}
                             <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:opacity-60 z-[1]" />
                             {/* Text */}
-                            <div className="absolute top-[85%] left-10 w-full h-full text-white z-[2]">
+                            <div
+                              className={`absolute top-[85%] left-10 w-full h-full ${
+                                PortfolioData[secondIndex].dark
+                                  ? "text-black"
+                                  : "text-white"
+                              } z-[2]`}
+                            >
                               <h3 className="text-2xl font-bold transform transition-transform duration-300 group-hover:-translate-y-2">
                                 {PortfolioData[secondIndex].cardTitle}
                               </h3>
