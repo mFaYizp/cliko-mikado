@@ -70,14 +70,14 @@ const PortfolioData = [
     industry: "Fashion, Wellness, Home & Living",
     service: "Lifestyle Photography",
     heroBg:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/crop-stuff-training.jpg",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/hero-life.webp",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-banner.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/banner-life.webp",
     about: {
       title: "Highlight",
       description:
         "Our lifestyle photography captures real moments with style and authenticity—blending people, products, and environments to create visual stories that connect emotionally and elevate your brand.",
-      src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-banner.webp",
+      src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/banner-life.webp",
     },
     images: [
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-img1.webp",
@@ -93,7 +93,7 @@ const PortfolioData = [
     cardTitle: "Food Photography",
     title: "Food<br> Photography",
     dark: true,
-    industry: "Fashion, Wellness, Home & Living",
+    industry: "Food & Beverage",
     service: "Food Photography",
     heroBg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-hero.webp",
@@ -102,7 +102,7 @@ const PortfolioData = [
     about: {
       title: "Highlight",
       description:
-        "Our lifestyle photography captures real moments with style and authenticity—blending people, products, and environments to create visual stories that connect emotionally and elevate your brand.",
+        "We capture food with richness, texture, and irresistible appeal—crafting mouth-watering visuals that enhance menus, packaging, and marketing across digital and print platforms.",
       src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-banner.webp",
     },
     images: [
