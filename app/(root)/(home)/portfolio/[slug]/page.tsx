@@ -20,7 +20,7 @@ const PortfolioInnerPage = async ({
   const { about, images } = portfolioData;
   return (
     <main className="w-full h-full">
-      <div className="lg:block hidden">
+      <div className="md:block hidden">
       <PortfolioInnerPageHero
         bgImg={portfolioData.heroBg}
         title={portfolioData.title}
@@ -29,7 +29,7 @@ const PortfolioInnerPage = async ({
         dark={portfolioData.dark}
       />
       </div>
-      <div className="lg:hidden block">
+      <div className="md:hidden block">
       <CaseStudyHeroMobile
         img={portfolioData.heroBg}
         title={portfolioData.title}

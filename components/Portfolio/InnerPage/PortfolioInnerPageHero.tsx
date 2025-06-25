@@ -73,14 +73,14 @@ const PortfolioInnerPageHero = ({
                   {service && (
                     <p className="w-full flex justify-between">
                       <span
-                        className={`font-normal xl:w-[40%] 5xl:w-1/3 md:text-2xl tb:text-xl lg:text-xl xl:text-2xl 5xl:text-3xl ${
+                        className={`font-normal xl:w-[40%] 5xl:w-1/3 tb:text-xl lg:text-xl xl:text-2xl 5xl:text-3xl ${
                           dark ? "text-[#1c1c1c]" : "text-gray-200"
                         }`}
                       >
                         Type
                       </span>{" "}
                       <span
-                        className={`xxs:w-[55%] xl:w-[60%] 5xl:w-2/3 md:text-2xl tb:text-xl lg:text-xl xl:text-2xl 5xl:text-3xl ${
+                        className={`xxs:w-[55%] xl:w-[60%] 5xl:w-2/3 tb:text-xl lg:text-xl xl:text-2xl 5xl:text-3xl ${
                           dark ? "text-[#1c1c1c]" : "text-light"
                         }`}
                       >
