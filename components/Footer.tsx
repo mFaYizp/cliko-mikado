@@ -11,7 +11,7 @@ import { FloatingDock } from "./ui/floating-dock";
 const LINKS = [
   { name: "Home", link: "/" },
   { name: "About Us", link: "/about-us" },
-  { name: "Portfolio", link: "/portfolio/grid" },
+  { name: "Portfolio", link: "/portfolio" },
   { name: "Contact Us", link: "/contact-us" },
 ];
 
