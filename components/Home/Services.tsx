@@ -2,22 +2,26 @@
 import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const SERVICES = [
   {
     name: "Product Photography",
+    slug: "picture-perfect-product",
     img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
     mobileImg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
   },
   {
     name: "Architectural Photography",
+    slug: "architecture",
     img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/arch-round.webp",
     mobileImg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/arch.webp",
   },
   {
     name: "Lifestyle Photography",
+    slug: "lifestyle",
     img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-round%20(1).webp",
     mobileImg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life.webp",
@@ -27,9 +31,10 @@ const SERVICES = [
   //  img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
   //  mobileImg:
   //    "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/mobileImg.webp",
- // },
+  // },
   {
     name: "Food Photography",
+    slug: "food",
     img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-round.webp",
     mobileImg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food.webp",
@@ -105,7 +110,8 @@ const Services = () => {
           {SERVICES.map((item, index) => (
             <div key={index} className="w-full">
               {/* Desktop View */}
-              <div
+              <Link
+                href={`/portfolio/${item.slug}`}
                 onMouseEnter={() => setModal({ active: true, index })}
                 onMouseLeave={() => setModal({ active: false, index: null })}
                 className="relative w-full hidden md:flex items-start justify-between font-light group cursor-pointer"
@@ -130,7 +136,7 @@ const Services = () => {
                     quality={100}
                   />
                 </motion.div>
-              </div>
+              </Link>
 
               {/* Mobile View */}
               <div className="w-full flex flex-col gap-5 md:hidden">
