@@ -24,7 +24,7 @@ const SERVICES = [
   //  img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-round%20(1).webp",
   //  mobileImg:
   //    "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life.webp",
- // },
+  // },
   //{
   //  name: "Catalogue Photography",
   //  img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
@@ -138,7 +138,10 @@ const Services = () => {
               </Link>
 
               {/* Mobile View */}
-              <div className="w-full flex flex-col gap-5 md:hidden">
+              <Link
+                href={`/portfolio/${item.slug}`}
+                className="w-full flex flex-col gap-5 md:hidden"
+              >
                 <div className="w-full xs:w-[320px]">
                   <Image
                     src={item.mobileImg}
@@ -152,7 +155,7 @@ const Services = () => {
                 <h3 className="font-medium text-left text-xl xs:text-2xl uppercase text-white mx-5">
                   {item.name}
                 </h3>
-              </div>
+              </Link>
             </div>
           ))}
         </div>

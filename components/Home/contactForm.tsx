@@ -94,15 +94,16 @@ const ContactForm = () => {
         <p className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-thin text-gray-400 mb-6">
           <span>Hey, I&apos;m </span>
           <input
-            type="text"
-            placeholder="Your name"
-            name="user_name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            id="name"
-            required
-            className="bg-transparent border-b-2 border-opacity-50 border-gray-500 text-white outline-none placeholder-opacity-50 placeholder-gray-600 w-full sm:w-auto"
-          />
+  type="text"
+  placeholder="Your name"
+  name="user_name"
+  value={name}
+  onChange={(e) => setName(e.target.value)}
+  id="name"
+  required
+  className="bg-transparent border-b-2 border-opacity-50 border-gray-500 text-white outline-none placeholder-opacity-50 placeholder-gray-600 w-full sm:w-auto mb-4 sm:mb-0"
+/>
+
           <span className="hidden md:block md:pt-[20px]">
             {/* Breaks on tablet */}
             Let&apos;s grab a virtual coffee
