@@ -63,26 +63,26 @@ const PortfolioData = [
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/room-interior-design.webp",
     ],
   },
-  {
-    slug: "lifestyle",
-    cardTitle: "Lifestyle Photography",
-    title: "Lifestyle<br> Photography",
-    dark: false,
-    industry: "Fashion, Wellness, Home & Living",
-    service: "Lifestyle Photography",
-    heroBg:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/hero-life.webp",
-    image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/banner-life.webp",
-    about: {
-      title: "Highlight",
-      description:
-        "Our lifestyle photography captures real moments with style and authenticity—blending people, products, and environments to create visual stories that connect emotionally and elevate your brand.",
-      src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/banner-life.webp",
-    },
-    images: [
-    ],
-  },
+ // {
+ //   slug: "lifestyle",
+ //   cardTitle: "Lifestyle Photography",
+ //   title: "Lifestyle<br> Photography",
+ //   dark: false,
+ //   industry: "Fashion, Wellness, Home & Living",
+ //   service: "Lifestyle Photography",
+ //   heroBg:
+  //    "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/hero-life.webp",
+  //  image:
+  //    "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/banner-life.webp",
+  //  about: {
+  //    title: "Highlight",
+   //   description:
+   //     "Our lifestyle photography captures real moments with style and authenticity—blending people, products, and environments to create visual stories that connect emotionally and elevate your brand.",
+   //   src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/banner-life.webp",
+  //  },
+  //  images: [
+   // ],
+ // },
 
    {
     slug: "food",

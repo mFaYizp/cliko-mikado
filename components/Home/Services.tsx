@@ -16,12 +16,12 @@ const SERVICES = [
     mobileImg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/arch.webp",
   },
-  {
-    name: "Lifestyle Photography",
-    img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-round%20(1).webp",
-    mobileImg:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life.webp",
-  },
+  //{
+  //  name: "Lifestyle Photography",
+  //  img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-round%20(1).webp",
+  //  mobileImg:
+  //    "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life.webp",
+ // },
   //{
   //  name: "Catalogue Photography",
   //  img: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/HomePage/4_Services/Services_1.webp",
