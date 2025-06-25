@@ -94,7 +94,7 @@ const PortfolioData = [
     heroBg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-hero.webp",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-banner1.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/chicken-2.webp",
     about: {
       title: "Highlight",
       description:

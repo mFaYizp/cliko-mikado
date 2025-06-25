@@ -79,7 +79,7 @@ const PortfolioGrid = () => {
                           <div
                             className={`absolute top-[85%] left-10 w-full h-full ${
                               PortfolioData[firstIndex].dark
-                                ? "text-black"
+                                ? "text-white"
                                 : "text-white"
                             } z-[2]`}
                           >
