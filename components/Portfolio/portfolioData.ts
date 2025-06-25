@@ -27,7 +27,7 @@ const PortfolioData = [
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img-7.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/prod-large1.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/9.webp",
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/4.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/003_2.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img8.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img9.webp",
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img10.webp",

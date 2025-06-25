@@ -6,11 +6,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const images = [
-  "/images/img1.jpg",
-  "/images/img2.jpg",
-  "/images/img3.jpg",
-  "/images/img4.jpg",
-  "/images/img5.jpg",
+  "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/miko1.webp",
+  "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/miko2.webp",
+  "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/miko-3.webp",
+  "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/miko4.webp",
+  "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/miko5.webp",
 ];
 
 const ImageCarousel: React.FC = () => {
