@@ -56,7 +56,7 @@ const HomeAbout = () => {
                 href={"/portfolio"}
                 className="flex items-center justify-center space-x-2"
               >
-                <span className="pt-1"> Studio</span>{" "}
+                <span className="pt-1 pb-1 pl-3"> Studio</span>{" "}
                 <ChevronRight className="min-w-6 min-h-8" />
               </Link>
             </Button>

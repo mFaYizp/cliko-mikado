@@ -99,22 +99,22 @@ const PortfolioData = [
     heroBg:
       "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-hero.webp",
     image:
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-banner.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-banner1.webp",
     about: {
       title: "Highlight",
       description:
         "We capture food with richness, texture, and irresistible appeal—crafting mouth-watering visuals that enhance menus, packaging, and marketing across digital and print platforms.",
-      src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-banner.webp",
+      src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-banner1.webp",
     },
     images: [
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-1.webp",
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-2.webp",
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-3.webp",
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-4.webp",
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-5.webp",
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-6.webp",
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-7.webp",
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/food-8.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/chicken-2.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/final-FFJ_01.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/Frame%2064.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/Frame%2065.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/Frame%2066.webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/001%20(1).webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/002%20(2).webp",
+      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/Banana.webp",
     ],
   },
 ];
