@@ -81,11 +81,6 @@ const PortfolioData = [
       src: "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/banner-life.webp",
     },
     images: [
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-img1.webp",
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-img2.webp",
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-img3.webp",
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/img4-life.webp",
-      "https://mikado-products.blr1.cdn.digitaloceanspaces.com/cliko/portfolio/life-img5.webp",
     ],
   },
 
