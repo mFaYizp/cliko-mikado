@@ -60,7 +60,7 @@ const ContactPage = () => {
 
   return (
     <section className="h-full text-white">
-      <div className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-14 md:pb-20 xl:pb-36">
+      <div className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-14 pt-0 md:pb-20 lg:py-28 xl:py-36">
         {/* Left Section */}
         <div className="h-full hidden md:flex flex-col justify-between">
           <div className=" flex flex-col">
