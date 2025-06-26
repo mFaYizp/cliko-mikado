@@ -34,7 +34,7 @@ const GoalSection: React.FC<GoalSectionProps> = ({ section, desc }) => {
   };
 
   return (
-    <div className="text-white px-8 md:px-20 pb-16 md:pb-32">
+    <div className="text-white px-8 md:px-20 pt-0 pb-16 md:py-32">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Left Side Section */}
         <div className="md:col-span-1">
